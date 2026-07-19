@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type VideoCarouselItem } from '../types'
-import { 
-  Play, 
-  Heart, 
-  MessageCircle, 
-  Eye, 
+import {
+  Play,
+  Heart,
+  MessageCircle,
+  Eye,
   Sparkles
 } from 'lucide-react'
 
@@ -253,7 +253,7 @@ export function InstagramGallerySection() {
       </div>
 
       {/* Continuous Infinite Scrolling Multi-Ratio Carousel Track (Pauses on Hover/Touch) */}
-      <div 
+      <div
         ref={trackRef}
         style={{ direction: 'ltr' }}
         onMouseDown={handleMouseDown}
@@ -272,79 +272,78 @@ export function InstagramGallerySection() {
         onTouchEnd={() => {
           isHoveredRef.current = false
         }}
-        className={`overflow-hidden pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${
-          isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
-        }`}
+        className={`overflow-hidden pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
+          }`}
       >
         <div ref={trackInnerRef} className="flex items-center gap-4 sm:gap-6 w-max will-change-transform">
           {displayItems.map((item) => {
-          const dims = getCardDimensions(item.ratio)
-          const titleText = isRTL ? item.titleAr : item.title
-          const subtitleText = isRTL ? item.subtitleAr : item.subtitle
+            const dims = getCardDimensions(item.ratio)
+            const titleText = isRTL ? item.titleAr : item.title
+            const subtitleText = isRTL ? item.subtitleAr : item.subtitle
 
-          return (
-            <div
-              key={item.uniqueKey}
-              className={`flex-shrink-0 group flex flex-col transition-all duration-500 ${dims.wrapperClass}`}
-            >
-              {/* Card Media Box (Mono -> Color Hover Effect hardcoded) */}
+            return (
               <div
-                className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-sand shadow-sm hover:shadow-2xl transition-all duration-700 grayscale-[96%] contrast-[1.05] group-hover:grayscale-0 group-hover:contrast-100 opacity-92 group-hover:opacity-100 ${dims.imageClass}`}
+                key={item.uniqueKey}
+                className={`flex-shrink-0 group flex flex-col transition-all duration-500 ${dims.wrapperClass}`}
               >
-                <img
-                  src={item.image}
-                  alt={titleText}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108 pointer-events-none"
-                  loading="lazy"
-                />
+                {/* Card Media Box (Mono -> Color Hover Effect hardcoded) */}
+                <div
+                  className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-sand shadow-sm hover:shadow-2xl transition-all duration-700 grayscale-[96%] contrast-[1.05] group-hover:grayscale-0 group-hover:contrast-100 opacity-92 group-hover:opacity-100 ${dims.imageClass}`}
+                >
+                  <img
+                    src={item.image}
+                    alt={titleText}
+                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108 pointer-events-none"
+                    loading="lazy"
+                  />
 
-                {/* Top Right: Video Play Duration Badge */}
-                <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 px-2.5 py-1 rounded-full bg-espresso/75 backdrop-blur-md text-cream text-[11px] font-sans font-medium tracking-wide flex items-center gap-1.5 shadow-xs border border-cream/15 pointer-events-none group-hover:bg-walnut transition-colors">
-                  <Play className="w-3 h-3 fill-current text-sand" />
-                  <span>{item.duration}</span>
-                </div>
-
-                {/* Hover / Touch Interactive Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-between p-4 sm:p-5 pointer-events-none">
-                  <div />
-
-                  {/* Center Floating Play Button */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cream/95 text-espresso flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-all duration-500 mx-auto my-auto border border-white/40">
-                    <Play className="w-6 h-6 fill-current ms-0.5 text-espresso" />
+                  {/* Top Right: Video Play Duration Badge */}
+                  <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10 px-2.5 py-1 rounded-full bg-espresso/75 backdrop-blur-md text-cream text-[11px] font-sans font-medium tracking-wide flex items-center gap-1.5 shadow-xs border border-cream/15 pointer-events-none group-hover:bg-walnut transition-colors">
+                    <Play className="w-3 h-3 fill-current text-sand" />
+                    <span>{item.duration}</span>
                   </div>
 
-                  {/* Bottom Stats & Metrics */}
-                  <div className="flex items-center justify-between text-cream text-xs font-sans w-full border-t border-cream/20 pt-3">
-                    <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1">
-                        <Heart className="w-3.5 h-3.5 fill-current text-rose-400" />
-                        <span>{item.likes}</span>
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MessageCircle className="w-3.5 h-3.5 text-cream/90" />
-                        <span>{item.comments}</span>
+                  {/* Hover / Touch Interactive Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-between p-4 sm:p-5 pointer-events-none">
+                    <div />
+
+                    {/* Center Floating Play Button */}
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cream/95 text-espresso flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-all duration-500 mx-auto my-auto border border-white/40">
+                      <Play className="w-6 h-6 fill-current ms-0.5 text-espresso" />
+                    </div>
+
+                    {/* Bottom Stats & Metrics */}
+                    <div className="flex items-center justify-between text-cream text-xs font-sans w-full border-t border-cream/20 pt-3">
+                      <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-1">
+                          <Heart className="w-3.5 h-3.5 fill-current text-rose-400" />
+                          <span>{item.likes}</span>
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MessageCircle className="w-3.5 h-3.5 text-cream/90" />
+                          <span>{item.comments}</span>
+                        </span>
+                      </div>
+                      <span className="flex items-center gap-1 text-cream/90 text-[11px] tracking-wide">
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>{item.views}</span>
                       </span>
                     </div>
-                    <span className="flex items-center gap-1 text-cream/90 text-[11px] tracking-wide">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>{item.views}</span>
-                    </span>
+                  </div>
+                </div>
+
+                {/* Card Typography Below */}
+                <div className="mt-3.5 sm:mt-4 px-1.5 flex flex-col gap-1">
+                  <h3 className="text-base sm:text-lg font-serif font-medium text-espresso group-hover:text-walnut transition-colors leading-snug line-clamp-1">
+                    {titleText}
+                  </h3>
+                  <div className="flex items-center justify-between text-xs text-mocha">
+                    <span className="font-sans text-mocha/90">{subtitleText}</span>
                   </div>
                 </div>
               </div>
-
-              {/* Card Typography Below */}
-              <div className="mt-3.5 sm:mt-4 px-1.5 flex flex-col gap-1">
-                <h3 className="text-base sm:text-lg font-serif font-medium text-espresso group-hover:text-walnut transition-colors leading-snug line-clamp-1">
-                  {titleText}
-                </h3>
-                <div className="flex items-center justify-between text-xs text-mocha">
-                  <span className="font-sans text-mocha/90">{subtitleText}</span>
-                </div>
-              </div>
-            </div>
-          )
-        })}
+            )
+          })}
         </div>
       </div>
     </section>
