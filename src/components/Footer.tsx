@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import aloraLogo from '/logos/Artboard 13@4x.png'
+import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 
 export function Footer() {
   const { t } = useTranslation()
