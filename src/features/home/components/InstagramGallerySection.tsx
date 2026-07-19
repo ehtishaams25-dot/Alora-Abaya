@@ -11,14 +11,16 @@ import {
 
 export function InstagramGallerySection() {
   const { t, i18n } = useTranslation()
-  const isRTL = i18n.language.startsWith('ar') || typeof document !== 'undefined' && document.documentElement.dir === 'rtl'
+  const isRTL = i18n.language.startsWith('ar') || (typeof document !== 'undefined' && document.documentElement.dir === 'rtl')
 
   const trackRef = useRef<HTMLDivElement>(null)
+  const trackInnerRef = useRef<HTMLDivElement>(null)
 
   // Drag-to-scroll state
   const isDraggingRef = useRef(false)
-  const startXRef = useRef(0)
-  const scrollLeftRef = useRef(0)
+  const dragStartXRef = useRef(0)
+  const dragStartOffsetRef = useRef(0)
+  const offsetRef = useRef(0)
   const [isDragging, setIsDragging] = useState(false)
 
   const baseItems: VideoCarouselItem[] = [
@@ -140,78 +142,70 @@ export function InstagramGallerySection() {
 
   useEffect(() => {
     const track = trackRef.current
-    if (!track) return
+    const trackInner = trackInnerRef.current
+    if (!track || !trackInner) return
 
-    const initScroll = () => {
-      if (track.scrollWidth > 0) {
-        track.scrollLeft = track.scrollWidth / 3
-        scrollLeftRef.current = track.scrollLeft
+    const initOffset = () => {
+      const setWidth = trackInner.scrollWidth / 3
+      if (setWidth > 0) {
+        offsetRef.current = -setWidth
+        trackInner.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
+        trackInner.style.transition = 'none'
       }
     }
 
-    const timer = setTimeout(initScroll, 80)
+    const timer = window.setTimeout(initOffset, 120)
 
     let animId: number
     const speed = 0.7 // smooth speed in pixels per frame
 
     const animate = () => {
-      if (!isDraggingRef.current && !isHoveredRef.current && track.scrollWidth > 0) {
-        const setWidth = track.scrollWidth / 3
-        track.scrollLeft += speed
+      if (!isDraggingRef.current && !isHoveredRef.current && trackInner.scrollWidth > 0) {
+        const setWidth = trackInner.scrollWidth / 3
+        if (setWidth > 0) {
+          const nextOffset = offsetRef.current + speed * (isRTL ? 1 : -1)
 
-        // Seamlessly loop when exceeding boundary
-        if (track.scrollLeft >= setWidth * 2) {
-          track.scrollLeft -= setWidth
-        } else if (track.scrollLeft <= setWidth * 0.5) {
-          track.scrollLeft += setWidth
+          if (nextOffset <= -setWidth * 2) {
+            offsetRef.current = -setWidth
+          } else if (nextOffset >= 0) {
+            offsetRef.current = -setWidth
+          } else {
+            offsetRef.current = nextOffset
+          }
+
+          trackInner.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
+          trackInner.style.transition = 'none'
         }
       }
-      animId = requestAnimationFrame(animate)
+      animId = window.requestAnimationFrame(animate)
     }
 
-    animId = requestAnimationFrame(animate)
+    animId = window.requestAnimationFrame(animate)
+    window.addEventListener('resize', initOffset)
 
-    const handleScroll = () => {
-      const setWidth = track.scrollWidth / 3
-      if (setWidth <= 0) return
-
-      // Seamlessly jump to middle set when approaching edges
-      if (track.scrollLeft < setWidth * 0.25) {
-        track.scrollLeft += setWidth
-        if (isDraggingRef.current) {
-          scrollLeftRef.current += setWidth
-        }
-      } else if (track.scrollLeft > setWidth * 1.75) {
-        track.scrollLeft -= setWidth
-        if (isDraggingRef.current) {
-          scrollLeftRef.current -= setWidth
-        }
-      }
-    }
-
-    track.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
-      clearTimeout(timer)
-      cancelAnimationFrame(animId)
-      track.removeEventListener('scroll', handleScroll)
+      window.clearTimeout(timer)
+      window.cancelAnimationFrame(animId)
+      window.removeEventListener('resize', initOffset)
     }
-  }, [])
+  }, [isRTL])
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (!trackRef.current) return
+    if (!trackInnerRef.current) return
     isDraggingRef.current = true
     setIsDragging(true)
-    startXRef.current = e.pageX - trackRef.current.offsetLeft
-    scrollLeftRef.current = trackRef.current.scrollLeft
-    trackRef.current.style.scrollBehavior = 'auto'
+    dragStartXRef.current = e.clientX
+    dragStartOffsetRef.current = offsetRef.current
+    trackInnerRef.current.style.transition = 'none'
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingRef.current || !trackRef.current) return
+    if (!isDraggingRef.current || !trackInnerRef.current) return
     e.preventDefault()
-    const x = e.pageX - trackRef.current.offsetLeft
-    const walk = (x - startXRef.current) * 1.6
-    trackRef.current.scrollLeft = scrollLeftRef.current - walk
+    const deltaX = e.clientX - dragStartXRef.current
+    const nextOffset = dragStartOffsetRef.current + deltaX * (isRTL ? 1 : -1)
+    offsetRef.current = nextOffset
+    trackInnerRef.current.style.transform = `translate3d(${nextOffset}px, 0, 0)`
   }
 
   const handleMouseUpOrLeave = () => {
@@ -261,6 +255,7 @@ export function InstagramGallerySection() {
       {/* Continuous Infinite Scrolling Multi-Ratio Carousel Track (Pauses on Hover/Touch) */}
       <div 
         ref={trackRef}
+        style={{ direction: 'ltr' }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
@@ -277,11 +272,12 @@ export function InstagramGallerySection() {
         onTouchEnd={() => {
           isHoveredRef.current = false
         }}
-        className={`flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${
+        className={`overflow-hidden pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${
           isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
         }`}
       >
-        {displayItems.map((item) => {
+        <div ref={trackInnerRef} className="flex items-center gap-4 sm:gap-6 w-max will-change-transform">
+          {displayItems.map((item) => {
           const dims = getCardDimensions(item.ratio)
           const titleText = isRTL ? item.titleAr : item.title
           const subtitleText = isRTL ? item.subtitleAr : item.subtitle
@@ -349,6 +345,7 @@ export function InstagramGallerySection() {
             </div>
           )
         })}
+        </div>
       </div>
     </section>
   )
