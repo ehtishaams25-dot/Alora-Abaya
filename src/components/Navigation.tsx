@@ -2,10 +2,15 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 
-export function Navigation() {
+export interface NavigationProps {
+  hideAnnouncement?: boolean
+}
+
+export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [announcementDismissed, setAnnouncementDismissed] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,15 +34,28 @@ export function Navigation() {
 
   return (
     <>
-      {/* Luxury Announcement Top Bar */}
-      <div className="bg-espresso text-cream py-2 px-4 text-center transition-all">
-        <p className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-sans font-medium flex items-center justify-center gap-2">
-          <span>{t('navigation.announcement', 'NEW ARRIVALS EVERY MONDAY — EXPLORE OUR SIGNATURE ATELIER EDITION')}</span>
-          <a href="#new" className="underline underline-offset-4 hover:text-walnut transition-colors hidden sm:inline-block">
-            {t('navigation.exploreNow', 'DISCOVER')}
-          </a>
-        </p>
-      </div>
+      {/* Luxury Announcement Top Bar with Dismiss Cross Button */}
+      {!hideAnnouncement && !announcementDismissed && (
+        <div className="bg-espresso text-cream py-2 px-4 text-center transition-all relative flex items-center justify-center min-h-[36px]">
+          <p className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-sans font-medium flex items-center justify-center gap-2 pr-6 sm:pr-8">
+            <span>{t('navigation.announcement', 'NEW ARRIVALS EVERY MONDAY — EXPLORE OUR SIGNATURE ATELIER EDITION')}</span>
+            <a href="#new" className="underline underline-offset-4 hover:text-walnut transition-colors hidden sm:inline-block">
+              {t('navigation.exploreNow', 'DISCOVER')}
+            </a>
+          </p>
+          <button
+            type="button"
+            onClick={() => setAnnouncementDismissed(true)}
+            className="absolute end-2 sm:end-4 text-cream/70 hover:text-cream transition-colors p-1 flex items-center justify-center cursor-pointer min-h-[28px] min-w-[28px] rounded-full hover:bg-white/10"
+            aria-label="Dismiss announcement"
+            title="Dismiss"
+          >
+            <svg className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       <header
         className={`sticky top-0 z-50 transition-all duration-500 ${isScrolled
@@ -85,7 +103,7 @@ export function Navigation() {
           {/* Center: Centered Luxury ALORA Brand Logo on mobile, absolute centered on desktop */}
           <div className="flex flex-col items-center justify-center z-10 pointer-events-auto shrink-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
             <a
-              href={import.meta.env.BASE_URL}
+              href="#home"
               className="group flex flex-col items-center transition-transform hover:scale-[1.02] duration-500 py-1"
               aria-label="Alora Home"
             >
@@ -131,8 +149,8 @@ export function Navigation() {
               </button>
 
               {/* Profile / Account Button (Hidden on mobile since inside hamburger drawer) */}
-              <button
-                type="button"
+              <a
+                href="#login"
                 className="hidden sm:flex text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] items-center justify-center"
                 aria-label="User Profile & Account"
                 title="Profile"
@@ -148,7 +166,7 @@ export function Navigation() {
                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                   />
                 </svg>
-              </button>
+              </a>
 
               {/* Wishlist Button (Hidden on mobile since inside hamburger drawer) */}
               <button
