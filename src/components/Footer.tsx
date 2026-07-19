@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 
 export function Footer() {
@@ -10,13 +11,13 @@ export function Footer() {
         {/* Top Section: VIP Circle Newsletter & Brand Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-border2">
           <div className="lg:col-span-5 flex flex-col items-start">
-            <a href={import.meta.env.BASE_URL} className="group mb-5 inline-block">
+            <Link to="/" className="group mb-5 inline-block">
               <img
                 src={aloraLogo}
                 alt="ALORA"
                 className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-500"
               />
-            </a>
+            </Link>
             <p className="text-sm text-mocha leading-relaxed max-w-sm">
               {t('home.hero.description')}
             </p>
@@ -57,10 +58,10 @@ export function Footer() {
               {t('footer.quickLinks')}
             </h4>
             <ul className="flex flex-col gap-2.5 text-mocha">
-              <li><a href="#dresses" className="hover:text-espresso transition-colors">{t('navigation.allDresses')}</a></li>
-              <li><a href="#new" className="hover:text-espresso transition-colors">{t('navigation.newArrivals')}</a></li>
-              <li><a href="#bestsellers" className="hover:text-espresso transition-colors">{t('navigation.bestSellers')}</a></li>
-              <li><a href="#categories" className="hover:text-espresso transition-colors">{t('navigation.categories')}</a></li>
+              <li><Link to="/#dresses" className="hover:text-espresso transition-colors">{t('navigation.allDresses')}</Link></li>
+              <li><Link to="/#new" className="hover:text-espresso transition-colors">{t('navigation.newArrivals')}</Link></li>
+              <li><Link to="/#bestsellers" className="hover:text-espresso transition-colors">{t('navigation.bestSellers')}</Link></li>
+              <li><Link to="/#categories" className="hover:text-espresso transition-colors">{t('navigation.categories')}</Link></li>
             </ul>
           </div>
 
@@ -69,10 +70,10 @@ export function Footer() {
               {t('footer.customerCare')}
             </h4>
             <ul className="flex flex-col gap-2.5 text-mocha">
-              <li><a href="#about" className="hover:text-espresso transition-colors">{t('navigation.aboutUs')}</a></li>
-              <li><a href="#faq" className="hover:text-espresso transition-colors">{t('navigation.faq')}</a></li>
-              <li><a href="#returns" className="hover:text-espresso transition-colors">{t('navigation.returns')}</a></li>
-              <li><a href="#contact" className="hover:text-espresso transition-colors">{t('navigation.contact')}</a></li>
+              <li><Link to="/#about" className="hover:text-espresso transition-colors">{t('navigation.aboutUs')}</Link></li>
+              <li><Link to="/#faq" className="hover:text-espresso transition-colors">{t('navigation.faq')}</Link></li>
+              <li><Link to="/#returns" className="hover:text-espresso transition-colors">{t('navigation.returns')}</Link></li>
+              <li><Link to="/#contact" className="hover:text-espresso transition-colors">{t('navigation.contact')}</Link></li>
             </ul>
           </div>
 

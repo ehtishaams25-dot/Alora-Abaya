@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { type ProductItem } from '../types'
 
 export function NewArrivalsSection() {
@@ -57,13 +58,13 @@ export function NewArrivalsSection() {
             {t('home.newArrivals.title')}
           </h2>
           <div className="mt-6 flex justify-center">
-            <a
-              href="#dresses"
+            <Link
+              to="/#dresses"
               className="btn-secondary flex items-center gap-2 group min-h-[44px]"
             >
               <span>{t('common.viewAll')}</span>
               <span className="transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -59,7 +59,7 @@ export function WhyChooseUsSection() {
   }
 
   return (
-    <section className="section-padding bg-cream border-t border-border2">
+    <section id="about" className="section-padding bg-cream border-t border-border2">
       <div className="container-layali">
         {/* Minimalist Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">

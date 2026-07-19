@@ -1,31 +1,42 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { LoginPage } from './pages/LoginPage'
 import { QueryProvider } from './providers/QueryProvider'
 
-export function App() {
-  const [currentRoute, setCurrentRoute] = useState(window.location.hash || '#home')
+function ScrollToHashElement() {
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash
-      setCurrentRoute(hash || '#home')
+    if (hash) {
+      const element = document.getElementById(hash.replace('#', ''))
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        setTimeout(() => {
+          const delayedElement = document.getElementById(hash.replace('#', ''))
+          if (delayedElement) {
+            delayedElement.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    } else {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [])
+  }, [pathname, hash])
 
-  const isLoginPage =
-    currentRoute.startsWith('#login') ||
-    currentRoute.startsWith('#account') ||
-    currentRoute.startsWith('#signin') ||
-    currentRoute.startsWith('#register') ||
-    currentRoute.startsWith('#forgot-password')
+  return null
+}
 
+export function App() {
   return (
     <QueryProvider>
-      {isLoginPage ? <LoginPage /> : <HomePage />}
+      <ScrollToHashElement />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </QueryProvider>
   )
 }
+

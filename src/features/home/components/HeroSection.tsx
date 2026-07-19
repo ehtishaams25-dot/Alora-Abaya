@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export function HeroSection() {
   const { t } = useTranslation()
@@ -35,12 +36,12 @@ export function HeroSection() {
 
             {/* Refined Single Luxury Call-to-Action */}
             <div className="mt-10 sm:mt-12">
-              <a
-                href="#new"
+              <Link
+                to="/#new"
                 className="bg-cream text-espresso rounded-full px-10 py-4.5 text-xs sm:text-sm uppercase tracking-[0.26em] hover:bg-white hover:scale-[1.02] transition-all duration-500 font-sans font-semibold shadow-2xl inline-flex items-center justify-center min-h-[50px]"
               >
                 {t('home.hero.ctaExplore', 'EXPLORE THE COLLECTION')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
