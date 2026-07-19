@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import aloraLogo from '/logos/Artboard 13@4x.png'
 
 export function Navigation() {
   const { t, i18n } = useTranslation()
@@ -85,12 +86,12 @@ export function Navigation() {
           {/* Center: Centered Luxury ALORA Brand Logo on mobile, absolute centered on desktop */}
           <div className="flex flex-col items-center justify-center z-10 pointer-events-auto shrink-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
             <a
-              href="/"
+              href={import.meta.env.BASE_URL}
               className="group flex flex-col items-center transition-transform hover:scale-[1.02] duration-500 py-1"
               aria-label="Alora Home"
             >
               <img
-                src="/logos/Artboard 13@4x.png"
+                src={aloraLogo}
                 alt="ALORA"
                 className="h-8 sm:h-10 xl:h-11 w-auto object-contain transition-transform group-hover:scale-105 duration-500"
               />

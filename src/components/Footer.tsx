@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import aloraLogo from '/logos/Artboard 13@4x.png'
 
 export function Footer() {
   const { t } = useTranslation()
@@ -9,9 +10,9 @@ export function Footer() {
         {/* Top Section: VIP Circle Newsletter & Brand Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-border2">
           <div className="lg:col-span-5 flex flex-col items-start">
-            <a href="/" className="group mb-5 inline-block">
+            <a href={import.meta.env.BASE_URL} className="group mb-5 inline-block">
               <img
-                src="/logos/Artboard 13@4x.png"
+                src={aloraLogo}
                 alt="ALORA"
                 className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-500"
               />
