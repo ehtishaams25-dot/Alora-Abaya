@@ -39,4 +39,25 @@ export interface InstagramPostItem {
   likes: string
   comments: string
   image: string
+  ratio?: 'vertical' | 'horizontal' | 'square'
+  title?: string
+  titleAr?: string
+  subtitle?: string
+  subtitleAr?: string
+  duration?: string
+  views?: string
+}
+
+export interface VideoCarouselItem {
+  id: string
+  image: string
+  ratio: 'vertical' | 'horizontal' | 'square'
+  title: string
+  titleAr: string
+  subtitle: string
+  subtitleAr: string
+  duration: string
+  views: string
+  likes: string
+  comments: string
 }

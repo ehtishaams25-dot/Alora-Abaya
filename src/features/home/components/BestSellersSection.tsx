@@ -12,7 +12,7 @@ export function BestSellersSection() {
       name: "Noor Pearl-Trimmed Chiffon",
       nameAr: "عباية نور شيفون مزينة باللؤلؤ",
       price: "2,650",
-      image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
       rating: "5.0",
       reviewsCount: "48",
       category: "Embroidered Silks"
@@ -22,7 +22,7 @@ export function BestSellersSection() {
       name: "Al-Dana Pleated Crepe Abaya",
       nameAr: "عباية الدانة كريب بكسرات أنيقة",
       price: "1,950",
-      image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
       rating: "4.9",
       reviewsCount: "62",
       category: "Daily Modest"
@@ -32,7 +32,7 @@ export function BestSellersSection() {
       name: "Sultana Gold-Embroidered Bisht",
       nameAr: "بشت سلطانة مطرز بالذهب الملكي",
       price: "3,400",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1772474587292-08b3e8932acd?auto=format&fit=crop&w=800&q=85",
       rating: "5.0",
       reviewsCount: "35",
       category: "Occasion Gowns"
@@ -42,7 +42,7 @@ export function BestSellersSection() {
       name: "Lulwa Ivory Raw Silk Coat",
       nameAr: "معطف لولوة من الحرير الخام العاجي",
       price: "2,850",
-      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1762376128087-bc29c6df08c0?auto=format&fit=crop&w=800&q=85",
       rating: "4.9",
       reviewsCount: "54",
       category: "Embroidered Silks"
@@ -65,30 +65,25 @@ export function BestSellersSection() {
   return (
     <section id="bestsellers" className="section-padding bg-sand">
       <div className="container-layali">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
-          <div>
-            <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] block">
-              {t('home.bestSellers.eyebrow')}
-            </span>
-            <h2 className="text-h2 font-serif text-espresso">
-              {t('home.bestSellers.title')}
-            </h2>
-            <p className="text-body text-mocha max-w-xl mt-3 text-sm sm:text-base">
-              {t('home.bestSellers.description')}
-            </p>
-          </div>
+        {/* Minimalist Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+            {t('home.bestSellers.eyebrow')}
+          </span>
+          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+            {t('home.bestSellers.title')}
+          </h2>
 
-          {/* Touch-scrollable Filter Tabs for Mobile */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none -mx-6 px-6 sm:mx-0 sm:px-0">
+          {/* Centered One-Liner Filter Tabs (30% more compact to fit cleanly on one row) */}
+          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-center gap-1 sm:gap-1.5 md:gap-2 max-w-full overflow-x-auto no-scrollbar px-1 sm:px-0">
             {filters.map((filter) => (
               <button
                 key={filter.id}
                 type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all flex-shrink-0 min-h-[40px] flex items-center justify-center ${
+                className={`px-2 sm:px-3 md:px-3.5 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-[10.5px] uppercase tracking-wide font-medium transition-all min-h-[24px] sm:min-h-[28px] flex items-center justify-center whitespace-nowrap ${
                   activeFilter === filter.id
-                    ? 'bg-espresso text-cream shadow-md'
+                    ? 'bg-espresso text-cream shadow-sm'
                     : 'bg-cream text-espresso border border-border2 hover:border-walnut'
                 }`}
               >
@@ -99,7 +94,7 @@ export function BestSellersSection() {
         </div>
 
         {/* Products Grid / Horizontal Swipe on Mobile */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 sm:overflow-visible scrollbar-none">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none px-4 sm:px-0">
           {filteredProducts.map((item) => (
             <div
               key={item.id}

@@ -38,21 +38,18 @@ export function CustomerReviewsSection() {
   return (
     <section className="section-padding bg-sand">
       <div className="container-layali">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] block">
+        {/* Minimalist Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.reviews.eyebrow')}
           </span>
-          <h2 className="text-h2 font-serif text-espresso">
+          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.reviews.title')}
           </h2>
-          <p className="text-body text-mocha mt-3 text-sm sm:text-base">
-            {t('home.reviews.description')}
-          </p>
         </div>
 
         {/* Touch Swipeable Cards on Mobile -> Desktop Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 sm:overflow-visible scrollbar-none">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none px-4 sm:px-0">
           {reviews.map((item) => (
             <div
               key={item.id}

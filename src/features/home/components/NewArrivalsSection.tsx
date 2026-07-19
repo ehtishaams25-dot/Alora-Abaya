@@ -10,7 +10,7 @@ export function NewArrivalsSection() {
       name: "Royal Silk Bisht Abaya",
       nameAr: "عباية بشت ملكية من الحرير",
       price: "2,450",
-      image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
       colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
       badge: "New Arrival"
     },
@@ -19,7 +19,7 @@ export function NewArrivalsSection() {
       name: "Midnight Velvet Gilded Abaya",
       nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
       price: "3,100",
-      image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
       colors: ["#0D1321", "#4A5D23"],
       badge: "Limited Edition"
     },
@@ -28,7 +28,7 @@ export function NewArrivalsSection() {
       name: "Desert Sand Double Nidha",
       nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
       price: "1,850",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
       colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
       badge: "New Arrival"
     },
@@ -37,7 +37,7 @@ export function NewArrivalsSection() {
       name: "Emerald Silk Organza Set",
       nameAr: "طقم أورجانزا حريري بلون الزمرد",
       price: "2,800",
-      image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85",
+      image: "https://images.unsplash.com/photo-1762605135326-5c4bcc5ef006?auto=format&fit=crop&w=800&q=85",
       colors: ["#1B3B2B", "#1A1A1A"],
       badge: "Atelier Exclusive"
     }
@@ -48,31 +48,27 @@ export function NewArrivalsSection() {
   return (
     <section id="new" className="section-padding bg-sand">
       <div className="container-layali">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
-          <div className="flex flex-col items-start">
-            <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em]">
-              {t('home.newArrivals.eyebrow')}
-            </span>
-            <h2 className="text-h2 font-serif text-espresso">
-              {t('home.newArrivals.title')}
-            </h2>
-            <p className="text-body text-mocha max-w-xl mt-3 text-sm sm:text-base">
-              {t('home.newArrivals.description')}
-            </p>
+        {/* Minimalist Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+            {t('home.newArrivals.eyebrow')}
+          </span>
+          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+            {t('home.newArrivals.title')}
+          </h2>
+          <div className="mt-6 flex justify-center">
+            <a
+              href="#dresses"
+              className="btn-secondary flex items-center gap-2 group min-h-[44px]"
+            >
+              <span>{t('common.viewAll')}</span>
+              <span className="transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" aria-hidden="true">&rarr;</span>
+            </a>
           </div>
-
-          <a
-            href="#dresses"
-            className="btn-secondary self-start sm:self-auto flex items-center gap-2 group min-h-[44px]"
-          >
-            <span>{t('common.viewAll')}</span>
-            <span className="transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" aria-hidden="true">&rarr;</span>
-          </a>
         </div>
 
         {/* Mobile-First Touch Swipe Carousel -> Desktop Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 sm:overflow-visible scrollbar-none">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none px-4 sm:px-0">
           {products.map((item) => (
             <div
               key={item.id}

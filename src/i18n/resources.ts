@@ -10,7 +10,7 @@ export const resources = {
         newBadge: "New Arrival",
         bestSellerBadge: "Best Seller",
         verifiedBuyer: "Verified VIP Client",
-        priceAed: "AED",
+        priceAed: "SAR",
         viewAll: "View All Collection",
         colorOptions: "Colors Available",
         filterAll: "All Pieces",
@@ -64,7 +64,7 @@ export const resources = {
               name: "Royal Silk Bisht Abaya",
               nameAr: "عباية بشت ملكية من الحرير",
               price: "2,450",
-              image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
               badge: "New Arrival"
             },
@@ -73,7 +73,7 @@ export const resources = {
               name: "Midnight Velvet Gilded Abaya",
               nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
-              image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
               badge: "Limited Edition"
             },
@@ -82,7 +82,7 @@ export const resources = {
               name: "Desert Sand Double Nidha",
               nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
-              image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
               badge: "New Arrival"
             },
@@ -91,7 +91,7 @@ export const resources = {
               name: "Emerald Silk Organza Set",
               nameAr: "طقم أورجانزا حريري بلون الزمرد",
               price: "2,800",
-              image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1762605135326-5c4bcc5ef006?auto=format&fit=crop&w=800&q=85",
               colors: ["#1B3B2B", "#1A1A1A"],
               badge: "Atelier Exclusive"
             }
@@ -108,7 +108,7 @@ export const resources = {
               titleAr: "عبايات الاستخدام اليومي",
               count: "24 Pieces",
               countAr: "24 قطعة",
-              image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-2",
@@ -116,7 +116,7 @@ export const resources = {
               titleAr: "فساتين السهرة والمناسبات",
               count: "18 Pieces",
               countAr: "18 قطعة",
-              image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1767469697194-ac997d70b1ee?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-3",
@@ -124,7 +124,7 @@ export const resources = {
               titleAr: "بشت وكفطان فاخر",
               count: "15 Pieces",
               countAr: "15 قطعة",
-              image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1762605135012-56a59a059e60?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-4",
@@ -132,7 +132,7 @@ export const resources = {
               titleAr: "أطقم فاخرة وشيلات",
               count: "32 Pieces",
               countAr: "32 قطعة",
-              image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1772474569781-2fb1c6539f8c?auto=format&fit=crop&w=800&q=85"
             }
           ]
         },
@@ -146,7 +146,7 @@ export const resources = {
               name: "Noor Pearl-Trimmed Chiffon",
               nameAr: "عباية نور شيفون مزينة باللؤلؤ",
               price: "2,650",
-              image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "48",
               category: "Embroidered Silks"
@@ -156,7 +156,7 @@ export const resources = {
               name: "Al-Dana Pleated Crepe Abaya",
               nameAr: "عباية الدانة كريب بكسرات أنيقة",
               price: "1,950",
-              image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "62",
               category: "Daily Modest"
@@ -166,7 +166,7 @@ export const resources = {
               name: "Sultana Gold-Embroidered Bisht",
               nameAr: "بشت سلطانة مطرز بالذهب الملكي",
               price: "3,400",
-              image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474587292-08b3e8932acd?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "35",
               category: "Occasion Gowns"
@@ -176,7 +176,7 @@ export const resources = {
               name: "Lulwa Ivory Raw Silk Coat",
               nameAr: "معطف لولوة من الحرير الخام العاجي",
               price: "2,850",
-              image: "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1762376128087-bc29c6df08c0?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "54",
               category: "Embroidered Silks"
@@ -200,8 +200,8 @@ export const resources = {
             },
             "2": {
               id: "wc-3",
-              title: "Express GCC & Global Shipping",
-              description: "Delivered via express courier within 24-48 hours across UAE, Saudi Arabia, Qatar, and Kuwait, with express worldwide VIP customs handling."
+              title: "Express Saudi & GCC Shipping",
+              description: "Delivered via express courier within 24 hours across Saudi Arabia (Riyadh, Jeddah, Al Khobar) and 48 hours across UAE, Qatar, and Kuwait, with express worldwide VIP customs handling."
             },
             "3": {
               id: "wc-4",
@@ -213,20 +213,20 @@ export const resources = {
         reviews: {
           eyebrow: "VIP Testimonials",
           title: "Voices of Our Private Clients",
-          description: "Read reflections from women of distinction across the GCC and international fashion capitals.",
+          description: "Read reflections from women of distinction across the Kingdom, the GCC, and international fashion capitals.",
           items: {
             "0": {
               id: "rev-1",
-              author: "Fatima Al-Maktoum",
-              location: "Dubai, UAE",
-              quote: "The fabric quality of the Royal Silk Bisht is extraordinary. It flows with such effortless grace and the embroidery is subtle yet undeniably luxurious.",
+              author: "Princess Reema Al-Saud",
+              location: "Riyadh, KSA",
+              quote: "Finding high-end evening wear that maintains true modesty without feeling heavy was always a struggle until Alora. Being handcrafted right here in Riyadh makes the custom atelier fit feel effortless and truly royal.",
               rating: "5.0"
             },
             "1": {
               id: "rev-2",
-              author: "Princess Reema B.",
-              location: "Riyadh, KSA",
-              quote: "Finding high-end evening wear that maintains true modesty without feeling heavy was always a struggle until Alora. The custom length fit like a glove.",
+              author: "Fatima Al-Maktoum",
+              location: "Dubai, UAE",
+              quote: "The fabric quality of the Royal Silk Bisht is extraordinary. I ordered from Riyadh and it arrived in Dubai with such effortless grace. The subtle embroidery truly embodies luxury.",
               rating: "5.0"
             },
             "2": {
@@ -252,12 +252,12 @@ export const resources = {
           handle: "@AloraAbaya",
           followBtn: "Follow Our Instagram",
           posts: [
-            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=600&q=80" }
+            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1736342182213-6c037467cb38?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1728487235101-664d87965931?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1736342182642-e2042084f47c?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1782025419629-d69df1556e0c?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1783753592044-6b9fd217be76?auto=format&fit=crop&w=600&q=80" }
           ]
         }
       },
@@ -285,7 +285,7 @@ export const resources = {
         newBadge: "وصل حديثاً",
         bestSellerBadge: "الأكثر مبيعاً",
         verifiedBuyer: "عميلة VIP موثقة",
-        priceAed: "درهم",
+        priceAed: "ر.س",
         viewAll: "عرض كافة المجموعة",
         colorOptions: "الألوان المتاحة",
         filterAll: "كافة القطع",
@@ -339,7 +339,7 @@ export const resources = {
               name: "Royal Silk Bisht Abaya",
               nameAr: "عباية بشت ملكية من الحرير",
               price: "2,450",
-              image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
               badge: "وصل حديثاً"
             },
@@ -348,7 +348,7 @@ export const resources = {
               name: "Midnight Velvet Gilded Abaya",
               nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
-              image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
               badge: "إصدار محدود"
             },
@@ -357,7 +357,7 @@ export const resources = {
               name: "Desert Sand Double Nidha",
               nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
-              image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
               badge: "وصل حديثاً"
             },
@@ -366,7 +366,7 @@ export const resources = {
               name: "Emerald Silk Organza Set",
               nameAr: "طقم أورجانزا حريري بلون الزمرد",
               price: "2,800",
-              image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1762605135326-5c4bcc5ef006?auto=format&fit=crop&w=800&q=85",
               colors: ["#1B3B2B", "#1A1A1A"],
               badge: "حصري بالأتليه"
             }
@@ -383,7 +383,7 @@ export const resources = {
               titleAr: "عبايات الاستخدام اليومي الأنيقة",
               count: "24 Pieces",
               countAr: "24 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-2",
@@ -391,7 +391,7 @@ export const resources = {
               titleAr: "فساتين السهرة والمناسبات الكبرى",
               count: "18 Pieces",
               countAr: "18 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1767469697194-ac997d70b1ee?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-3",
@@ -399,7 +399,7 @@ export const resources = {
               titleAr: "بشت وكفطان ملكي فاخر",
               count: "15 Pieces",
               countAr: "15 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1762605135012-56a59a059e60?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-4",
@@ -407,7 +407,7 @@ export const resources = {
               titleAr: "أطقم فاخرة وشيلات متناسقة",
               count: "32 Pieces",
               countAr: "32 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1772474569781-2fb1c6539f8c?auto=format&fit=crop&w=800&q=85"
             }
           ]
         },
@@ -421,7 +421,7 @@ export const resources = {
               name: "Noor Pearl-Trimmed Chiffon",
               nameAr: "عباية نور شيفون مزينة باللؤلؤ",
               price: "2,650",
-              image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "48",
               category: "Embroidered Silks"
@@ -431,7 +431,7 @@ export const resources = {
               name: "Al-Dana Pleated Crepe Abaya",
               nameAr: "عباية الدانة كريب بكسرات أنيقة",
               price: "1,950",
-              image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "62",
               category: "Daily Modest"
@@ -441,7 +441,7 @@ export const resources = {
               name: "Sultana Gold-Embroidered Bisht",
               nameAr: "بشت سلطانة مطرز بالذهب الملكي",
               price: "3,400",
-              image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1772474587292-08b3e8932acd?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "35",
               category: "Occasion Gowns"
@@ -451,7 +451,7 @@ export const resources = {
               name: "Lulwa Ivory Raw Silk Coat",
               nameAr: "معطف لولوة من الحرير الخام العاجي",
               price: "2,850",
-              image: "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1762376128087-bc29c6df08c0?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "54",
               category: "Embroidered Silks"
@@ -475,8 +475,8 @@ export const resources = {
             },
             "2": {
               id: "wc-3",
-              title: "شحن سريع للخليج والعالم",
-              description: "توصيل فوري عبر البريد السريع خلال 24-48 ساعة في الإمارات والسعودية وقطر والكويت، مع تخليص جمركي VIP لجميع دول العالم."
+              title: "شحن سريع في السعودية والخليج",
+              description: "توصيل فوري عبر البريد السريع خلال 24 ساعة في أنحاء المملكة العربية السعودية (الرياض، جدة، الخبر) و48 ساعة لبقية دول الخليج والعالم مع تخليص جمركي VIP."
             },
             "3": {
               id: "wc-4",
@@ -488,20 +488,20 @@ export const resources = {
         reviews: {
           eyebrow: "شهادات عميلاتنا الـ VIP",
           title: "أصوات من نخبة عميلاتنا",
-          description: "اقرئي انطباعات وتجارب سيدات المجتمع في عواصم الموضة والخليج العربي مع تصاميم ليالي.",
+          description: "اقرئي انطباعات وتجارب سيدات المجتمع في أنحاء المملكة والخليج وعواصم الموضة مع تصاميم ألورا.",
           items: {
             "0": {
               id: "rev-1",
-              author: "فاطمة المكتوم",
-              location: "دبي، الإمارات العربية المتحدة",
-              quote: "جودة القماش في عباية البشت الملكي استثنائية بحق. تنسدل بجمال وهدوء رائع، والتطريز دقيق وراقي للغاية يعكس فخامة حقيقية.",
+              author: "الأميرة ريما آل سعود",
+              location: "الرياض، المملكة العربية السعودية",
+              quote: "إيجاد أزياء مسائية فاخرة تحافظ على الحشمة الكاملة دون أن تكون ثقيلة كان تحدياً حتى اكتشفت ألورا. كونها تُصنع وتُخاط هنا في الرياض جعل تجربة القياس والتفصيل المخصص استثنائية وملكية بحق.",
               rating: "5.0"
             },
             "1": {
               id: "rev-2",
-              author: "الأميرة ريما ب.",
-              location: "الرياض، المملكة العربية السعودية",
-              quote: "إيجاد أزياء مسائية فاخرة تحافظ على الحشمة الكاملة دون أن تكون ثقيلة كان تحدياً حتى اكتشفت ألورا. التفصيل المخصص جاء متقناً كأنه صُنع خصيصاً لي.",
+              author: "فاطمة المكتوم",
+              location: "دبي، الإمارات العربية المتحدة",
+              quote: "جودة القماش في عباية البشت الملكي استثنائية بحق. طلبتها من الرياض ووصلت إلى دبي بسرعة فائقة وبجمال وهدوء رائع، والتطريز دقيق وراقي يعكس فخامة حقيقية.",
               rating: "5.0"
             },
             "2": {
@@ -527,12 +527,12 @@ export const resources = {
           handle: "@AloraAbaya",
           followBtn: "تابعي حسابنا على انستغرام",
           posts: [
-            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=600&q=80" }
+            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1736342182213-6c037467cb38?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1728487235101-664d87965931?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1736342182642-e2042084f47c?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1782025419629-d69df1556e0c?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1783753592044-6b9fd217be76?auto=format&fit=crop&w=600&q=80" }
           ]
         }
       },
@@ -541,7 +541,7 @@ export const resources = {
         newsletterDesc: "كوني أول من يتلقى دعوات عروض الصالون الموسمية، ومجموعات الحجز المسبق الحصرية، وافتتاحيات الأتليه الخاصة.",
         emailPlaceholder: "أدخلي عنوان بريدكِ الإلكتروني...",
         subscribe: "انضمي للدائرة",
-        copyright: "© 2026 أتليه ألورا. جميع الحقوق محفوظة. صُنع بكل فخر وإتقان.",
+        copyright: "© 2026 أتليه ألورا. جميع الحقوق محفوظة. صُنع في الرياض بكل فخر وإتقان.",
         quickLinks: "البوتيك والمجموعات",
         customerCare: "رعاية ومساعدة الأتليه",
         boutique: "صالوناتنا الفاخرة",

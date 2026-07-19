@@ -61,17 +61,14 @@ export function WhyChooseUsSection() {
   return (
     <section className="section-padding bg-cream border-t border-border2">
       <div className="container-layali">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] block">
+        {/* Minimalist Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.whyChooseUs.eyebrow')}
           </span>
-          <h2 className="text-h2 font-serif text-espresso">
+          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.whyChooseUs.title')}
           </h2>
-          <p className="text-body text-mocha mt-3 text-sm sm:text-base">
-            {t('home.whyChooseUs.description')}
-          </p>
         </div>
 
         {/* 4 Pillars Grid */}

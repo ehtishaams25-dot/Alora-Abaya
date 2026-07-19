@@ -11,7 +11,7 @@ export function CategoriesSection() {
       titleAr: "عبايات الاستخدام اليومي",
       count: "24 Pieces",
       countAr: "24 قطعة",
-      image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "cat-2",
@@ -19,7 +19,7 @@ export function CategoriesSection() {
       titleAr: "فساتين السهرة والمناسبات",
       count: "18 Pieces",
       countAr: "18 قطعة",
-      image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1767469697194-ac997d70b1ee?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "cat-3",
@@ -27,7 +27,7 @@ export function CategoriesSection() {
       titleAr: "بشت وكفطان فاخر",
       count: "15 Pieces",
       countAr: "15 قطعة",
-      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1762605135012-56a59a059e60?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "cat-4",
@@ -35,7 +35,7 @@ export function CategoriesSection() {
       titleAr: "أطقم فاخرة وشيلات",
       count: "32 Pieces",
       countAr: "32 قطعة",
-      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1772474569781-2fb1c6539f8c?auto=format&fit=crop&w=800&q=85"
     }
   ]
 
@@ -44,17 +44,14 @@ export function CategoriesSection() {
   return (
     <section id="categories" className="section-padding bg-cream border-t border-b border-border2">
       <div className="container-layali">
-        {/* Section Header */}
+        {/* Minimalist Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] block">
+          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.categories.eyebrow')}
           </span>
-          <h2 className="text-h2 font-serif text-espresso">
+          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.categories.title')}
           </h2>
-          <p className="text-body text-mocha mt-3 text-sm sm:text-base">
-            {t('home.categories.description')}
-          </p>
         </div>
 
         {/* Mobile-First Category Grid */}

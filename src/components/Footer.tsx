@@ -80,10 +80,10 @@ export function Footer() {
               {t('footer.boutique')}
             </h4>
             <ul className="flex flex-col gap-2.5 text-mocha font-sans">
+              <li>Flagship Salon: Via Riyadh, KSA</li>
+              <li>Al Bujairi Heritage Suite, Diriyah</li>
               <li>Dubai International Financial Centre (DIFC)</li>
-              <li>Via Riyadh Luxury Salon, KSA</li>
               <li>Harrods Concession, London UK</li>
-              <li>Place Vendôme VIP Suite, Doha</li>
             </ul>
           </div>
 
@@ -108,7 +108,7 @@ export function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-mocha font-sans">
           <p>{t('footer.copyright')}</p>
           <div className="flex items-center gap-6">
-            <span>Privately Handcrafted in Dubai</span>
+            <span>Privately Handcrafted in Riyadh, KSA</span>
             <span>•</span>
             <span className="font-medium text-espresso tracking-wider uppercase">Alora</span>
           </div>
