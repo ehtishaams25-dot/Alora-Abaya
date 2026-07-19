@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import aloraLogo from '/logos/Artboard 13@4x.png'
+import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 
 export function Navigation() {
   const { t, i18n } = useTranslation()
@@ -40,11 +40,10 @@ export function Navigation() {
       </div>
 
       <header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-sand/95 backdrop-blur-xl border-b border-border2 py-3.5 shadow-sm'
-            : 'bg-sand/80 backdrop-blur-md py-5 border-b border-border2/50'
-        }`}
+        className={`sticky top-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'bg-sand/95 backdrop-blur-xl border-b border-border2 py-3.5 shadow-sm'
+          : 'bg-sand/80 backdrop-blur-md py-5 border-b border-border2/50'
+          }`}
       >
         <div className="container-layali relative flex items-center justify-between min-h-[44px]">
           {/* Start Side: Mobile Menu Toggle & All Dress / Collection Navigation Links */}
