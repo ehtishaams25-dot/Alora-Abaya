@@ -30,13 +30,13 @@ export function Navigation() {
     <header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-sand/95 backdrop-blur-xl border-b border-border2 py-3.5 shadow-sm'
-          : 'bg-transparent py-5 border-b border-transparent'
+          ? 'bg-sand/95 backdrop-blur-xl border-b border-border2 py-3 shadow-sm'
+          : 'bg-transparent py-4.5 border-b border-transparent'
       }`}
     >
       <div className="container-layali flex items-center justify-between gap-2 sm:gap-4">
-        {/* Left: Mobile Menu Toggle & Secondary Links (Desktop) */}
-        <div className="flex items-center justify-start gap-4 xl:gap-6 flex-1 min-w-0">
+        {/* Start Side: Mobile Menu Toggle & All Dress / Collection Navigation Links */}
+        <div className="flex items-center justify-start gap-4 xl:gap-7 flex-1 min-w-0">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -56,12 +56,12 @@ export function Navigation() {
             </svg>
           </button>
 
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-7 truncate">
-            {navLinks.slice(0, 2).map((link) => (
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8 truncate">
+            {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-xs uppercase tracking-[0.18em] xl:tracking-[0.22em] text-espresso hover:text-walnut transition-colors font-sans font-medium whitespace-nowrap"
+                className="text-xs xl:text-[13px] uppercase tracking-[0.2em] xl:tracking-[0.22em] text-espresso hover:text-walnut transition-colors font-sans font-medium whitespace-nowrap py-1"
               >
                 {link.label}
               </a>
@@ -69,36 +69,24 @@ export function Navigation() {
           </nav>
         </div>
 
-        {/* Center: Luxury Brand Logo */}
+        {/* Center: Luxury ALORA Brand Logo */}
         <div className="flex flex-col items-center justify-center text-center flex-shrink-0 px-2 sm:px-6">
           <a
             href="/"
             className="group flex flex-col items-center transition-transform hover:scale-[1.02] duration-500 py-1"
+            aria-label="Alora Home"
           >
-            <span className="font-serif text-xl sm:text-2xl xl:text-3xl tracking-[0.25em] font-medium text-espresso uppercase">
-              Layali
-            </span>
-            <span className="font-arabic text-xs sm:text-sm text-walnut -mt-1 tracking-widest font-normal">
-              ليالي
-            </span>
+            <img
+              src="/logos/Artboard 13@4x.png"
+              alt="ALORA"
+              className="h-9 sm:h-11 xl:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-500"
+            />
           </a>
         </div>
 
-        {/* Right: Remaining Links, Language Toggle & Action Icons */}
-        <div className="flex items-center justify-end gap-2 sm:gap-4 xl:gap-6 flex-1 min-w-0">
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-7 truncate">
-            {navLinks.slice(2).map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-[11px] xl:text-xs uppercase tracking-[0.18em] xl:tracking-[0.22em] text-espresso hover:text-walnut transition-colors font-sans font-medium whitespace-nowrap"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-3 sm:gap-5">
+        {/* End Side: Utilitarian Actions (Language, Search, Profile, Wishlist, Cart) */}
+        <div className="flex items-center justify-end gap-1 sm:gap-3 xl:gap-4 flex-1 min-w-0">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Language Toggle Button */}
             <button
               type="button"
@@ -106,14 +94,15 @@ export function Navigation() {
               className="px-3 py-1.5 rounded-full border border-border2 text-xs font-medium text-espresso hover:border-walnut hover:text-walnut transition-all cursor-pointer tracking-wider uppercase font-sans min-h-[36px] flex items-center justify-center"
               aria-label="Switch Language"
             >
-              {i18n.language.startsWith('ar') ? 'EN' : 'العربية'}
+              {i18n.language.startsWith('ar') ? 'English / EN' : 'العربية / AR'}
             </button>
 
             {/* Search Button */}
             <button
               type="button"
-              className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] flex items-center justify-center"
               aria-label="Search collection"
+              title="Search"
             >
               <svg
                 className="w-5 h-5 stroke-current fill-none"
@@ -128,11 +117,32 @@ export function Navigation() {
               </svg>
             </button>
 
+            {/* Profile / Account Button */}
+            <button
+              type="button"
+              className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] flex items-center justify-center"
+              aria-label="User Profile & Account"
+              title="Profile"
+            >
+              <svg
+                className="w-5 h-5 stroke-current fill-none"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+            </button>
+
             {/* Wishlist Button */}
             <button
               type="button"
-              className="text-espresso hover:text-walnut transition-colors p-1.5 relative min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="text-espresso hover:text-walnut transition-colors p-1.5 relative min-h-[42px] min-w-[42px] flex items-center justify-center"
               aria-label="Wishlist"
+              title="Wishlist"
             >
               <svg
                 className="w-5 h-5 stroke-current fill-none"
@@ -145,14 +155,15 @@ export function Navigation() {
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                 />
               </svg>
-              <span className="absolute top-2.5 end-2.5 w-2 h-2 bg-taupe rounded-full" />
+              <span className="absolute top-2 end-2 w-1.5 h-1.5 bg-taupe rounded-full" />
             </button>
 
-            {/* Shopping Bag Button */}
+            {/* Shopping Bag / Cart Button */}
             <button
               type="button"
-              className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-2 min-h-[44px] min-w-[44px] justify-center"
-              aria-label="Shopping Bag"
+              className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-1.5 min-h-[42px] min-w-[42px] justify-center"
+              aria-label="Shopping Cart"
+              title="Cart"
             >
               <svg
                 className="w-5 h-5 stroke-current fill-none"

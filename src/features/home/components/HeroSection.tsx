@@ -1,11 +1,7 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export function HeroSection() {
   const { t } = useTranslation()
-  const [activeTab, setActiveTab] = useState<'signature' | 'runway'>('signature')
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
 
   return (
     <section className="relative overflow-hidden pt-4 pb-16 lg:py-20">
@@ -97,149 +93,42 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Signature Collection Banner & Runway Showcase Tabs */}
+          {/* Right Column: Large Signature Collection Image Banner */}
           <div className="lg:col-span-6 relative animate-scale-in">
-            {/* View Mode Toggle Pill Bar */}
-            <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
-              <button
-                type="button"
-                onClick={() => setActiveTab('signature')}
-                className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-[0.15em] transition-all min-h-[38px] flex items-center ${
-                  activeTab === 'signature'
-                    ? 'bg-espresso text-cream shadow-md'
-                    : 'bg-cream text-espresso border border-border2 hover:border-walnut'
-                }`}
-              >
-                Signature Image
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('runway')}
-                className={`px-4 py-2 rounded-full text-xs font-medium uppercase tracking-[0.15em] transition-all min-h-[38px] flex items-center ${
-                  activeTab === 'runway'
-                    ? 'bg-espresso text-cream shadow-md'
-                    : 'bg-cream text-espresso border border-border2 hover:border-walnut'
-                }`}
-              >
-                Atelier Runway Video
-              </button>
-            </div>
-
             <div className="aspect-[4/5] sm:aspect-[5/6] rounded-3xl overflow-hidden relative group bg-cream shadow-2xl shadow-espresso/15 border border-border2/80">
-              
-              {activeTab === 'signature' ? (
-                /* Large Signature Collection Image Banner */
-                <div className="w-full h-full relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85"
-                    alt={t('home.hero.signatureTitle')}
-                    className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/20 to-transparent" />
-                  
-                  {/* Signature Badge Top Left */}
-                  <div className="absolute top-5 start-5 z-10">
-                    <span className="bg-espresso/90 backdrop-blur-md text-cream text-[10px] uppercase tracking-[0.25em] px-4 py-2 rounded-full font-sans border border-cream/20 shadow-lg font-medium">
-                      {t('home.hero.signatureBadge')}
+              <div className="w-full h-full relative">
+                <img
+                  src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=1400&q=85"
+                  alt={t('home.hero.signatureTitle')}
+                  className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/20 to-transparent" />
+                
+                {/* Signature Badge Top Left */}
+                <div className="absolute top-6 start-6 z-10">
+                  <span className="bg-espresso/90 backdrop-blur-md text-cream text-[11px] uppercase tracking-[0.25em] px-4 py-2 rounded-full font-sans border border-cream/20 shadow-lg font-medium">
+                    {t('home.hero.signatureBadge')}
+                  </span>
+                </div>
+
+                {/* Signature Detail Box Bottom */}
+                <div className="absolute bottom-6 start-6 end-6 sm:end-auto sm:max-w-md bg-sand/95 backdrop-blur-2xl rounded-2xl p-6 border border-border2 shadow-2xl animate-fade-up">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[11px] uppercase tracking-[0.25em] font-sans text-walnut font-semibold">
+                      Exclusive Edition 01
                     </span>
-                  </div>
-
-                  {/* Signature Detail Box Bottom */}
-                  <div className="absolute bottom-6 start-6 end-6 sm:end-auto sm:max-w-md bg-sand/95 backdrop-blur-2xl rounded-2xl p-5 border border-border2 shadow-2xl animate-fade-up">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] uppercase tracking-[0.25em] font-sans text-walnut font-semibold">
-                        Exclusive Edition 01
-                      </span>
-                      <div className="flex text-taupe text-xs">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                      </div>
+                    <div className="flex text-taupe text-xs">
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
-                    <h3 className="font-serif text-base sm:text-lg text-espresso font-medium leading-snug">
-                      {t('home.hero.signatureTitle')}
-                    </h3>
-                    <p className="text-[12px] sm:text-xs text-mocha mt-1.5 font-sans leading-normal">
-                      {t('home.hero.signatureDesc')}
-                    </p>
                   </div>
+                  <h3 className="font-serif text-lg sm:text-xl text-espresso font-medium leading-snug">
+                    {t('home.hero.signatureTitle')}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-mocha mt-2 font-sans leading-relaxed">
+                    {t('home.hero.signatureDesc')}
+                  </p>
                 </div>
-              ) : (
-                /* High-Resolution Luxury Video Showcase */
-                <div className="w-full h-full relative">
-                  <video
-                    autoPlay={isPlaying}
-                    loop
-                    muted={isMuted}
-                    playsInline
-                    poster="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1200&q=85"
-                    className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
-                  >
-                    <source
-                      src="https://assets.mixkit.co/videos/preview/mixkit-model-walking-on-a-runway-showcasing-an-elegant-dress-41618-large.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-
-                  {/* Soft Gradient Overlay for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-espresso/50 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Video Control Pills */}
-                  <div className="absolute top-5 end-5 flex items-center gap-2 z-10">
-                    <button
-                      type="button"
-                      onClick={() => setIsMuted(!isMuted)}
-                      className="w-10 h-10 rounded-full bg-sand/85 backdrop-blur-md text-espresso hover:bg-sand flex items-center justify-center shadow-md transition-all"
-                      aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                    >
-                      {isMuted ? (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-                        </svg>
-                      ) : (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-                        </svg>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setIsPlaying(!isPlaying)}
-                      className="w-10 h-10 rounded-full bg-sand/85 backdrop-blur-md text-espresso hover:bg-sand flex items-center justify-center shadow-md transition-all"
-                      aria-label={isPlaying ? 'Pause video' : 'Play video'}
-                    >
-                      {isPlaying ? (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                        </svg>
-                      ) : (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Floating Craftsmanship Card */}
-                  <div className="absolute bottom-6 start-6 end-6 sm:end-auto sm:max-w-xs bg-sand/95 backdrop-blur-xl rounded-2xl p-5 border border-border2 shadow-xl animate-fade-up">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] uppercase tracking-[0.25em] font-sans text-walnut font-medium">
-                        Atelier Craftsmanship
-                      </span>
-                      <div className="flex text-taupe text-xs">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                      </div>
-                    </div>
-                    <h3 className="font-serif text-sm sm:text-base text-espresso font-medium leading-snug">
-                      {t('home.hero.cardTitle')}
-                    </h3>
-                    <p className="text-[12px] text-mocha mt-1 font-sans leading-normal">
-                      {t('home.hero.cardDesc')}
-                    </p>
-                  </div>
-                </div>
-              )}
-
+              </div>
             </div>
           </div>
 

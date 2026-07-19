@@ -23,7 +23,7 @@ export const resources = {
         newArrivals: "New Arrivals",
         bestSellers: "Best Sellers",
         categories: "Categories",
-        whyChooseUs: "Why Layali",
+        whyChooseUs: "Why Alora",
         reviews: "Testimonials",
         aboutUs: "Atelier",
         faq: "FAQ",
@@ -38,7 +38,7 @@ export const resources = {
           description: "Experience the calm sophistication of luxury modesty. Hand-tailored from fluid silks and pure double-layered chiffons, designed to drape effortlessly with dignified poise.",
           ctaExplore: "Explore Collection",
           ctaCraftsmanship: "Our Craftsmanship",
-          signatureBadge: "Signature Layali Masterpiece",
+          signatureBadge: "Signature Alora Masterpiece",
           signatureTitle: "The Royal Bisht in Midnight Nidha",
           signatureDesc: "Exclusively tailored with hand-embroidered golden zari threads and French seam finishes for evening majesty.",
           trust: {
@@ -64,7 +64,7 @@ export const resources = {
               name: "Royal Silk Bisht Abaya",
               nameAr: "عباية بشت ملكية من الحرير",
               price: "2,450",
-              image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
               badge: "New Arrival"
             },
@@ -73,7 +73,7 @@ export const resources = {
               name: "Midnight Velvet Gilded Abaya",
               nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
-              image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
               badge: "Limited Edition"
             },
@@ -82,7 +82,7 @@ export const resources = {
               name: "Desert Sand Double Nidha",
               nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
-              image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
               badge: "New Arrival"
             },
@@ -91,7 +91,7 @@ export const resources = {
               name: "Emerald Silk Organza Set",
               nameAr: "طقم أورجانزا حريري بلون الزمرد",
               price: "2,800",
-              image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=800&q=85",
               colors: ["#1B3B2B", "#1A1A1A"],
               badge: "Atelier Exclusive"
             }
@@ -108,7 +108,7 @@ export const resources = {
               titleAr: "عبايات الاستخدام اليومي",
               count: "24 Pieces",
               countAr: "24 قطعة",
-              image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-2",
@@ -116,7 +116,7 @@ export const resources = {
               titleAr: "فساتين السهرة والمناسبات",
               count: "18 Pieces",
               countAr: "18 قطعة",
-              image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-3",
@@ -124,7 +124,7 @@ export const resources = {
               titleAr: "بشت وكفطان فاخر",
               count: "15 Pieces",
               countAr: "15 قطعة",
-              image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-4",
@@ -132,7 +132,7 @@ export const resources = {
               titleAr: "أطقم فاخرة وشيلات",
               count: "32 Pieces",
               countAr: "32 قطعة",
-              image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=85"
             }
           ]
         },
@@ -146,7 +146,7 @@ export const resources = {
               name: "Noor Pearl-Trimmed Chiffon",
               nameAr: "عباية نور شيفون مزينة باللؤلؤ",
               price: "2,650",
-              image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "48",
               category: "Embroidered Silks"
@@ -156,7 +156,7 @@ export const resources = {
               name: "Al-Dana Pleated Crepe Abaya",
               nameAr: "عباية الدانة كريب بكسرات أنيقة",
               price: "1,950",
-              image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "62",
               category: "Daily Modest"
@@ -166,7 +166,7 @@ export const resources = {
               name: "Sultana Gold-Embroidered Bisht",
               nameAr: "بشت سلطانة مطرز بالذهب الملكي",
               price: "3,400",
-              image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "35",
               category: "Occasion Gowns"
@@ -176,7 +176,7 @@ export const resources = {
               name: "Lulwa Ivory Raw Silk Coat",
               nameAr: "معطف لولوة من الحرير الخام العاجي",
               price: "2,850",
-              image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "54",
               category: "Embroidered Silks"
@@ -184,7 +184,7 @@ export const resources = {
           ]
         },
         whyChooseUs: {
-          eyebrow: "The Layali Standard",
+          eyebrow: "The Alora Standard",
           title: "Why Choose Our Atelier",
           description: "We merge Haute Couture precision with traditional modesty standards to create heirlooms.",
           pillars: {
@@ -226,7 +226,7 @@ export const resources = {
               id: "rev-2",
               author: "Princess Reema B.",
               location: "Riyadh, KSA",
-              quote: "Finding high-end evening wear that maintains true modesty without feeling heavy was always a struggle until Layali. The custom length fit like a glove.",
+              quote: "Finding high-end evening wear that maintains true modesty without feeling heavy was always a struggle until Alora. The custom length fit like a glove.",
               rating: "5.0"
             },
             "2": {
@@ -247,26 +247,26 @@ export const resources = {
         },
         instagram: {
           eyebrow: "Social Chronicle",
-          title: "Lifestyle & Journal @LayaliAtelier",
-          description: "Tag us or use #LayaliModesty to be featured in our monthly private salon chronicle.",
-          handle: "@LayaliAtelier",
+          title: "Lifestyle & Journal @AloraAbaya",
+          description: "Tag us or use #AloraAbayas to be featured in our monthly private salon chronicle.",
+          handle: "@AloraAbaya",
           followBtn: "Follow Our Instagram",
           posts: [
-            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" }
+            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=600&q=80" }
           ]
         }
       },
       footer: {
-        newsletterTitle: "Join the Layali Private Circle",
+        newsletterTitle: "Join the Alora Private Circle",
         newsletterDesc: "Be the first to receive invitations to seasonal trunk shows, bespoke pre-order drops, and private salon editorials.",
         emailPlaceholder: "Enter your email address...",
         subscribe: "Join Circle",
-        copyright: "© 2026 Layali Atelier (Alora Abaya). All rights reserved. Crafted with distinction.",
+        copyright: "© 2026 Alora Atelier. All rights reserved. Crafted with distinction.",
         quickLinks: "Boutique & Collections",
         customerCare: "Atelier Care & Services",
         boutique: "Our Salons",
@@ -298,7 +298,7 @@ export const resources = {
         newArrivals: "وصل حديثاً",
         bestSellers: "الأكثر مبيعاً",
         categories: "التصنيفات",
-        whyChooseUs: "لماذا ليالي",
+        whyChooseUs: "لماذا ألورا",
         reviews: "آراء عميلاتنا",
         aboutUs: "الأتليه",
         faq: "الأسئلة الشائعة",
@@ -313,7 +313,7 @@ export const resources = {
           description: "عيشي تجربة الهدوء والرقي مع الفخامة المحتشمة. مُخيطة يدوياً من الحرير الانسيابي والشيفون المزدوج الفاخر لتنسدل بقوام راقٍ ومظهر مهيب.",
           ctaExplore: "استكشفي المجموعة",
           ctaCraftsmanship: "حرفيتنا اليدوية",
-          signatureBadge: "تحفة ليالي الحصرية",
+          signatureBadge: "تحفة ألورا الحصرية",
           signatureTitle: "البشت الملكي بنسيج الندا الليلي",
           signatureDesc: "مُصمم حصرياً ومطرز يدوياً بخيوط الزري الذهبي مع تشطيبات فرنسية مخفية لإطلالة مسائية مهيبة.",
           trust: {
@@ -339,7 +339,7 @@ export const resources = {
               name: "Royal Silk Bisht Abaya",
               nameAr: "عباية بشت ملكية من الحرير",
               price: "2,450",
-              image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
               badge: "وصل حديثاً"
             },
@@ -348,7 +348,7 @@ export const resources = {
               name: "Midnight Velvet Gilded Abaya",
               nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
-              image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
               badge: "إصدار محدود"
             },
@@ -357,7 +357,7 @@ export const resources = {
               name: "Desert Sand Double Nidha",
               nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
-              image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
               badge: "وصل حديثاً"
             },
@@ -366,7 +366,7 @@ export const resources = {
               name: "Emerald Silk Organza Set",
               nameAr: "طقم أورجانزا حريري بلون الزمرد",
               price: "2,800",
-              image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=800&q=85",
               colors: ["#1B3B2B", "#1A1A1A"],
               badge: "حصري بالأتليه"
             }
@@ -383,7 +383,7 @@ export const resources = {
               titleAr: "عبايات الاستخدام اليومي الأنيقة",
               count: "24 Pieces",
               countAr: "24 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-2",
@@ -391,7 +391,7 @@ export const resources = {
               titleAr: "فساتين السهرة والمناسبات الكبرى",
               count: "18 Pieces",
               countAr: "18 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-3",
@@ -399,7 +399,7 @@ export const resources = {
               titleAr: "بشت وكفطان ملكي فاخر",
               count: "15 Pieces",
               countAr: "15 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=85"
             },
             {
               id: "cat-4",
@@ -407,7 +407,7 @@ export const resources = {
               titleAr: "أطقم فاخرة وشيلات متناسقة",
               count: "32 Pieces",
               countAr: "32 قطعة فاخرة",
-              image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"
+              image: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=85"
             }
           ]
         },
@@ -421,7 +421,7 @@ export const resources = {
               name: "Noor Pearl-Trimmed Chiffon",
               nameAr: "عباية نور شيفون مزينة باللؤلؤ",
               price: "2,650",
-              image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "48",
               category: "Embroidered Silks"
@@ -431,7 +431,7 @@ export const resources = {
               name: "Al-Dana Pleated Crepe Abaya",
               nameAr: "عباية الدانة كريب بكسرات أنيقة",
               price: "1,950",
-              image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "62",
               category: "Daily Modest"
@@ -441,7 +441,7 @@ export const resources = {
               name: "Sultana Gold-Embroidered Bisht",
               nameAr: "بشت سلطانة مطرز بالذهب الملكي",
               price: "3,400",
-              image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
               reviewsCount: "35",
               category: "Occasion Gowns"
@@ -451,7 +451,7 @@ export const resources = {
               name: "Lulwa Ivory Raw Silk Coat",
               nameAr: "معطف لولوة من الحرير الخام العاجي",
               price: "2,850",
-              image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+              image: "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
               reviewsCount: "54",
               category: "Embroidered Silks"
@@ -459,8 +459,8 @@ export const resources = {
           ]
         },
         whyChooseUs: {
-          eyebrow: "معايير ليالي الرفيعة",
-          title: "لماذا تختارين دار ليالي",
+          eyebrow: "معايير ألورا الرفيعة",
+          title: "لماذا تختارين دار ألورا",
           description: "نجمع بين دقة الهوت كوتور ومعايير الحشمة الأصيلة لنصنع قطَعاً تدوم كإرث نبيل.",
           pillars: {
             "0": {
@@ -501,7 +501,7 @@ export const resources = {
               id: "rev-2",
               author: "الأميرة ريما ب.",
               location: "الرياض، المملكة العربية السعودية",
-              quote: "إيجاد أزياء مسائية فاخرة تحافظ على الحشمة الكاملة دون أن تكون ثقيلة كان تحدياً حتى اكتشفت ليالي. التفصيل المخصص جاء متقناً كأنه صُنع خصيصاً لي.",
+              quote: "إيجاد أزياء مسائية فاخرة تحافظ على الحشمة الكاملة دون أن تكون ثقيلة كان تحدياً حتى اكتشفت ألورا. التفصيل المخصص جاء متقناً كأنه صُنع خصيصاً لي.",
               rating: "5.0"
             },
             "2": {
@@ -521,27 +521,27 @@ export const resources = {
           }
         },
         instagram: {
-          eyebrow: "يوميات دار ليالي",
-          title: "أسلوب الحياة والمجلة @LayaliAtelier",
-          description: "شاركوا إطلالاتكم عبر وسم #LayaliModesty للظهور في مجلتنا الشهرية الخاصة بالصالون.",
-          handle: "@LayaliAtelier",
+          eyebrow: "يوميات دار ألورا",
+          title: "أسلوب الحياة والمجلة @AloraAbaya",
+          description: "شاركوا إطلالاتكم عبر وسم #AloraAbayas للظهور في مجلتنا الشهرية الخاصة بالصالون.",
+          handle: "@AloraAbaya",
           followBtn: "تابعي حسابنا على انستغرام",
           posts: [
-            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=600&q=80" },
-            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" }
+            { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-2", likes: "2,180", comments: "92", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-3", likes: "985", comments: "31", image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-4", likes: "3,450", comments: "142", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-5", likes: "1,760", comments: "64", image: "https://images.unsplash.com/photo-1585468274952-66591eb14165?auto=format&fit=crop&w=600&q=80" },
+            { id: "ig-6", likes: "2,890", comments: "115", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&w=600&q=80" }
           ]
         }
       },
       footer: {
-        newsletterTitle: "انضمي إلى دائرة ليالي الخاصة",
+        newsletterTitle: "انضمي إلى دائرة ألورا الخاصة",
         newsletterDesc: "كوني أول من يتلقى دعوات عروض الصالون الموسمية، ومجموعات الحجز المسبق الحصرية، وافتتاحيات الأتليه الخاصة.",
         emailPlaceholder: "أدخلي عنوان بريدكِ الإلكتروني...",
         subscribe: "انضمي للدائرة",
-        copyright: "© 2026 أتليه ليالي (Alora Abaya). جميع الحقوق محفوظة. صُنع بكل فخر وإتقان.",
+        copyright: "© 2026 أتليه ألورا. جميع الحقوق محفوظة. صُنع بكل فخر وإتقان.",
         quickLinks: "البوتيك والمجموعات",
         customerCare: "رعاية ومساعدة الأتليه",
         boutique: "صالوناتنا الفاخرة",

@@ -9,12 +9,13 @@ export function Footer() {
         {/* Top Section: VIP Circle Newsletter & Brand Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-border2">
           <div className="lg:col-span-5 flex flex-col items-start">
-            <span className="font-serif text-3xl tracking-[0.2em] uppercase font-medium text-espresso">
-              Layali
-            </span>
-            <span className="font-arabic text-base text-walnut tracking-widest font-normal -mt-1 mb-4">
-              ليالي
-            </span>
+            <a href="/" className="group mb-5 inline-block">
+              <img
+                src="/logos/Artboard 13@4x.png"
+                alt="ALORA"
+                className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-500"
+              />
+            </a>
             <p className="text-sm text-mocha leading-relaxed max-w-sm">
               {t('home.hero.description')}
             </p>
@@ -109,7 +110,7 @@ export function Footer() {
           <div className="flex items-center gap-6">
             <span>Privately Handcrafted in Dubai</span>
             <span>•</span>
-            <span className="font-medium text-espresso tracking-wider uppercase">Layali & Alora Abaya</span>
+            <span className="font-medium text-espresso tracking-wider uppercase">Alora</span>
           </div>
         </div>
       </div>
