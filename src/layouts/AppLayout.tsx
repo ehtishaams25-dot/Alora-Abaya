@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { Navigation } from '../components/Navigation'
+import { Footer } from '../components/Footer'
 
 type AppLayoutProps = {
   children: ReactNode
@@ -12,6 +13,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       <main className="flex-1 flex flex-col w-full">
         {children}
       </main>
+      <Footer />
     </div>
   )
 }
