@@ -195,10 +195,23 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
 
             <button
               type="button"
-              onClick={actions.handleAddToBag}
-              className="min-h-[46px] px-6 rounded-full bg-espresso text-cream hover:bg-ink text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer"
+              onClick={() => {
+                actions.handleAddToBag()
+                if (!state.selectedSize) {
+                  window.scrollTo({ top: 380, behavior: 'smooth' })
+                }
+              }}
+              className={`min-h-[46px] px-6 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer ${
+                state.sizeError
+                  ? 'bg-[#8B2626] text-cream animate-shake'
+                  : 'bg-espresso text-cream hover:bg-ink'
+              }`}
             >
-              <span>{isArabic ? 'أضف إلى الحقيبة +' : 'Add to Bag +'}</span>
+              <span>
+                {state.sizeError
+                  ? (isArabic ? 'اختر المقاس أولاً ↑' : 'Select Size ↑')
+                  : (isArabic ? 'أضف إلى الحقيبة +' : 'Add to Bag +')}
+              </span>
             </button>
           </div>
         </div>

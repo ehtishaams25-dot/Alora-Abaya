@@ -10,7 +10,7 @@ export interface NavigationProps {
 
 export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
-  const { isLoggedIn, toggleLogin, wishlistItems, cartItems, openCartDrawer } = useShop()
+  const { isLoggedIn, toggleLogin, wishlistItems, cartItems, openCartDrawer, openSearch } = useShop()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [announcementDismissed, setAnnouncementDismissed] = useState(false)
@@ -149,6 +149,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
               {/* Search Button */}
               <button
                 type="button"
+                onClick={openSearch}
                 className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] flex items-center justify-center cursor-pointer"
                 aria-label="Search collection"
                 title="Search"
@@ -168,8 +169,8 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
 
               {/* Profile / Account Button */}
               <Link
-                to="/login"
-                className="hidden sm:flex text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] items-center justify-center"
+                to={isLoggedIn ? "/account" : "/login"}
+                className="hidden sm:flex text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] items-center justify-center relative"
                 aria-label="User Profile & Account"
                 title="Profile"
               >
@@ -184,6 +185,9 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                   />
                 </svg>
+                {isLoggedIn && (
+                  <span className="absolute top-2 end-2 w-1.5 h-1.5 bg-success rounded-full animate-pulse" />
+                )}
               </Link>
 
               {/* Wishlist Link Button */}
@@ -268,8 +272,9 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 </button>
 
                 <div className="flex items-center justify-center gap-5 text-xs uppercase tracking-widest text-espresso font-medium pb-2 flex-wrap">
-                  <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
+                  <Link to={isLoggedIn ? "/account" : "/login"} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
                     <span>{isArabic ? 'حسابي' : 'My Account'}</span>
+                    {isLoggedIn && <span className="w-1.5 h-1.5 bg-success rounded-full inline-block" />}
                   </Link>
                   <span>•</span>
                   <Link to="/wishlist" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">

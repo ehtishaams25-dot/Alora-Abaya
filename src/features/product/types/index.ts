@@ -13,6 +13,7 @@ export interface ProductDetailState {
   selectedSize: string
   selectedColorIdx: number
   isAddedToast: boolean
+  sizeError: boolean
   inWishlist: boolean
   currentImage: string
   colorHex: string
@@ -24,6 +25,7 @@ export interface ProductDetailActions {
   setSelectedImageIdx: (idx: number) => void
   setSelectedSize: (size: string) => void
   setSelectedColorIdx: (idx: number) => void
+  setSizeError: (error: boolean) => void
   handleAddToBag: () => void
   handleWishlistToggle: () => void
 }

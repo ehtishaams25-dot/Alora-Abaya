@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { type ProductDress } from '../../../data/dressesData'
+import { useShop } from '../../../providers/ShopProvider'
 import { type ProductDetailState, type ProductDetailActions } from '../types'
 import { ProductTrustIndicators } from './ProductTrustIndicators'
 
@@ -22,6 +23,7 @@ export function ProductPurchasePanel({
   onClose
 }: ProductPurchasePanelProps) {
   const { t } = useTranslation()
+  const { openSizeGuide } = useShop()
 
   const title = isArabic ? (product.nameAr || product.name) : product.name
   const desc = isArabic ? (product.descriptionAr || product.description) : product.description
@@ -122,15 +124,23 @@ export function ProductPurchasePanel({
         {product.sizes && product.sizes.length > 0 && (
           <div className="mb-3 animate-[fadeUp_0.6s_ease-out_0.5s_both]">
             <div className="flex items-center justify-between text-[11px] text-espresso font-medium uppercase tracking-wider mb-2">
-              <span>{t('product.sizeLabel', isArabic ? 'المقاس المختار:' : 'Select Size:')}</span>
+              <div className="flex items-center gap-2">
+                <span>{t('product.sizeLabel', isArabic ? 'المقاس المختار:' : 'Select Size:')}</span>
+                {state.selectedSize && (
+                  <span className="text-walnut font-bold">{state.selectedSize}</span>
+                )}
+              </div>
               <button
                 type="button"
-                className="text-taupe hover:text-espresso underline underline-offset-4 cursor-pointer text-[10px] sm:text-[11px] transition-colors"
+                onClick={() => openSizeGuide(product)}
+                className="text-taupe hover:text-espresso underline underline-offset-4 cursor-pointer text-[10px] sm:text-[11px] transition-colors font-sans"
               >
                 {t('product.sizeGuide', isArabic ? 'دليل القياسات' : 'Size Guide')}
               </button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className={`flex flex-wrap gap-2 p-1.5 -m-1.5 rounded-2xl transition-all duration-300 ${
+              state.sizeError ? 'animate-shake ring-2 ring-[#8B2626]/60 bg-[#8B2626]/5' : ''
+            }`}>
               {product.sizes.map((size) => {
                 const isSelected = state.selectedSize === size
                 return (
@@ -149,6 +159,12 @@ export function ProductPurchasePanel({
                 )
               })}
             </div>
+            {state.sizeError && (
+              <p className="mt-2 text-[11px] text-[#8B2626] font-medium flex items-center gap-1.5 animate-fade-in">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8B2626] inline-block shrink-0 animate-pulse" />
+                <span>{t('product.sizeRequired', isArabic ? 'يرجى اختيار المقاس قبل الإضافة إلى الحقيبة.' : 'Please select your size.')}</span>
+              </p>
+            )}
           </div>
         )}
       </div>

@@ -16,8 +16,6 @@ export function CartDrawerModal() {
     removeFromCart,
     updateQuantity,
     subtotal,
-    shipping,
-    taxes,
     total,
     addToCart,
     openCheckoutModal

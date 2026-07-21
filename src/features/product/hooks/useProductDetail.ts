@@ -10,9 +10,10 @@ export function useProductDetail(product: ProductDress): [ProductDetailState, Pr
   const { addToCart, addToWishlist, isInWishlist, removeFromWishlist } = useShop()
 
   const [selectedImageIdx, setSelectedImageIdx] = useState<number>(0)
-  const [selectedSize, setSelectedSize] = useState<string>(product.sizes?.[0] || 'S')
+  const [selectedSize, setSelectedSize] = useState<string>('')
   const [selectedColorIdx, setSelectedColorIdx] = useState<number>(0)
   const [isAddedToast, setIsAddedToast] = useState<boolean>(false)
+  const [sizeError, setSizeError] = useState<boolean>(false)
 
   const isArabic = i18n.language.startsWith('ar')
   const galleryViews = useMemo(() => getProductGallery(product), [product])
@@ -25,7 +26,19 @@ export function useProductDetail(product: ProductDress): [ProductDetailState, Pr
 
   const inWishlist = isInWishlist(product.id)
 
+  const handleSelectSize = (size: string) => {
+    setSelectedSize(size)
+    setSizeError(false)
+  }
+
   const handleAddToBag = () => {
+    if (!selectedSize) {
+      setSizeError(true)
+      setTimeout(() => {
+        setSizeError(false)
+      }, 2000)
+      return
+    }
     addToCart(product, `${colorName} (${colorHex})`, `Size ${selectedSize}`)
     setIsAddedToast(true)
     setTimeout(() => {
@@ -46,6 +59,7 @@ export function useProductDetail(product: ProductDress): [ProductDetailState, Pr
     selectedSize,
     selectedColorIdx,
     isAddedToast,
+    sizeError,
     inWishlist,
     currentImage,
     colorHex,
@@ -55,8 +69,9 @@ export function useProductDetail(product: ProductDress): [ProductDetailState, Pr
 
   const actions: ProductDetailActions = {
     setSelectedImageIdx,
-    setSelectedSize,
+    setSelectedSize: handleSelectSize,
     setSelectedColorIdx,
+    setSizeError,
     handleAddToBag,
     handleWishlistToggle
   }

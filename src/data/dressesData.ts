@@ -22,6 +22,7 @@ export interface ProductDress extends ProductItem {
   createdAt: string // for "Newest" sorting
   salesCount: number // for "Best Sellers" sorting
   gallery?: { id: string; url: string; labelKey: string }[]
+  tags?: string[]
 }
 
 export const DRESSES_DATA: ProductDress[] = [
@@ -946,3 +947,6 @@ export const DRESSES_DATA: ProductDress[] = [
     salesCount: 260
   }
 ]
+
+export const DRESSES = DRESSES_DATA
+

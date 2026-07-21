@@ -11,6 +11,9 @@ import { ShopProvider, useShop } from './providers/ShopProvider'
 import { GuestCheckoutModal } from './components/GuestCheckoutModal'
 import { QuickViewModal } from './components/QuickViewModal'
 import { CartDrawerModal } from './components/CartDrawerModal'
+import { ProductSizeGuideModal } from './features/product'
+import { SearchOverlayModal } from './features/search'
+import { AccountDashboardPage } from './features/profile'
 
 function ScrollToHashElement() {
   const { pathname, hash } = useLocation()
@@ -41,6 +44,11 @@ function GlobalQuickViewContainer() {
   return <QuickViewModal product={quickViewProduct} onClose={closeQuickView} />
 }
 
+function GlobalSizeGuideContainer() {
+  const { activeSizeGuideProduct, closeSizeGuide } = useShop()
+  return <ProductSizeGuideModal product={activeSizeGuideProduct} onClose={closeSizeGuide} />
+}
+
 export function App() {
   return (
     <QueryProvider>
@@ -49,6 +57,8 @@ export function App() {
         <CartDrawerModal />
         <GuestCheckoutModal />
         <GlobalQuickViewContainer />
+        <GlobalSizeGuideContainer />
+        <SearchOverlayModal />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dresses" element={<AllDressesPage />} />
@@ -60,8 +70,13 @@ export function App() {
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/bag" element={<CartPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/account" element={<AccountDashboardPage />} />
+          <Route path="/profile" element={<AccountDashboardPage />} />
+          <Route path="/dashboard" element={<AccountDashboardPage />} />
+          <Route path="/orders" element={<AccountDashboardPage />} />
         </Routes>
       </ShopProvider>
     </QueryProvider>
   )
 }
+

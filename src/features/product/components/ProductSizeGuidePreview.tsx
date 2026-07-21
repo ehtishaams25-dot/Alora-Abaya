@@ -1,21 +1,18 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type ProductDress } from '../../../data/dressesData'
+import { useShop } from '../../../providers/ShopProvider'
 
 interface ProductSizeGuidePreviewProps {
   product: ProductDress
   isArabic: boolean
 }
 
-export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewProps) {
+export function ProductSizeGuidePreview({ product, isArabic }: ProductSizeGuidePreviewProps) {
   const { t } = useTranslation()
-  const [showToast, setShowToast] = useState(false)
+  const { openSizeGuide } = useShop()
 
   const handleOpenSizeGuide = () => {
-    setShowToast(true)
-    setTimeout(() => {
-      setShowToast(false)
-    }, 4500)
+    openSizeGuide(product)
   }
 
   return (
@@ -100,12 +97,6 @@ export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewPro
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </button>
-
-                {showToast && (
-                  <span className="text-xs sm:text-sm text-walnut font-medium animate-fade-in bg-cream/95 px-5 py-2.5 rounded-xl border border-border2 shadow-xs">
-                    {t('product.sizeCard.toast', isArabic ? 'سيتم فتح جدول مقاسات الأتليه التفاعلي هنا قريباً.' : 'The interactive atelier size guide table will open here shortly.')}
-                  </span>
-                )}
               </div>
             </div>
           </div>
