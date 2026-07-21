@@ -329,7 +329,50 @@ export const resources = {
         backToCollection: "Back to Collection",
         notFoundTitle: "Piece Not Found",
         notFoundDesc: "We could not find the specific masterpiece you are looking for. Please explore our curated seasonal collection.",
-        browseAll: "Browse All Dresses"
+        browseAll: "Browse All Dresses",
+        craftsmanship: {
+          eyebrow: "Atelier Craftsmanship",
+          title: "An Ode to Fluid Motion and Masterful Tailoring",
+          para1: "Every Alora silhouette is born from an uncompromising reverence for traditional craftsmanship combined with contemporary poise. Hand-draped inside our private salon, each piece undergoes over thirty distinct tailoring steps to ensure an unyielding graceful flow.",
+          para2: "We source only pure Grade 6A mulberry silk and bespoke double-layered crepes—fabrics chosen specifically for their natural breathability, luminous finish, and dignified weight. French seams run concealed along every edge, providing effortless structure without unnecessary stiffness.",
+          attrBreathable: "Breathable Cotton",
+          attrStitching: "Premium Stitching",
+          attrLightweight: "Lightweight Comfort",
+          attrEveryday: "Elegant Everyday Wear"
+        },
+        accordion: {
+          eyebrow: "The Details of Distinction",
+          title: "Architectural & Care Specifications",
+          intro: "Explore the tactile essence, meticulous fabric care notes, and bespoke delivery options associated with your piece.",
+          descTitle: "Description",
+          descContent: "Designed to drape gracefully with dignified fluid poise, this creation embodies the calm sophistication of modern luxury. Cut with ample movement through the sleeves and length, offering effortless poise from daytime gatherings to formal evening affairs.",
+          fabricTitle: "Fabric & Care",
+          fabricContent: "Crafted from superior natural threads and bespoke weaves. Dry clean only at a specialist dry cleaner experienced with delicate luxury silks and crepes. Store hung on a padded velvet hanger in a cool, dry space away from direct sunlight to preserve silk luster and embroidery brilliance.",
+          shippingTitle: "Shipping Information",
+          shippingContent: "All orders receive complimentary express global dispatch in signature Alora gift packaging. GCC deliveries arrive within 1-3 business days via private courier. International deliveries arrive within 3-5 business days complete with tracked concierge notifications.",
+          returnsTitle: "Returns & Exchanges",
+          returnsContent: "We offer complimentary 14-day returns and exchanges for all unworn pieces in their original pristine condition with atelier tags attached. Our concierge team manages complimentary home pickup at your convenience."
+        },
+        sizeCard: {
+          eyebrow: "Bespoke Proportions",
+          title: "The Size & Fit Guide",
+          description: "Our silhouettes are tailored with generous, flowing ease designed to flatter varied heights and forms. Whether you prefer a tailored floor-length drape or subtle elevation for heels, our measurement matrix guides your choice.",
+          cta: "View Size Guide",
+          toast: "The interactive atelier size guide table will open here shortly."
+        },
+        editorialGallery: {
+          eyebrow: "Visual Portfolio",
+          title: "Captured in the Light",
+          description: "An unhurried exploration of texture, movement, and silhouette across every angle."
+        },
+        editorialBreak: {
+          quote: "Grace in Every Step."
+        },
+        recommendations: {
+          eyebrow: "Curated Harmony",
+          title: "Complementary Atelier Pieces",
+          description: "Discover garments styled to complete and elevate your wardrobe collection."
+        }
       }
     }
   },
@@ -663,7 +706,50 @@ export const resources = {
         backToCollection: "العودة للمجموعة",
         notFoundTitle: "القطعة غير متوفرة",
         notFoundDesc: "لم نتمكن من العثور على القطعة المطلوبة. يرجى استكشاف مجموعتنا الملكية الكاملة.",
-        browseAll: "تصفح كافة الفساتين"
+        browseAll: "تصفح كافة الفساتين",
+        craftsmanship: {
+          eyebrow: "حرفية الأتليه الملكية",
+          title: "أنشودة للانسيابية والقصات اليدوية الفاخرة",
+          para1: "تولد كل قطعة من إبداعات ألورا من احترام عميق لتقاليد الخياطة اليدوية الفاخرة ولمسات الأناقة المعاصرة. يتم تصميم كل قَصّة وثنية داخل صالوننا الخاص، حيث تمر بأكثر من ثلاثين مرحلة دقيقة لضمان انسيابية وقار لا تضاهى.",
+          para2: "نختار بعناية فائقة حرير التوت الطبيعي الفاخر من الدرجة الملكية والكريب المزدوج، وهي أقمشة تم اختيارها خصيصاً لمساميتها الطبيعية، وبريقها الهادئ، وثقلها الوقور. تتوارى الدرزات الفرنسية المخفية بطول كل طرف، لتمنحك قواماً متماسكاً دون أي تكلف.",
+          attrBreathable: "قطن وأقمشة تتنفس برفق",
+          attrStitching: "درزات وخياطة ملكية دقيقة",
+          attrLightweight: "راحة خفيفة وانسيابية علوية",
+          attrEveryday: "أناقة يومية دائمة وخالدة"
+        },
+        accordion: {
+          eyebrow: "تفاصيل التميز الملكي",
+          title: "المواصفات الهندسية وإرشادات العناية",
+          intro: "استكشفي الملمس الفاخر، وإرشادات العناية المتخصصة بالقماش، وخدمات التوصيل الخاصة بقطعتك.",
+          descTitle: "الوصف الملكي",
+          descContent: "صُممت هذه القطعة لتنسدل بقوام انسيابي مهيب، مجسدةً الهدوء والرقي الفاخر. تتميز بقصة مريحة تتيح حرية الحركة في الأكمام والطول، لتمنحك حضوراً واثقاً من اللقاءات الصباحية وحتى السهرات الرسمية الفاخرة.",
+          fabricTitle: "القماش وإرشادات العناية",
+          fabricContent: "مصنوعة من خيوط طبيعية فائقة الجودة وحياكة مخصصة. يُنصح بالتنظيف الجاف فقط لدى متخصصين ذوي خبرة بالأقمشة والحرير الفاخر. تُحفظ معلقة على شماعة مبطنة بالمخمل في مكان بارد وجاف بعيداً عن أشعة الشمس المباشرة للحفاظ على بريق الحرير وتألق التطريز.",
+          shippingTitle: "معلومات الشحن والتوصيل",
+          shippingContent: "تتمتع جميع الطلبات بشحن عالمي سريع ومجاني في تغليف ألورا الملكي الفاخر. تصل التوصيلات داخل دول الخليج خلال ١-٣ أيام عمل عبر مندوب خاص. وتصل التوصيلات الدولية خلال ٣-٥ أيام عمل مع إشعارات تتبع مباشرة من المساعد الشخصي.",
+          returnsTitle: "الاسترجاع والاستبدال الفوري",
+          returnsContent: "نقدم خدمة استرجاع واستبدال مجانية لمدة ١٤ يوماً لجميع القطع غير الملبوسة وبحالتها الأصلية الفائقة مع بطاقات الأتليه المرفقة. يتولى فريق المساعد الشخصي ترتيب استلام القطعة من منزلكم بكل سهولة ويسر."
+        },
+        sizeCard: {
+          eyebrow: "تناسق المقاسات والأبعاد",
+          title: "دليل القياس والقصّات الملكية",
+          description: "تتميز قصاتنا باتساع انسيابي مدروس ليناسب مختلف الأطوال والقامات بأناقة متناهية. سواء كنتِ تفضلين الانسدال الطويل الملامس للأرض أو الطول المناسب للكعب العالي، فإن جدول أبعادنا يساعدك على الاختيار المثالي.",
+          cta: "عرض دليل القياسات",
+          toast: "سيتم فتح جدول مقاسات الأتليه التفاعلي هنا قريباً."
+        },
+        editorialGallery: {
+          eyebrow: "المعرض الفوتوغرافي",
+          title: "تفاصيل في ضوء النهار",
+          description: "رحلة بصرية هادئة تستعرض جمال الملمس وحركة القماش وانسيابية القصة من مختلف الزوايا."
+        },
+        editorialBreak: {
+          quote: "أناقة ملكية في كل خطوة."
+        },
+        recommendations: {
+          eyebrow: "تناغم واختيارات متناسقة",
+          title: "قطع مكملة من إبداعات الأتليه",
+          description: "اكتشفي تصاميم تم اختيارها بعناية لتتناغم مع خزانة ملابسك وتكمل أناقتك الفاخرة."
+        }
       }
     }
   }

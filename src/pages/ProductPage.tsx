@@ -41,7 +41,7 @@ export function ProductPage() {
   return (
     <div className="min-h-screen flex flex-col bg-sand font-sans">
       <Navigation />
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col">
         <ProductDetailPage product={product} />
       </main>
       <Footer />

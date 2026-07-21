@@ -1,15 +1,188 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Navigation } from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { useShop } from '../providers/ShopProvider'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { type ProductItem } from '../features/home/types'
+import { QuickViewModal } from '../components/QuickViewModal'
+import { DRESSES_DATA, type ProductDress } from '../data/dressesData'
+import { useLongPressQuickView } from '../hooks/useLongPressQuickView'
+
+function WishlistProductCard({
+  item,
+  isArabic,
+  t,
+  addedIds,
+  removeFromWishlist,
+  handleAddToBag,
+  setQuickViewProduct
+}: {
+  item: ProductItem
+  isArabic: boolean
+  t: any
+  addedIds: { [key: string]: boolean }
+  removeFromWishlist: (id: string) => void
+  handleAddToBag: (item: ProductItem) => void
+  setQuickViewProduct: (item: ProductDress | null) => void
+}) {
+  const navigate = useNavigate()
+  const isAdded = addedIds[item.id]
+  const title = isArabic ? (item.nameAr || item.name) : item.name
+  const selectedColor = item.colors && item.colors.length > 0
+    ? (isArabic ? "اللون المختار: أسود ملكي" : "Color: Midnight Black")
+    : (isArabic ? "اللون: نيدا فاخرة" : "Color: Signature Shade")
+  const selectedSize = isArabic ? "المقاس: 56" : "Size: 56"
+
+  const { longPressProps } = useLongPressQuickView({
+    product: item as unknown as ProductDress,
+    onQuickView: () => {
+      const found = DRESSES_DATA.find(p => p.id === item.id)
+      if (found) setQuickViewProduct(found)
+    },
+    onNavigate: () => {
+      navigate(`/product/${item.id}`)
+    }
+  })
+
+  return (
+    <div
+      {...longPressProps}
+      className="card-product group flex flex-col bg-cream border border-border2/70 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 relative cursor-pointer select-none"
+    >
+      <div className="relative aspect-[3/4] overflow-hidden bg-sand">
+        <img
+          src={item.image}
+          alt={title}
+          className="card-product-img w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            removeFromWishlist(item.id)
+          }}
+          className="absolute top-3.5 end-3.5 bg-cream/90 backdrop-blur-md text-espresso hover:text-walnut hover:bg-cream p-2.5 rounded-full transition-all duration-300 shadow-sm z-10 cursor-pointer group/heart"
+          aria-label={isArabic ? "إزالة من المفضلة" : "Remove from Wishlist"}
+          title={isArabic ? "إزالة" : "Remove"}
+        >
+          <svg
+            className="w-4 h-4 fill-espresso group-hover/heart:scale-110 transition-transform duration-200"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </button>
+
+        {item.category && (
+          <span className="absolute top-3.5 start-3.5 bg-walnut/95 backdrop-blur-md text-cream text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full font-medium shadow-sm">
+            {item.category}
+          </span>
+        )}
+
+        <div className="absolute bottom-3 inset-x-3 hidden lg:flex items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleAddToBag(item)
+            }}
+            className="bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-1.5 px-2.5 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap border border-border2/50 shrink-0"
+            title={isArabic ? 'إضافة للحقيبة' : 'Quick Add to Bag'}
+          >
+            <svg className="w-3.5 h-3.5 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+            </svg>
+            <span>{isArabic ? 'إضافة' : 'Quick Add'}</span>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              const found = DRESSES_DATA.find(p => p.id === item.id)
+              if (found) setQuickViewProduct(found)
+            }}
+            className="flex-1 bg-cream/95 backdrop-blur-md text-espresso hover:bg-walnut hover:text-cream py-1.5 px-3 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/50"
+          >
+            <span>{isArabic ? 'نظرة سريعة' : 'Quick View'}</span>
+          </button>
+        </div>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            handleAddToBag(item)
+          }}
+          className="lg:hidden absolute bottom-3 end-3 w-8 h-8 rounded-full bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream shadow-sm flex items-center justify-center transition-colors z-10"
+          title={t('common.addToBag')}
+        >
+          <svg className="w-4 h-4 stroke-current fill-none" strokeWidth="1.6" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+          </svg>
+        </button>
+      </div>
+
+      <div className="p-5 flex flex-col flex-1 justify-between bg-cream">
+        <div>
+          <h3 className="font-serif text-base sm:text-lg text-espresso font-medium leading-snug group-hover:text-walnut transition-colors line-clamp-1 mb-2">
+            {title}
+          </h3>
+          
+          <div className="flex items-center justify-between text-xs text-mocha font-sans mb-1">
+            <span>{selectedColor}</span>
+            <span>{selectedSize}</span>
+          </div>
+        </div>
+
+        <div className="mt-4 pt-4 border-t border-border2/60 flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-sans text-espresso font-semibold uppercase tracking-wider">
+              {item.price} {t('common.priceAed', 'SAR')}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleAddToBag(item)
+            }}
+            disabled={isAdded}
+            className={`w-full rounded-full py-3 px-6 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+              isAdded
+                ? 'bg-success text-cream shadow-sm'
+                : 'bg-espresso text-cream hover:bg-ink hover:shadow-md'
+            }`}
+          >
+            {isAdded ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-cream inline-block animate-pulse" />
+                <span>{isArabic ? "تمت الإضافة للحقيبة" : "Added to Bag"}</span>
+              </>
+            ) : (
+              <>
+                <span>{isArabic ? "أضف إلى الحقيبة" : "Add to Bag"}</span>
+                <svg className="w-4 h-4 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+                </svg>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function WishlistPage() {
   const { t, i18n } = useTranslation()
   const { isLoggedIn, setIsLoggedIn, wishlistItems, removeFromWishlist, addToCart } = useShop()
+  const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
   useDocumentTitle(i18n.language.startsWith('ar') ? 'ليالي | قائمة الأمنيات' : 'Layali | Curated Wishlist')
 
   const isArabic = i18n.language.startsWith('ar')
@@ -319,102 +492,28 @@ export function WishlistPage() {
         ) : (
           /* Spacious Responsive Grid */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-7 animate-fade-up">
-            {wishlistItems.map((item) => {
-              const isAdded = addedIds[item.id]
-              const title = isArabic ? (item.nameAr || item.name) : item.name
-              const selectedColor = item.colors && item.colors.length > 0
-                ? (isArabic ? "اللون المختار: أسود ملكي" : "Color: Midnight Black")
-                : (isArabic ? "اللون: نيدا فاخرة" : "Color: Signature Shade")
-              const selectedSize = isArabic ? "المقاس: 56" : "Size: 56"
-
-              return (
-                <div
-                  key={item.id}
-                  className="card-product group flex flex-col bg-cream border border-border2/70 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 relative"
-                >
-                  {/* Image & Remove Icon */}
-                  <div className="relative aspect-[3/4] overflow-hidden bg-sand">
-                    <img
-                      src={item.image}
-                      alt={title}
-                      className="card-product-img w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Remove Icon Button (Top Right, heart subtly animates on hover) */}
-                    <button
-                      type="button"
-                      onClick={() => removeFromWishlist(item.id)}
-                      className="absolute top-3.5 end-3.5 bg-cream/90 backdrop-blur-md text-espresso hover:text-walnut hover:bg-cream p-2.5 rounded-full transition-all duration-300 shadow-sm z-10 cursor-pointer group/heart"
-                      aria-label={isArabic ? "إزالة من المفضلة" : "Remove from Wishlist"}
-                      title={isArabic ? "إزالة" : "Remove"}
-                    >
-                      <svg
-                        className="w-4 h-4 fill-espresso group-hover/heart:scale-110 transition-transform duration-200"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                      </svg>
-                    </button>
-
-                    {item.category && (
-                      <span className="absolute top-3.5 start-3.5 bg-walnut/95 backdrop-blur-md text-cream text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                        {item.category}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Card Details */}
-                  <div className="p-5 flex flex-col flex-1 justify-between bg-cream">
-                    <div>
-                      <h3 className="font-serif text-base sm:text-lg text-espresso font-medium leading-snug group-hover:text-walnut transition-colors line-clamp-1 mb-2">
-                        {title}
-                      </h3>
-                      
-                      <div className="flex items-center justify-between text-xs text-mocha font-sans mb-1">
-                        <span>{selectedColor}</span>
-                        <span>{selectedSize}</span>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 pt-4 border-t border-border2/60 flex flex-col gap-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-sans text-espresso font-semibold uppercase tracking-wider">
-                          {item.price} {t('common.priceAed', 'SAR')}
-                        </span>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => handleAddToBag(item)}
-                        disabled={isAdded}
-                        className={`w-full rounded-full py-3 px-6 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                          isAdded
-                            ? 'bg-success text-cream shadow-sm'
-                            : 'bg-espresso text-cream hover:bg-ink hover:shadow-md'
-                        }`}
-                      >
-                        {isAdded ? (
-                          <>
-                            <span className="w-2 h-2 rounded-full bg-cream inline-block animate-pulse" />
-                            <span>{isArabic ? "تمت الإضافة للحقيبة" : "Added to Bag"}</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>{isArabic ? "أضف إلى الحقيبة" : "Add to Bag"}</span>
-                            <span aria-hidden="true">+</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+            {wishlistItems.map((item) => (
+              <WishlistProductCard
+                key={item.id}
+                item={item}
+                isArabic={isArabic}
+                t={t}
+                addedIds={addedIds}
+                removeFromWishlist={removeFromWishlist}
+                handleAddToBag={handleAddToBag}
+                setQuickViewProduct={setQuickViewProduct}
+              />
+            ))}
           </div>
         )}
       </main>
+
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
+      )}
 
       <Footer />
     </div>

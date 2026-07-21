@@ -32,7 +32,7 @@ export function ProductPurchasePanel({
   return (
     <div className={isModal
       ? "bg-transparent p-0 font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
-      : "bg-cream p-5 sm:p-6 lg:p-7 rounded-3xl border border-border2/80 shadow-xs font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
+      : "bg-cream p-4 sm:p-5 lg:p-5 rounded-3xl border border-border2/80 shadow-xs font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
     }>
       <div>
         {/* Category & Availability Header */}
@@ -75,13 +75,13 @@ export function ProductPurchasePanel({
         </div>
 
         {/* Editorial Short Description (Constrained to fit one section without overflow) */}
-        <p className="text-xs sm:text-sm text-mocha leading-relaxed mb-4 line-clamp-3 sm:line-clamp-4">
+        <p className="text-xs text-mocha leading-relaxed mb-3 line-clamp-3">
           {desc}
         </p>
         
         {/* Color Selection */}
         {product.colors && product.colors.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-3">
             <div className="flex items-center justify-between text-[11px] text-espresso font-medium uppercase tracking-wider mb-2">
               <span>{t('product.colorLabel', isArabic ? 'اللون المختار:' : 'Color Selection:')}</span>
               <span className="text-mocha font-normal">{state.colorName}</span>
@@ -118,7 +118,7 @@ export function ProductPurchasePanel({
 
         {/* Size Selection */}
         {product.sizes && product.sizes.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-3">
             <div className="flex items-center justify-between text-[11px] text-espresso font-medium uppercase tracking-wider mb-2">
               <span>{t('product.sizeLabel', isArabic ? 'المقاس المختار:' : 'Select Size:')}</span>
               <button

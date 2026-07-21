@@ -7,8 +7,9 @@ import { CartPage } from './pages/CartPage'
 import { AllDressesPage } from './pages/AllDressesPage'
 import { ProductPage } from './pages/ProductPage'
 import { QueryProvider } from './providers/QueryProvider'
-import { ShopProvider } from './providers/ShopProvider'
+import { ShopProvider, useShop } from './providers/ShopProvider'
 import { GuestCheckoutModal } from './components/GuestCheckoutModal'
+import { QuickViewModal } from './components/QuickViewModal'
 
 function ScrollToHashElement() {
   const { pathname, hash } = useLocation()
@@ -34,12 +35,18 @@ function ScrollToHashElement() {
   return null
 }
 
+function GlobalQuickViewContainer() {
+  const { quickViewProduct, closeQuickView } = useShop()
+  return <QuickViewModal product={quickViewProduct} onClose={closeQuickView} />
+}
+
 export function App() {
   return (
     <QueryProvider>
       <ShopProvider>
         <ScrollToHashElement />
         <GuestCheckoutModal />
+        <GlobalQuickViewContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dresses" element={<AllDressesPage />} />

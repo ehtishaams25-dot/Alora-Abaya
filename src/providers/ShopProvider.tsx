@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
 import { type ProductItem } from '../features/home/types'
+import { DRESSES_DATA, type ProductDress } from '../data/dressesData'
 
 export interface CartItem extends ProductItem {
   quantity: number
@@ -29,6 +30,9 @@ interface ShopContextType {
   isCheckoutModalOpen: boolean
   openCheckoutModal: () => void
   closeCheckoutModal: () => void
+  quickViewProduct: ProductDress | null
+  openQuickView: (item: ProductItem) => void
+  closeQuickView: () => void
 }
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined)
@@ -222,6 +226,13 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const openCheckoutModal = () => setIsCheckoutModalOpen(true)
   const closeCheckoutModal = () => setIsCheckoutModalOpen(false)
 
+  const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
+  const openQuickView = (item: ProductItem) => {
+    const fullProduct = DRESSES_DATA.find(p => p.id === item.id) || (item as ProductDress)
+    setQuickViewProduct(fullProduct)
+  }
+  const closeQuickView = () => setQuickViewProduct(null)
+
   return (
     <ShopContext.Provider
       value={{
@@ -244,7 +255,10 @@ export function ShopProvider({ children }: { children: ReactNode }) {
         total,
         isCheckoutModalOpen,
         openCheckoutModal,
-        closeCheckoutModal
+        closeCheckoutModal,
+        quickViewProduct,
+        openQuickView,
+        closeQuickView
       }}
     >
       {children}
