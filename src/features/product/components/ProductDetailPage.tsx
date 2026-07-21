@@ -33,7 +33,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
 
   if (isModal) {
     return (
-      <div className="bg-sand w-full h-full flex flex-col justify-center py-4 sm:py-6 lg:py-3 animate-fade-up min-h-0 overflow-y-auto lg:overflow-hidden">
+      <div className="bg-sand w-full h-full flex flex-col justify-center py-4 sm:py-6 lg:py-3 animate-[fadeIn_0.6s_ease-out] min-h-0 overflow-y-auto lg:overflow-hidden">
         <div className="container-layali flex flex-col lg:h-full lg:max-h-[740px] my-auto min-h-0">
           {/* Editorial Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-[11px] font-sans text-mocha mb-3 sm:mb-4 tracking-wider uppercase shrink-0">
@@ -80,7 +80,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
   }
 
   return (
-    <div className="w-full flex flex-col font-sans animate-fade-up">
+    <div className="w-full flex flex-col font-sans animate-[fadeIn_0.6s_ease-out] pb-20 lg:pb-0">
       {/* Main Product Hero Section: Perfectly sized to fill the remaining browser window under the navigation bar so the next section never peeks from below on desktop */}
       <section className="bg-sand w-full py-4 sm:py-6 lg:py-5 border-b border-border2/60 flex flex-col justify-center lg:h-[calc(100vh-120px)] lg:min-h-[580px]">
         <div className="container-layali flex flex-col lg:h-full flex-1 min-h-0 justify-center">
@@ -178,6 +178,30 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
         />
+      )}
+
+      {/* Mobile Sticky Add to Bag Bar - Bottom Sticky with Large Touch Targets & Perfect Thumb Reach */}
+      {!isModal && (
+        <div className="block lg:hidden fixed bottom-0 inset-x-0 z-40 bg-cream/95 backdrop-blur-xl border-t border-border2/80 px-4 py-3 shadow-[0_-8px_30px_rgba(59,47,47,0.08)] animate-[fadeUp_0.7s_ease-out_0.75s_both]">
+          <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
+            <div className="min-w-0 flex-1">
+              <h4 className="font-serif text-xs sm:text-sm text-espresso font-medium truncate">
+                {title}
+              </h4>
+              <span className="text-xs text-mocha font-sans block mt-0.5 font-semibold">
+                {product.price} <span className="text-[10px] font-normal">{t('common.priceAed', 'SAR')}</span>
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={actions.handleAddToBag}
+              className="min-h-[46px] px-6 rounded-full bg-espresso text-cream hover:bg-ink text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer"
+            >
+              <span>{isArabic ? 'أضف إلى الحقيبة +' : 'Add to Bag +'}</span>
+            </button>
+          </div>
+        </div>
       )}
     </div>
   )

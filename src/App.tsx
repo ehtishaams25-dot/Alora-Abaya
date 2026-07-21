@@ -10,6 +10,7 @@ import { QueryProvider } from './providers/QueryProvider'
 import { ShopProvider, useShop } from './providers/ShopProvider'
 import { GuestCheckoutModal } from './components/GuestCheckoutModal'
 import { QuickViewModal } from './components/QuickViewModal'
+import { CartDrawerModal } from './components/CartDrawerModal'
 
 function ScrollToHashElement() {
   const { pathname, hash } = useLocation()
@@ -45,6 +46,7 @@ export function App() {
     <QueryProvider>
       <ShopProvider>
         <ScrollToHashElement />
+        <CartDrawerModal />
         <GuestCheckoutModal />
         <GlobalQuickViewContainer />
         <Routes>

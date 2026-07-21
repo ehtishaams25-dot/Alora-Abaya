@@ -77,7 +77,7 @@ export function ProductCuratedCard({
   return (
     <div
       {...longPressProps}
-      className="group flex flex-col h-full bg-cream border border-border2/70 hover:border-espresso/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 cursor-pointer relative select-none"
+      className="group flex flex-col h-full bg-cream border border-border2/70 hover:border-espresso/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xs hover:shadow-2xl hover:-translate-y-1 transition-all duration-700 ease-out cursor-pointer relative select-none"
     >
       {/* Large Boutique Photography Container */}
       <div className={`relative ${aspectRatioClass} overflow-hidden bg-sand`}>
@@ -120,16 +120,16 @@ export function ProductCuratedCard({
         <button
           type="button"
           onClick={handleWishlistToggle}
-          className={`absolute top-2.5 end-2.5 sm:top-3.5 sm:end-3.5 z-20 w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
+          className={`absolute top-2.5 end-2.5 sm:top-3.5 sm:end-3.5 z-20 w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-500 shadow-md active:scale-95 ${
             inWishlist
-              ? 'bg-walnut text-cream scale-105'
+              ? 'bg-walnut text-cream scale-105 shadow-walnut/20'
               : 'bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream'
           }`}
           aria-label={inWishlist ? t('common.removeFromWishlist', 'Remove from wishlist') : t('common.addToWishlist', 'Add to wishlist')}
           title={inWishlist ? (isArabic ? 'إزالة من قائمة الأمنيات' : 'Remove from wishlist') : (isArabic ? 'إضافة إلى قائمة الأمنيات' : 'Add to wishlist')}
         >
           <svg
-            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ${inWishlist ? 'fill-current scale-110' : 'stroke-current fill-none'}`}
+            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-500 ease-out ${inWishlist ? 'fill-current scale-110 rotate-0' : 'stroke-current fill-none hover:scale-110'}`}
             strokeWidth="1.8"
             viewBox="0 0 24 24"
           >

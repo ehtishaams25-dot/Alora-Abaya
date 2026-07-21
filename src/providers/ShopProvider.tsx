@@ -33,6 +33,9 @@ interface ShopContextType {
   quickViewProduct: ProductDress | null
   openQuickView: (item: ProductItem) => void
   closeQuickView: () => void
+  isCartDrawerOpen: boolean
+  openCartDrawer: () => void
+  closeCartDrawer: () => void
 }
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined)
@@ -123,6 +126,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   })
 
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState<boolean>(false)
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = useState<boolean>(false)
 
   useEffect(() => {
     localStorage.setItem('alora_is_logged_in', String(isLoggedIn))
@@ -184,6 +188,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
         }
       ]
     })
+    setIsCartDrawerOpen(true)
   }
 
   const removeFromCart = (id: string, color?: string, size?: string) => {
@@ -233,6 +238,9 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   }
   const closeQuickView = () => setQuickViewProduct(null)
 
+  const openCartDrawer = () => setIsCartDrawerOpen(true)
+  const closeCartDrawer = () => setIsCartDrawerOpen(false)
+
   return (
     <ShopContext.Provider
       value={{
@@ -258,7 +266,10 @@ export function ShopProvider({ children }: { children: ReactNode }) {
         closeCheckoutModal,
         quickViewProduct,
         openQuickView,
-        closeQuickView
+        closeQuickView,
+        isCartDrawerOpen,
+        openCartDrawer,
+        closeCartDrawer
       }}
     >
       {children}

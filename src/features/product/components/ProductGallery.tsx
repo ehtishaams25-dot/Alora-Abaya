@@ -24,7 +24,7 @@ export function ProductGallery({
   return (
     <div className="w-full lg:h-full flex flex-col-reverse lg:flex-row gap-3 sm:gap-4 lg:overflow-hidden">
       {/* Vertically Stacked Thumbnails beside primary image on desktop (Horizontal on mobile/tablet below primary image) */}
-      <div className="flex flex-row lg:flex-col gap-2 sm:gap-2.5 shrink-0 overflow-x-auto lg:overflow-y-auto no-scrollbar lg:h-full py-1 lg:py-0 px-1 lg:px-0">
+      <div className="flex flex-row lg:flex-col gap-2 sm:gap-2.5 shrink-0 overflow-x-auto lg:overflow-y-auto no-scrollbar lg:h-full py-1 lg:py-0 px-1 lg:px-0 animate-[fadeUp_0.7s_ease-out_0.6s_both]">
         {galleryViews.map((view, idx) => {
           const isSelected = selectedImageIdx === idx
           const label = t(view.labelKey, isArabic ? view.labelAr : view.labelEn)
@@ -59,7 +59,7 @@ export function ProductGallery({
       </div>
 
       {/* Primary Editorial Image Container with Smooth Crossfade Animation - Exactly fills height on desktop, aspect-[3/4] on mobile */}
-      <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:flex-1 lg:h-full min-h-[380px] sm:min-h-[460px] lg:min-h-0 overflow-hidden rounded-2xl sm:rounded-3xl bg-sand border border-border2/60 shadow-sm shrink-0">
+      <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:flex-1 lg:h-full min-h-[380px] sm:min-h-[460px] lg:min-h-0 overflow-hidden rounded-2xl sm:rounded-3xl bg-sand border border-border2/60 shadow-sm shrink-0 animate-[fadeIn_0.8s_ease-out_0.1s_both]">
         {galleryViews.map((view, idx) => {
           const isSelected = selectedImageIdx === idx
           const label = t(view.labelKey, isArabic ? view.labelAr : view.labelEn)

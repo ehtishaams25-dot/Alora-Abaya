@@ -10,7 +10,7 @@ export interface NavigationProps {
 
 export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
-  const { isLoggedIn, toggleLogin, wishlistItems, cartItems } = useShop()
+  const { isLoggedIn, toggleLogin, wishlistItems, cartItems, openCartDrawer } = useShop()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [announcementDismissed, setAnnouncementDismissed] = useState(false)
@@ -209,10 +209,14 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 )}
               </Link>
 
-              {/* Shopping Bag / Cart Link Button */}
-              <Link
-                to="/bag"
-                className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-1 sm:gap-1.5 min-h-[42px] min-w-[42px] justify-center"
+              {/* Shopping Bag / Cart Slide-In Drawer Button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openCartDrawer()
+                }}
+                className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-1 sm:gap-1.5 min-h-[42px] min-w-[42px] justify-center cursor-pointer"
                 aria-label="Shopping Cart"
                 title="Cart"
               >
@@ -230,7 +234,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 <span className="font-sans text-xs tracking-widest text-espresso font-medium">
                   ({totalCartCount})
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -272,9 +276,16 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                     <span>{isArabic ? 'المفضلة' : 'Wishlist'}</span>
                   </Link>
                   <span>•</span>
-                  <Link to="/bag" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      openCartDrawer()
+                    }}
+                    className="flex items-center gap-1.5 hover:text-walnut cursor-pointer"
+                  >
                     <span>{isArabic ? 'الحقيبة' : 'Bag'} ({totalCartCount})</span>
-                  </Link>
+                  </button>
                 </div>
 
                 <button

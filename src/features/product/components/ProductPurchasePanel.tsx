@@ -36,10 +36,12 @@ export function ProductPurchasePanel({
     }>
       <div>
         {/* Category & Availability Header */}
-        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-mocha mb-2">
+        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-mocha mb-2 animate-[fadeUp_0.6s_ease-out_0.25s_both]">
           <span>{categoryLabel} • {fabricLabel}</span>
-          <span className={`font-medium ${product.availability === 'In Stock' ? 'text-success' : 'text-taupe'}`}>
-            {availabilityLabel}
+          <span className={`font-medium ${product.availability === 'In Stock' ? 'text-walnut font-serif text-xs italic tracking-normal' : 'text-taupe'}`}>
+            {product.availability === 'In Stock'
+              ? (isArabic ? 'صُنعت بكميات محدودة وحصرية' : 'Crafted in limited quantities')
+              : availabilityLabel}
           </span>
         </div>
 
@@ -58,12 +60,12 @@ export function ProductPurchasePanel({
         )}
 
         {/* Product Title */}
-        <h1 className="font-serif text-xl sm:text-2xl lg:text-3xl text-espresso font-normal tracking-tight leading-snug mb-2.5">
+        <h1 className="font-serif text-xl sm:text-2xl lg:text-3xl text-espresso font-normal tracking-tight leading-snug mb-2.5 animate-[fadeUp_0.6s_ease-out_0.3s_both]">
           {title}
         </h1>
 
         {/* Price & Rating Row */}
-        <div className="flex items-center gap-3 mb-3 pb-3 border-b border-border2/70">
+        <div className="flex items-center gap-3 mb-3 pb-3 border-b border-border2/70 animate-[fadeUp_0.6s_ease-out_0.35s_both]">
           <span className="text-lg sm:text-xl font-semibold text-espresso tracking-wide">
             {product.price} {t('common.priceAed', 'SAR')}
           </span>
@@ -75,13 +77,13 @@ export function ProductPurchasePanel({
         </div>
 
         {/* Editorial Short Description (Constrained to fit one section without overflow) */}
-        <p className="text-xs text-mocha leading-relaxed mb-3 line-clamp-3">
+        <p className="text-xs text-mocha leading-relaxed mb-3 line-clamp-3 animate-[fadeUp_0.6s_ease-out_0.4s_both]">
           {desc}
         </p>
         
         {/* Color Selection */}
         {product.colors && product.colors.length > 0 && (
-          <div className="mb-3">
+          <div className="mb-3 animate-[fadeUp_0.6s_ease-out_0.45s_both]">
             <div className="flex items-center justify-between text-[11px] text-espresso font-medium uppercase tracking-wider mb-2">
               <span>{t('product.colorLabel', isArabic ? 'اللون المختار:' : 'Color Selection:')}</span>
               <span className="text-mocha font-normal">{state.colorName}</span>
@@ -118,7 +120,7 @@ export function ProductPurchasePanel({
 
         {/* Size Selection */}
         {product.sizes && product.sizes.length > 0 && (
-          <div className="mb-3">
+          <div className="mb-3 animate-[fadeUp_0.6s_ease-out_0.5s_both]">
             <div className="flex items-center justify-between text-[11px] text-espresso font-medium uppercase tracking-wider mb-2">
               <span>{t('product.sizeLabel', isArabic ? 'المقاس المختار:' : 'Select Size:')}</span>
               <button
@@ -152,7 +154,7 @@ export function ProductPurchasePanel({
       </div>
 
       {/* Purchasing Actions Panel */}
-      <div className="mt-auto pt-3 border-t border-border2/80 shrink-0">
+      <div className="mt-auto pt-3 border-t border-border2/80 shrink-0 animate-[fadeUp_0.6s_ease-out_0.55s_both]">
         <div className="flex flex-col sm:flex-row gap-2.5">
           <button
             type="button"
