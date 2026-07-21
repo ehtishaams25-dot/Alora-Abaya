@@ -58,7 +58,7 @@ export function Footer() {
               {t('footer.quickLinks')}
             </h4>
             <ul className="flex flex-col gap-2.5 text-mocha">
-              <li><Link to="/#dresses" className="hover:text-espresso transition-colors">{t('navigation.allDresses')}</Link></li>
+              <li><Link to="/dresses" className="hover:text-espresso transition-colors">{t('navigation.allDresses')}</Link></li>
               <li><Link to="/#new" className="hover:text-espresso transition-colors">{t('navigation.newArrivals')}</Link></li>
               <li><Link to="/#bestsellers" className="hover:text-espresso transition-colors">{t('navigation.bestSellers')}</Link></li>
               <li><Link to="/#categories" className="hover:text-espresso transition-colors">{t('navigation.categories')}</Link></li>

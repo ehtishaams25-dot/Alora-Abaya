@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { type ProductItem } from '../types'
+import { useShop } from '../../../providers/ShopProvider'
 
 export function NewArrivalsSection() {
   const { t, i18n } = useTranslation()
+  const { addToCart } = useShop()
 
   const products: ProductItem[] = [
     {
@@ -59,7 +61,7 @@ export function NewArrivalsSection() {
           </h2>
           <div className="mt-6 flex justify-center">
             <Link
-              to="/#dresses"
+              to="/dresses"
               className="btn-secondary flex items-center gap-2 group min-h-[44px]"
             >
               <span>{t('common.viewAll')}</span>
@@ -80,7 +82,7 @@ export function NewArrivalsSection() {
                 <img
                   src={item.image}
                   alt={isArabic ? (item.nameAr || item.name) : item.name}
-                  className="card-product-img w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="card-product-img w-full h-full object-cover object-top"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -91,15 +93,26 @@ export function NewArrivalsSection() {
                   </span>
                 )}
 
-                {/* Quick Add overlay button for touch/desktop */}
-                <div className="absolute bottom-4 inset-x-4 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 transform translate-y-0 sm:translate-y-2 sm:group-hover:translate-y-0">
+                {/* Sleek Quick Add button for desktop hover */}
+                <div className="absolute bottom-3 inset-x-3 hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <button
                     type="button"
-                    className="w-full bg-sand/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-2.5 px-4 rounded-full text-xs uppercase tracking-widest font-medium shadow-lg transition-colors flex items-center justify-center gap-1.5 min-h-[40px]"
+                    onClick={() => addToCart(item, item.colors?.[0])}
+                    className="w-full bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-2 px-3 rounded-xl text-[10px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center gap-1 cursor-pointer border border-border2/50"
                   >
-                    <span>{t('common.quickView')}</span>
+                    <span>+ {t('common.addToBag')}</span>
                   </button>
                 </div>
+
+                {/* Mobile touch clean mini button */}
+                <button
+                  type="button"
+                  onClick={() => addToCart(item, item.colors?.[0])}
+                  className="lg:hidden absolute bottom-3 end-3 w-8 h-8 rounded-full bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream shadow-sm flex items-center justify-center transition-colors z-10"
+                  title={t('common.addToBag')}
+                >
+                  <span className="text-base font-light leading-none mb-0.5">+</span>
+                </button>
               </div>
 
               {/* Card Details */}

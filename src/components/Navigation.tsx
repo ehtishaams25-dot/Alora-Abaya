@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import aloraLogo from '../assets/logos/Artboard 13@4x.png'
+import { useShop } from '../providers/ShopProvider'
 
 export interface NavigationProps {
   hideAnnouncement?: boolean
@@ -9,6 +10,7 @@ export interface NavigationProps {
 
 export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
+  const { isLoggedIn, toggleLogin, wishlistItems, cartItems } = useShop()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [announcementDismissed, setAnnouncementDismissed] = useState(false)
@@ -26,8 +28,11 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
     void i18n.changeLanguage(nextLang)
   }
 
+  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  const isArabic = i18n.language.startsWith('ar')
+
   const navLinks = [
-    { label: t('navigation.allDresses'), href: '/#dresses' },
+    { label: t('navigation.allDresses'), href: '/dresses' },
     { label: t('navigation.newArrivals'), href: '/#new' },
     { label: t('navigation.bestSellers'), href: '/#bestsellers' },
     { label: t('navigation.aboutUs'), href: '/#about' },
@@ -70,7 +75,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-espresso hover:text-walnut transition-colors p-2 -ms-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="lg:hidden text-espresso hover:text-walnut transition-colors p-2 -ms-2 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
               aria-label="Toggle menu"
             >
               <svg
@@ -86,7 +91,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
               </svg>
             </button>
 
-            {/* Desktop Navigation Links - NO truncate to prevent 'ATELIER' clipping */}
+            {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-5 xl:gap-8 flex-wrap">
               {navLinks.map((link) => (
                 <Link
@@ -116,10 +121,22 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
             </Link>
           </div>
 
-          {/* End Side: Utilitarian Actions (Language, Search, Profile, Wishlist, Cart) */}
-          <div className="flex items-center justify-end gap-1 sm:gap-3 xl:gap-4 z-10 flex-1">
-            <div className="flex items-center gap-1.5 sm:gap-4">
-              {/* Language Toggle Button (Hidden on mobile since it is inside hamburger drawer) */}
+          {/* End Side: Utilitarian Actions (Language, Guest/VIP switcher, Profile, Wishlist, Cart) */}
+          <div className="flex items-center justify-end gap-1 sm:gap-2.5 xl:gap-3.5 z-10 flex-1">
+            <div className="flex items-center gap-1.5 sm:gap-3 xl:gap-4">
+              
+              {/* Subtle Luxury Guest/VIP Status Switcher (for effortless previewing of both flows) */}
+              <button
+                type="button"
+                onClick={toggleLogin}
+                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border2 bg-cream/70 text-[9px] font-medium uppercase tracking-[0.18em] text-mocha hover:border-walnut hover:text-espresso transition-all cursor-pointer select-none"
+                title="Click to switch between Guest (Logged Out) and VIP Client (Logged In) view"
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-success animate-pulse' : 'bg-taupe'}`} />
+                <span>{isLoggedIn ? (isArabic ? 'عميلة VIP' : 'VIP Client') : (isArabic ? 'زائرة' : 'Guest Mode')}</span>
+              </button>
+
+              {/* Language Toggle Button */}
               <button
                 type="button"
                 onClick={toggleLanguage}
@@ -132,7 +149,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
               {/* Search Button */}
               <button
                 type="button"
-                className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] flex items-center justify-center"
+                className="text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] flex items-center justify-center cursor-pointer"
                 aria-label="Search collection"
                 title="Search"
               >
@@ -149,7 +166,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 </svg>
               </button>
 
-              {/* Profile / Account Button (Hidden on mobile since inside hamburger drawer) */}
+              {/* Profile / Account Button */}
               <Link
                 to="/login"
                 className="hidden sm:flex text-espresso hover:text-walnut transition-colors p-1.5 min-h-[42px] min-w-[42px] items-center justify-center"
@@ -169,9 +186,9 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 </svg>
               </Link>
 
-              {/* Wishlist Button (Hidden on mobile since inside hamburger drawer) */}
-              <button
-                type="button"
+              {/* Wishlist Link Button */}
+              <Link
+                to="/wishlist"
                 className="hidden sm:flex text-espresso hover:text-walnut transition-colors p-1.5 relative min-h-[42px] min-w-[42px] items-center justify-center"
                 aria-label="Wishlist"
                 title="Wishlist"
@@ -187,13 +204,15 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                   />
                 </svg>
-                <span className="absolute top-2 end-2 w-1.5 h-1.5 bg-taupe rounded-full" />
-              </button>
+                {wishlistItems.length > 0 && isLoggedIn && (
+                  <span className="absolute top-2 end-2 w-1.5 h-1.5 bg-taupe rounded-full animate-pulse" />
+                )}
+              </Link>
 
-              {/* Shopping Bag / Cart Button */}
-              <button
-                type="button"
-                className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-1.5 min-h-[42px] min-w-[42px] justify-center"
+              {/* Shopping Bag / Cart Link Button */}
+              <Link
+                to="/bag"
+                className="text-espresso hover:text-walnut transition-colors p-1.5 relative flex items-center gap-1 sm:gap-1.5 min-h-[42px] min-w-[42px] justify-center"
                 aria-label="Shopping Cart"
                 title="Cart"
               >
@@ -208,10 +227,10 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                     d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                   />
                 </svg>
-                <span className="hidden sm:inline-block font-sans text-xs tracking-widest text-espresso font-medium">
-                  (0)
+                <span className="font-sans text-xs tracking-widest text-espresso font-medium">
+                  ({totalCartCount})
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -231,15 +250,33 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 </Link>
               ))}
               <div className="pt-6 border-t border-border2 flex flex-col gap-4 items-center">
-                <div className="flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-espresso font-medium pb-2">
+                
+                {/* Status indicator button in mobile menu */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    toggleLogin()
+                  }}
+                  className="px-4 py-1.5 rounded-full border border-border2 bg-cream text-[10px] uppercase tracking-widest text-espresso font-medium flex items-center gap-2 cursor-pointer"
+                >
+                  <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-success animate-pulse' : 'bg-taupe'}`} />
+                  <span>{isLoggedIn ? (isArabic ? 'وضع عميلة VIP' : 'Mode: VIP Client') : (isArabic ? 'وضع زائرة' : 'Mode: Guest Mode')}</span>
+                </button>
+
+                <div className="flex items-center justify-center gap-5 text-xs uppercase tracking-widest text-espresso font-medium pb-2 flex-wrap">
                   <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
-                    <span>{i18n.language.startsWith('ar') ? 'حسابي' : 'My Account'}</span>
+                    <span>{isArabic ? 'حسابي' : 'My Account'}</span>
                   </Link>
                   <span>•</span>
-                  <Link to="/#wishlist" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
-                    <span>{i18n.language.startsWith('ar') ? 'المفضلة' : 'Wishlist'}</span>
+                  <Link to="/wishlist" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
+                    <span>{isArabic ? 'المفضلة' : 'Wishlist'}</span>
+                  </Link>
+                  <span>•</span>
+                  <Link to="/bag" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
+                    <span>{isArabic ? 'الحقيبة' : 'Bag'} ({totalCartCount})</span>
                   </Link>
                 </div>
+
                 <button
                   type="button"
                   onClick={() => {
@@ -248,7 +285,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                   }}
                   className="px-6 py-2.5 rounded-full border border-walnut/40 bg-cream/60 text-xs font-medium text-espresso hover:border-walnut transition-all cursor-pointer tracking-widest uppercase font-sans w-full max-w-xs"
                 >
-                  {i18n.language.startsWith('ar') ? 'Switch to English (EN)' : 'التبديل إلى العربية (AR)'}
+                  {isArabic ? 'Switch to English (EN)' : 'التبديل إلى العربية (AR)'}
                 </button>
                 <div className="flex justify-center gap-6 text-xs uppercase tracking-[0.2em] text-mocha pt-2">
                   <Link to="/#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.faq')}</Link>

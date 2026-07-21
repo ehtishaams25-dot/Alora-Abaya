@@ -79,7 +79,7 @@ export function WhyChooseUsSection() {
               className="bg-sand/90 rounded-2xl p-6 sm:p-8 border border-border2/80 hover:border-walnut/60 transition-all duration-300 flex flex-col justify-between hover:shadow-md group"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-cream border border-border2 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-cream border border-border2 flex items-center justify-center mb-6">
                   {getIcon(idx)}
                 </div>
 

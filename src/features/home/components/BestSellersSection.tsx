@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type ProductItem } from '../types'
+import { useShop } from '../../../providers/ShopProvider'
 
 export function BestSellersSection() {
   const { t, i18n } = useTranslation()
+  const { addToCart } = useShop()
   const [activeFilter, setActiveFilter] = useState<string>('all')
 
   const products: ProductItem[] = [
@@ -104,7 +106,7 @@ export function BestSellersSection() {
                 <img
                   src={item.image}
                   alt={isArabic ? (item.nameAr || item.name) : item.name}
-                  className="card-product-img w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="card-product-img w-full h-full object-cover object-top"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -138,7 +140,8 @@ export function BestSellersSection() {
                   </span>
                   <button
                     type="button"
-                    className="text-xs uppercase tracking-widest text-walnut hover:text-espresso font-medium transition-colors flex items-center gap-1 min-h-[36px] flex-shrink-0"
+                    onClick={() => addToCart(item, item.colors?.[0])}
+                    className="text-xs uppercase tracking-widest text-walnut hover:text-espresso font-medium transition-colors flex items-center gap-1 min-h-[36px] flex-shrink-0 cursor-pointer"
                   >
                     <span>{t('common.addToBag')}</span>
                     <span aria-hidden="true">+</span>

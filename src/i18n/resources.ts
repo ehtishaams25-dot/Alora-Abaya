@@ -299,6 +299,37 @@ export const resources = {
         terms: "Terms",
         returns: "Returns",
         contact: "Contact"
+      },
+      product: {
+        views: {
+          frontView: "Front View",
+          sideView: "Side View",
+          backView: "Back View",
+          embroidery: "Close-up Embroidery",
+          fabric: "Fabric Detail",
+          lifestyle: "Lifestyle Image",
+          walking: "Walking Shot"
+        },
+        trust: {
+          securePayment: "Secure Payment",
+          fastShipping: "Fast Shipping",
+          easyReturns: "Easy Returns & Exchanges",
+          customerSupport: "Dedicated Customer Support"
+        },
+        categoryLabel: "Category & Fabric:",
+        colorLabel: "Color Selection:",
+        sizeLabel: "Select Size:",
+        sizeGuide: "Size Guide",
+        addToBag: "Add to Bag",
+        addedToBag: "Added to Bag",
+        saveToWishlist: "Save to Wishlist",
+        inWishlist: "Saved in Wishlist",
+        reviews: "reviews",
+        viewFullDetails: "View Full Editorial Page",
+        backToCollection: "Back to Collection",
+        notFoundTitle: "Piece Not Found",
+        notFoundDesc: "We could not find the specific masterpiece you are looking for. Please explore our curated seasonal collection.",
+        browseAll: "Browse All Dresses"
       }
     }
   },
@@ -602,6 +633,37 @@ export const resources = {
         terms: "الشروط والأحكام",
         returns: "الاسترجاع والاستبدال",
         contact: "التواصل والدعم"
+      },
+      product: {
+        views: {
+          frontView: "عرض أمامي",
+          sideView: "عرض جانبي",
+          backView: "عرض خلفي",
+          embroidery: "تطريز مقرب",
+          fabric: "تفاصيل القماش",
+          lifestyle: "إطلالة حية",
+          walking: "لقطة انسيابية أثناء المشي"
+        },
+        trust: {
+          securePayment: "دفع آمن ومشفّر",
+          fastShipping: "شحن سريع ودولي",
+          easyReturns: "استرجاع واستبدال مرن",
+          customerSupport: "خدمة عملاء خاصة ومساعدة"
+        },
+        categoryLabel: "التصنيف ونوع القماش:",
+        colorLabel: "اللون المختار:",
+        sizeLabel: "المقاس المختار:",
+        sizeGuide: "دليل القياسات",
+        addToBag: "أضف إلى الحقيبة",
+        addedToBag: "تمت الإضافة للحقيبة",
+        saveToWishlist: "حفظ في المفضلة",
+        inWishlist: "في المفضلة",
+        reviews: "تقييمات",
+        viewFullDetails: "عرض الصفحة الكاملة للقطعة",
+        backToCollection: "العودة للمجموعة",
+        notFoundTitle: "القطعة غير متوفرة",
+        notFoundDesc: "لم نتمكن من العثور على القطعة المطلوبة. يرجى استكشاف مجموعتنا الملكية الكاملة.",
+        browseAll: "تصفح كافة الفساتين"
       }
     }
   }

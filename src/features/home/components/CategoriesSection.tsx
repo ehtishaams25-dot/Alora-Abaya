@@ -1,17 +1,28 @@
 import { useTranslation } from 'react-i18next'
-import { type CategoryItem } from '../types'
+import { Link } from 'react-router-dom'
+
+interface CategoryCardItem {
+  id: string
+  title: string
+  titleAr?: string
+  count: string
+  countAr?: string
+  image: string
+  filterCategory: string
+}
 
 export function CategoriesSection() {
   const { t, i18n } = useTranslation()
 
-  const categories: CategoryItem[] = [
+  const categories: CategoryCardItem[] = [
     {
       id: "cat-1",
       title: "Daily Modest Abayas",
       titleAr: "عبايات الاستخدام اليومي",
       count: "24 Pieces",
       countAr: "24 قطعة",
-      image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85",
+      filterCategory: "Abayas"
     },
     {
       id: "cat-2",
@@ -19,7 +30,8 @@ export function CategoriesSection() {
       titleAr: "فساتين السهرة والمناسبات",
       count: "18 Pieces",
       countAr: "18 قطعة",
-      image: "https://images.unsplash.com/photo-1767469697194-ac997d70b1ee?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1767469697194-ac997d70b1ee?auto=format&fit=crop&w=800&q=85",
+      filterCategory: "Occasion Wear"
     },
     {
       id: "cat-3",
@@ -27,15 +39,17 @@ export function CategoriesSection() {
       titleAr: "بشت وكفطان فاخر",
       count: "15 Pieces",
       countAr: "15 قطعة",
-      image: "https://images.unsplash.com/photo-1762605135012-56a59a059e60?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1762605135012-56a59a059e60?auto=format&fit=crop&w=800&q=85",
+      filterCategory: "Kaftans"
     },
     {
       id: "cat-4",
-      title: "Luxury Sets & Hijabs",
-      titleAr: "أطقم فاخرة وشيلات",
+      title: "Luxury Daily Dresses",
+      titleAr: "فساتين يومية فاخرة",
       count: "32 Pieces",
       countAr: "32 قطعة",
-      image: "https://images.unsplash.com/photo-1772474569781-2fb1c6539f8c?auto=format&fit=crop&w=800&q=85"
+      image: "https://images.unsplash.com/photo-1772474569781-2fb1c6539f8c?auto=format&fit=crop&w=800&q=85",
+      filterCategory: "Dresses"
     }
   ]
 
@@ -57,15 +71,15 @@ export function CategoriesSection() {
         {/* Mobile-First Category Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {categories.map((cat) => (
-            <a
+            <Link
               key={cat.id}
-              href={`#category-${cat.id}`}
-              className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl sm:hover:-translate-y-1 transition-all duration-500"
+              to={`/dresses?category=${encodeURIComponent(cat.filterCategory)}`}
+              className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl"
             >
               <img
                 src={cat.image}
                 alt={isArabic ? (cat.titleAr || cat.title) : cat.title}
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
               
@@ -81,9 +95,9 @@ export function CategoriesSection() {
                   {isArabic ? (cat.titleAr || cat.title) : cat.title}
                 </h3>
                 
-                <div className="w-8 h-0.5 bg-walnut mt-3 transform scale-x-75 group-hover:scale-x-125 transition-transform duration-300" />
+                <div className="w-8 h-0.5 bg-walnut mt-3" />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
