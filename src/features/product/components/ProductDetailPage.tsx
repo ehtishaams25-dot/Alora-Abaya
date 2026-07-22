@@ -34,7 +34,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
   if (isModal) {
     return (
       <div className="bg-sand w-full h-full flex flex-col justify-center py-4 sm:py-6 lg:py-3 animate-[fadeIn_0.6s_ease-out] min-h-0 overflow-y-auto lg:overflow-hidden">
-        <div className="container-layali flex flex-col lg:h-full lg:max-h-[740px] my-auto min-h-0">
+        <div className="container-alora flex flex-col lg:h-full lg:max-h-[740px] my-auto min-h-0">
           {/* Editorial Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-[11px] font-sans text-mocha mb-3 sm:mb-4 tracking-wider uppercase shrink-0">
             <Link to="/" className="hover:text-espresso transition-colors">
@@ -83,7 +83,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
     <div className="w-full flex flex-col font-sans animate-[fadeIn_0.6s_ease-out] pb-20 lg:pb-0">
       {/* Main Product Hero Section: Perfectly sized to fill the remaining browser window under the navigation bar so the next section never peeks from below on desktop */}
       <section className="bg-sand w-full py-4 sm:py-6 lg:py-5 border-b border-border2/60 flex flex-col justify-center lg:h-[calc(100vh-120px)] lg:min-h-[580px]">
-        <div className="container-layali flex flex-col lg:h-full flex-1 min-h-0 justify-center">
+        <div className="container-alora flex flex-col lg:h-full flex-1 min-h-0 justify-center">
           {/* Editorial Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-[11px] font-sans text-mocha mb-3 sm:mb-4 tracking-wider uppercase shrink-0">
             <Link to="/" className="hover:text-espresso transition-colors">
@@ -201,11 +201,10 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
                   window.scrollTo({ top: 380, behavior: 'smooth' })
                 }
               }}
-              className={`min-h-[46px] px-6 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer ${
-                state.sizeError
-                  ? 'bg-[#8B2626] text-cream animate-shake'
-                  : 'bg-espresso text-cream hover:bg-ink'
-              }`}
+              className={`min-h-[46px] px-6 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer ${state.sizeError
+                ? 'bg-[#8B2626] text-cream animate-shake'
+                : 'bg-espresso text-cream hover:bg-ink'
+                }`}
             >
               <span>
                 {state.sizeError

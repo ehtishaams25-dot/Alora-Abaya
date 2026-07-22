@@ -57,7 +57,7 @@ export function CategoriesSection() {
 
   return (
     <section id="dresses" className="section-padding bg-cream border-t border-b border-border2">
-      <div id="categories" className="container-layali">
+      <div id="categories" className="container-alora">
         {/* Minimalist Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">

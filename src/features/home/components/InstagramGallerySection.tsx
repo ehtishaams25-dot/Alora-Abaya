@@ -236,7 +236,7 @@ export function InstagramGallerySection() {
 
   return (
     <section id="instagram" className="section-padding bg-cream border-t border-border2 overflow-hidden relative">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Section Header (Centered, focused typography) */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] flex items-center justify-center gap-2">

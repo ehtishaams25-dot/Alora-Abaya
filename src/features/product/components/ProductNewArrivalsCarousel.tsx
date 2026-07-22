@@ -67,25 +67,15 @@ export function ProductNewArrivalsCarousel({
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Editorial Section Header with Minimal Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-xl">
-            <span className="text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3">
-              {t('product.newArrivals.eyebrow', isArabic ? 'إبداعات الموسم الجديدة' : 'Seasonal Debut')}
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug mb-3">
-              {t('product.newArrivals.title', isArabic ? 'وصل حديثاً إلى الأتليه' : 'New Arrivals')}
-            </h2>
-            <p className="text-xs sm:text-sm text-mocha font-sans leading-relaxed">
-              {t('product.newArrivals.desc', isArabic
-                ? 'أحدث الابتكارات المصممة من أجود أقمشة الحرير والكريب بلمسات يدوية استثنائية.'
-                : 'The latest creations unveiled at our atelier, featuring fluid silks and masterful French draping.')}
-            </p>
-          </div>
+        <div className="flex items-center justify-between gap-6 mb-10 sm:mb-14">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
+            {t('product.newArrivals.title', isArabic ? 'وصل حديثاً إلى الأتليه' : 'New Arrivals')}
+          </h2>
 
           {/* Minimal Navigation Arrows */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0 self-start md:self-end">
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={handleScrollPrev}

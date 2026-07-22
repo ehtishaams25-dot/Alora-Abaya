@@ -151,7 +151,7 @@ export function SearchOverlayModal() {
     >
       {/* Top Search Bar Header */}
       <div className="border-b border-border2/80 bg-cream/70 py-6 px-4 sm:px-8 lg:px-16 shrink-0 shadow-sm">
-        <div className="container-layali flex items-center justify-between gap-4 max-w-6xl mx-auto">
+        <div className="container-alora flex items-center justify-between gap-4 max-w-6xl mx-auto">
           {/* Search Icon */}
           <div className="text-walnut shrink-0">
             <svg className="w-6 h-6 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -201,7 +201,7 @@ export function SearchOverlayModal() {
 
       {/* Main Body (Scrollable Results & Suggestions) */}
       <div className="flex-1 overflow-y-auto no-scrollbar py-8 px-4 sm:px-8 lg:px-16">
-        <div className="container-layali max-w-6xl mx-auto space-y-10">
+        <div className="container-alora max-w-6xl mx-auto space-y-10">
           
           {/* Popular Categories Filter Pills */}
           <div>

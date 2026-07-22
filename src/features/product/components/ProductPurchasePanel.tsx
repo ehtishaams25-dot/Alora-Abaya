@@ -29,7 +29,6 @@ export function ProductPurchasePanel({
   const desc = isArabic ? (product.descriptionAr || product.description) : product.description
   const categoryLabel = isArabic ? product.categoryAr : product.category
   const fabricLabel = isArabic ? product.fabricAr : product.fabric
-  const availabilityLabel = isArabic ? product.availabilityAr : product.availability
 
   return (
     <div className={isModal
@@ -37,14 +36,9 @@ export function ProductPurchasePanel({
       : "bg-cream p-4 sm:p-5 lg:p-5 rounded-3xl border border-border2/80 shadow-xs font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
     }>
       <div>
-        {/* Category & Availability Header */}
-        <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-mocha mb-2 animate-[fadeUp_0.6s_ease-out_0.25s_both]">
+        {/* Category & Fabric Header */}
+        <div className="text-[11px] uppercase tracking-[0.2em] text-mocha mb-2 animate-[fadeUp_0.6s_ease-out_0.25s_both]">
           <span>{categoryLabel} • {fabricLabel}</span>
-          <span className={`font-medium ${product.availability === 'In Stock' ? 'text-walnut font-serif text-xs italic tracking-normal' : 'text-taupe'}`}>
-            {product.availability === 'In Stock'
-              ? (isArabic ? 'صُنعت بكميات محدودة وحصرية' : 'Crafted in limited quantities')
-              : availabilityLabel}
-          </span>
         </div>
 
         {/* Optional link to Full Product Detail Page when inside Quick View Modal */}
@@ -53,10 +47,10 @@ export function ProductPurchasePanel({
             <Link
               to={`/product/${product.id}`}
               onClick={onClose}
-              className="text-[11px] uppercase tracking-[0.18em] text-walnut hover:text-espresso underline underline-offset-4 transition-colors font-medium flex items-center gap-1"
+              className="group inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-walnut hover:text-espresso transition-colors font-medium"
             >
-              <span>{t('product.viewFullDetails', isArabic ? 'عرض الصفحة الكاملة للقطعة' : 'View Full Editorial Page')}</span>
-              <span aria-hidden="true" className="rtl:rotate-180">→</span>
+              <span className="underline underline-offset-4 decoration-border2/80 group-hover:decoration-espresso transition-colors">{t('product.viewFullDetails', isArabic ? 'عرض الصفحة الكاملة للقطعة' : 'View Full Editorial Page')}</span>
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180">→</span>
             </Link>
           </div>
         )}
@@ -98,21 +92,26 @@ export function ProductPurchasePanel({
                     key={idx}
                     type="button"
                     onClick={() => actions.setSelectedColorIdx(idx)}
-                    className={`w-8 h-8 rounded-full border-2 transition-all duration-300 cursor-pointer flex items-center justify-center ${
-                      isSelected
-                        ? 'border-espresso scale-110 shadow-sm ring-2 ring-espresso/15 ring-offset-2 ring-offset-cream'
-                        : 'border-border2 hover:scale-105'
-                    }`}
-                    style={{ backgroundColor: hex }}
+                    className="group relative w-8 h-8 rounded-full p-0 flex-shrink-0 cursor-pointer focus:outline-none"
                     title={isArabic ? product.colorNamesAr?.[idx] : product.colorNames?.[idx]}
                   >
-                    {isSelected && (
-                      <span className={`w-1.5 h-1.5 rounded-full transition-transform duration-300 ${
-                        hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
-                          ? 'bg-espresso'
-                          : 'bg-cream'
-                      }`} />
-                    )}
+                    <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                      isSelected
+                        ? 'border-2 border-espresso shadow-xs'
+                        : 'border border-transparent group-hover:border-border2'
+                    }`} />
+                    <span
+                      className="absolute inset-1 rounded-full border border-black/10 shadow-inner flex items-center justify-center transition-transform duration-300"
+                      style={{ backgroundColor: hex }}
+                    >
+                      {isSelected && (
+                        <span className={`w-1.5 h-1.5 rounded-full ${
+                          hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
+                            ? 'bg-espresso'
+                            : 'bg-cream'
+                        }`} />
+                      )}
+                    </span>
                   </button>
                 )
               })}
@@ -132,7 +131,14 @@ export function ProductPurchasePanel({
               </div>
               <button
                 type="button"
-                onClick={() => openSizeGuide(product)}
+                onClick={() => {
+                  const section = document.getElementById('size-and-fit-guide')
+                  if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' })
+                  } else {
+                    openSizeGuide(product)
+                  }
+                }}
                 className="text-taupe hover:text-espresso underline underline-offset-4 cursor-pointer text-[10px] sm:text-[11px] transition-colors font-sans"
               >
                 {t('product.sizeGuide', isArabic ? 'دليل القياسات' : 'Size Guide')}
@@ -188,8 +194,10 @@ export function ProductPurchasePanel({
               </>
             ) : (
               <>
+                <svg className="w-4 h-4 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
                 <span>{t('product.addToBag', isArabic ? 'أضف إلى الحقيبة' : 'Add to Bag')}</span>
-                <span aria-hidden="true" className="text-sm leading-none">+</span>
               </>
             )}
           </button>

@@ -54,7 +54,7 @@ export function ProductDetailsAccordion({ product, isArabic }: ProductDetailsAcc
 
   return (
     <section className="min-h-[80svh] flex items-center py-24 sm:py-32 lg:py-40 bg-sand border-b border-border2/60 relative">
-      <div className="container-layali w-full">
+      <div className="container-alora w-full">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 xl:gap-28 items-start">
           {/* Left Column: Editorial Header & Introduction */}
           <div className="w-full lg:w-4/12 lg:sticky lg:top-40">

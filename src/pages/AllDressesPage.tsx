@@ -231,7 +231,7 @@ export function AllDressesPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const isArabic = i18n.language.startsWith('ar')
 
-  useDocumentTitle(isArabic ? 'ليالي | كافة العبايات والفساتين الفاخرة' : 'Layali | All Dresses & Gowns')
+  useDocumentTitle(isArabic ? 'الورا للفساتين | كافة العبايات والفساتين الفاخرة' : 'Alora | All Dresses & Gowns')
 
   // Read initial query params if user clicked a specific category from home page
   const initialCategoryParam = searchParams.get('category') || ''
@@ -599,18 +599,21 @@ export function AllDressesPage() {
                   key={col.name}
                   type="button"
                   onClick={() => toggleArrayItem(setSelectedColors, col.name)}
-                  className={`group relative flex flex-col items-center gap-1.5 cursor-pointer p-1 rounded-xl transition-all ${selected ? 'bg-cream shadow-xs' : ''
-                    }`}
+                  className="flex flex-col items-center gap-1.5 cursor-pointer p-1 transition-all"
                   title={isArabic ? col.labelAr : col.name}
                 >
-                  <span
-                    className={`w-7 h-7 rounded-full border-2 transition-transform flex items-center justify-center ${selected ? 'border-espresso scale-110 shadow-sm' : 'border-border2 group-hover:scale-105'
-                      }`}
-                    style={{ backgroundColor: col.hex }}
-                  >
-                    {selected && (
-                      <span className={`w-1.5 h-1.5 rounded-full ${col.hex.toLowerCase() === '#ffffff' || col.hex.toLowerCase() === '#faf9f6' ? 'bg-espresso' : 'bg-cream'}`} />
-                    )}
+                  <span className="group relative w-7 h-7 rounded-full flex-shrink-0">
+                    <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                      selected ? 'border-2 border-espresso shadow-xs' : 'border border-transparent group-hover:border-border2'
+                    }`} />
+                    <span
+                      className="absolute inset-1 rounded-full border border-black/10 shadow-inner flex items-center justify-center transition-transform duration-300"
+                      style={{ backgroundColor: col.hex }}
+                    >
+                      {selected && (
+                        <span className={`w-1 h-1 rounded-full ${col.hex.toLowerCase() === '#ffffff' || col.hex.toLowerCase() === '#faf9f6' ? 'bg-espresso' : 'bg-cream'}`} />
+                      )}
+                    </span>
                   </span>
                   <span className={`text-[10px] tracking-wide ${selected ? 'text-espresso font-medium' : 'text-mocha'}`}>
                     {isArabic ? col.labelAr : col.name}
@@ -787,7 +790,7 @@ export function AllDressesPage() {
 
 
       {/* Main Content Area: Persistent Left Sidebar + Spacious Product Grid */}
-      <main className="flex-1 container-layali px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <main className="flex-1 container-alora px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Mobile Header Bar (when sidebar is hidden on mobile screens) */}
         <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-border2/60 lg:hidden">
           <div className="flex items-center gap-2">
@@ -912,7 +915,7 @@ export function AllDressesPage() {
       {/* Recently Viewed Carousel Section — with right-side fade mask to prevent awkward hard cropping */}
       {recentlyViewed.length > 0 && (
         <section aria-label="Recently Viewed" className="py-12 sm:py-16 bg-sand border-t border-border2/60 overflow-hidden">
-          <div className="container-layali px-4 sm:px-6 lg:px-8">
+          <div className="container-alora px-4 sm:px-6 lg:px-8">
             <header className="mb-8 text-start flex items-center justify-between">
               <div>
                 <span className="text-eyebrow text-walnut block mb-1">

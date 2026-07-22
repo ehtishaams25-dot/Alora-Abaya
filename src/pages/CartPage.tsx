@@ -21,7 +21,7 @@ export function CartPage() {
   } = useShop()
 
   const isArabic = i18n.language.startsWith('ar')
-  useDocumentTitle(isArabic ? 'ليالي | حقيبة التسوق' : 'Layali | Shopping Bag')
+  useDocumentTitle(isArabic ? 'الورا للفساتين | حقيبة التسوق' : 'Alora | Shopping Bag')
 
   const [checkoutNotice, setCheckoutNotice] = useState(false)
 
@@ -42,7 +42,7 @@ export function CartPage() {
     <div className="min-h-screen bg-sand text-espresso font-sans flex flex-col selection:bg-taupe/20 selection:text-espresso">
       <Navigation />
 
-      <main className="flex-1 container-layali py-10 sm:py-16 lg:py-20">
+      <main className="flex-1 container-alora py-10 sm:py-16 lg:py-20">
         {checkoutNotice && (
           <div className="max-w-3xl mx-auto mb-8 p-4 rounded-xl bg-success/10 border border-success/30 text-success text-xs sm:text-sm font-medium tracking-wide animate-fade-up flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-success inline-block animate-pulse shrink-0" />

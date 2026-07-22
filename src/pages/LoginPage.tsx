@@ -5,7 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function LoginPage() {
   const { t } = useTranslation()
-  useDocumentTitle('Layali | Account Authentication ليالي')
+  useDocumentTitle('Alora | Account Authentication الورا للفساتين')
 
   const [isRegister, setIsRegister] = useState(false)
   const [showPassword, setShowPassword] = useState(false)

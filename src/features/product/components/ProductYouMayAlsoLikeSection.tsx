@@ -24,21 +24,12 @@ export function ProductYouMayAlsoLikeSection({
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Editorial Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-          <span className="text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3">
-            {t('product.alsoLike.eyebrow', isArabic ? 'اختيارات متناسقة من الأتليه' : 'Curated Recommendations')}
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 lg:mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
             {t('product.alsoLike.title', isArabic ? 'قد ينال إعجابك أيضاً' : 'You May Also Like')}
           </h2>
-          <div className="w-12 h-[1px] bg-walnut/60 mx-auto mb-4" />
-          <p className="text-xs sm:text-sm text-mocha font-sans leading-relaxed max-w-xl mx-auto">
-            {t('product.alsoLike.desc', isArabic
-              ? 'قطع مكملة تم اختيارها بعناية فائقة لتتناغم مع خزانة ملابسك وتكمل إطلالتك الملكية.'
-              : 'Complementary silhouettes tailored with exquisite craftsmanship to harmonize effortlessly with your collection.')}
-          </p>
         </div>
 
         {/* 4 Premium Product Cards Grid with Generous Catalogue Spacing (Double sided on mobile) */}

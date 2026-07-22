@@ -1,5 +1,5 @@
 
-Here are the **Layali design tokens** — the exact palette, typography, spacing, and motion values powering the site. You can copy these into any style guide, Figma, or documentation.
+Here are the **Alora design tokens** — the exact palette, typography, spacing, and motion values powering the site. You can copy these into any style guide, Figma, or documentation.
 
 ---
 
@@ -25,18 +25,18 @@ Here are the **Layali design tokens** — the exact palette, typography, spacing
 
 | Token | Font | Purpose |
 |---|---|---|
-| `font-serif` | **Playfair Display** | H1, H2, H3 (elegant, editorial) |
-| `font-sans` | **Outfit** | Body text, UI, buttons |
-| `font-arabic` | **Amiri** | Logo (ليالي), Arabic accents |
+| `font-serif` | **Spectral & Libre Baskerville** (EN) / **El Messiri** (AR) | H1, H2, H3 (high-legibility, French luxury editorial) |
+| `font-sans` | **Plus Jakarta Sans & Inter** (EN) / **Alexandria & IBM Plex Sans Arabic** (AR) | Body text, UI, buttons, prices, navigation |
+| `font-arabic` | **El Messiri & Alexandria** | Arabic headings, accents, and RTL typography |
 
-**Scale**:
+**Scale & Hierarchy**:
 ```
-H1  text-5xl sm:text-6xl lg:text-7xl  tracking-tight  leading-[1.02]
-H2  text-3xl sm:text-4xl lg:text-5xl  tracking-tight
-H3  text-xl sm:text-2xl lg:text-3xl
-Eyebrow  text-xs uppercase tracking-[0.28em]  (walnut color)
-Body  text-base leading-relaxed
-Small  text-sm tracking-wide
+H1  text-5xl sm:text-6xl lg:text-7xl  tracking-[-0.015em] rtl:tracking-normal leading-[1.02] rtl:leading-[1.12] font-normal
+H2  text-3xl sm:text-4xl lg:text-5xl  tracking-tight rtl:tracking-normal leading-[1.15] rtl:leading-[1.24] font-normal
+H3  text-xl sm:text-2xl lg:text-3xl   tracking-tight rtl:tracking-normal leading-[1.25] rtl:leading-[1.3] font-medium
+Eyebrow  text-xs uppercase tracking-[0.18em] rtl:tracking-[0.05em] (walnut color font-semibold)
+Body  text-base sm:text-[16.5px] leading-[1.75] text-mocha font-normal
+Small  text-sm tracking-normal rtl:tracking-normal leading-[1.65] text-mocha font-normal
 ```
 
 ---

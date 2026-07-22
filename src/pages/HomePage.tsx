@@ -11,7 +11,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { AppLayout } from '../layouts/AppLayout'
 
 export function HomePage() {
-  useDocumentTitle('Layali | Luxury Dresses & Gowns ليالي')
+  useDocumentTitle('Alora | Luxury Dresses & Gowns الورا للفساتين')
 
   return (
     <AppLayout>

@@ -183,7 +183,7 @@ export function WishlistPage() {
   const { t, i18n } = useTranslation()
   const { isLoggedIn, setIsLoggedIn, wishlistItems, removeFromWishlist, addToCart } = useShop()
   const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
-  useDocumentTitle(i18n.language.startsWith('ar') ? 'ليالي | قائمة الأمنيات' : 'Layali | Curated Wishlist')
+  useDocumentTitle(i18n.language.startsWith('ar') ? 'الورا للفساتين | قائمة الأمنيات' : 'Alora | Curated Wishlist')
 
   const isArabic = i18n.language.startsWith('ar')
   const [authMode, setAuthMode] = useState<'welcome' | 'login' | 'register'>('welcome')
@@ -451,7 +451,7 @@ export function WishlistPage() {
     <div className="min-h-screen bg-sand text-espresso font-sans flex flex-col selection:bg-taupe/20 selection:text-espresso">
       <Navigation />
 
-      <main className="flex-1 container-layali py-6 sm:py-8 lg:py-10">
+      <main className="flex-1 container-alora py-6 sm:py-8 lg:py-10">
         {/* Minimal Left-Aligned Header */}
         <header className="mb-6 sm:mb-8 animate-fade-up">
           <span className="text-eyebrow text-walnut mb-1 tracking-[0.28em] block">

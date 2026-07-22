@@ -69,7 +69,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
           : 'bg-sand/80 backdrop-blur-md py-5 border-b border-border2/50'
           }`}
       >
-        <div className="container-layali relative flex items-center justify-between min-h-[44px]">
+        <div className="container-alora relative flex items-center justify-between min-h-[44px]">
           {/* Start Side: Mobile Menu Toggle & All Dress / Collection Navigation Links */}
           <div className="flex items-center justify-start gap-4 xl:gap-7 z-10 flex-1">
             <button

@@ -127,7 +127,7 @@ export function ProductRecommendationsSection({ currentProductId, isArabic }: Pr
 
   return (
     <section className="py-12 sm:py-16 lg:py-16 bg-sand border-b border-border2/60 relative">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
           <span className="text-xs uppercase tracking-[0.25em] text-walnut font-medium block mb-3">

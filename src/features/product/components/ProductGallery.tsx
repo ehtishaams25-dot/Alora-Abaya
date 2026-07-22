@@ -80,27 +80,12 @@ export function ProductGallery({
           )
         })}
 
-        {/* Product Badge Top Corner */}
+        {/* Editorial Collection Badge Overlay */}
         {badgeText && (
-          <span className="absolute top-4 start-4 sm:top-6 sm:start-6 bg-walnut/95 backdrop-blur-md text-cream text-[10px] sm:text-xs uppercase tracking-[0.22em] px-3.5 py-1.5 rounded-full font-medium shadow-sm z-20">
+          <div className="absolute top-4 start-4 z-20 bg-espresso/90 backdrop-blur-md text-cream px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] rtl:tracking-[0.05em] font-medium font-sans shadow-xs pointer-events-none">
             {badgeText}
-          </span>
+          </div>
         )}
-
-        {/* Current View Editorial Caption Pill Bottom Corner */}
-        <div className="absolute bottom-4 start-4 sm:bottom-6 sm:start-6 z-20">
-          <span className="bg-espresso/85 backdrop-blur-md text-cream text-[10px] sm:text-[11px] uppercase tracking-[0.18em] px-3.5 py-1.5 rounded-full font-sans font-medium shadow-sm inline-flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-cream animate-pulse" />
-            <span>
-              {t(
-                galleryViews[selectedImageIdx]?.labelKey || '',
-                isArabic
-                  ? galleryViews[selectedImageIdx]?.labelAr
-                  : galleryViews[selectedImageIdx]?.labelEn
-              )}
-            </span>
-          </span>
-        </div>
       </div>
     </div>
   )

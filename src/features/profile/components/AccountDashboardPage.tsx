@@ -175,7 +175,7 @@ export function AccountDashboardPage() {
     <div className="min-h-screen flex flex-col bg-sand">
       <Navigation />
       <div className="flex-1 py-12 sm:py-16 lg:py-24 animate-fade-in">
-        <div className="container-layali">
+        <div className="container-alora">
         
         {/* Top Header Section with Personalized Greeting */}
         <div className="border-b border-border2/80 pb-8 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

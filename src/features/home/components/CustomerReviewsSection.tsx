@@ -37,7 +37,7 @@ export function CustomerReviewsSection() {
 
   return (
     <section className="section-padding bg-sand">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Minimalist Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">

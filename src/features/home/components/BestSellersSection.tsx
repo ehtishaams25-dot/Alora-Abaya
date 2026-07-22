@@ -55,47 +55,18 @@ function BestSellerProductCard({
         </div>
 
         {/* Sleek, Compact Hover Actions (Desktop Only) */}
-        <div className="absolute bottom-3 inset-x-3 hidden lg:flex items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              addToCart(item, item.colors?.[0])
-            }}
-            className="bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-1.5 px-2.5 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap border border-border2/50 shrink-0"
-            title={isArabic ? 'إضافة للحقيبة' : 'Quick Add to Bag'}
-          >
-            <svg className="w-3.5 h-3.5 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-            </svg>
-            <span>{isArabic ? 'إضافة' : 'Quick Add'}</span>
-          </button>
+        <div className="absolute bottom-3 inset-x-3 hidden lg:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation()
               onQuickView(item)
             }}
-            className="flex-1 bg-cream/95 backdrop-blur-md text-espresso hover:bg-walnut hover:text-cream py-1.5 px-3 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/50"
+            className="w-full bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-2 px-3 rounded-xl text-[10px] uppercase tracking-[0.16em] font-medium shadow-sm transition-colors flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/50"
           >
             <span>{isArabic ? 'نظرة سريعة' : 'Quick View'}</span>
           </button>
         </div>
-
-        {/* Mobile touch clean mini button */}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation()
-            addToCart(item, item.colors?.[0])
-          }}
-          className="lg:hidden absolute bottom-2 end-2 sm:bottom-3 sm:end-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream shadow-sm flex items-center justify-center transition-colors z-10"
-          title={t('common.addToBag')}
-        >
-          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-current fill-none" strokeWidth="1.6" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-          </svg>
-        </button>
       </div>
 
       <div className="p-3 sm:p-5 flex flex-col flex-1 justify-between bg-cream">
@@ -119,11 +90,13 @@ function BestSellerProductCard({
               e.stopPropagation()
               addToCart(item, item.colors?.[0])
             }}
-            className="text-[9.5px] sm:text-xs uppercase tracking-widest text-walnut hover:text-espresso font-medium transition-colors flex items-center gap-0.5 min-h-[30px] sm:min-h-[36px] flex-shrink-0 cursor-pointer"
+            className="text-[9.5px] sm:text-xs uppercase tracking-widest text-walnut hover:text-espresso font-medium transition-colors flex items-center gap-1 min-h-[30px] sm:min-h-[36px] flex-shrink-0 cursor-pointer"
           >
+            <svg className="w-3.5 h-3.5 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
             <span className="hidden sm:inline">{t('common.addToBag')}</span>
             <span className="sm:hidden">{isArabic ? 'إضافة' : 'Add'}</span>
-            <span aria-hidden="true">+</span>
           </button>
         </div>
       </div>
@@ -195,7 +168,7 @@ export function BestSellersSection() {
 
   return (
     <section id="bestsellers" className="section-padding bg-sand">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Minimalist Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">

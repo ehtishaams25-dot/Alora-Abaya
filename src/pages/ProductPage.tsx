@@ -14,7 +14,7 @@ export function ProductPage() {
   const product = DRESSES_DATA.find((p) => p.id === id) || DRESSES_DATA[0]
   const title = isArabic ? (product?.nameAr || product?.name) : product?.name
 
-  useDocumentTitle(title ? `${isArabic ? 'ليالي' : 'Layali'} | ${title}` : (isArabic ? 'ليالي | تفاصيل القطعة' : 'Layali | Product Details'))
+  useDocumentTitle(title ? `${isArabic ? 'الورا للفساتين' : 'Alora'} | ${title}` : (isArabic ? 'الورا للفساتين | تفاصيل القطعة' : 'Alora | Product Details'))
 
   if (!product) {
     return (

@@ -8,7 +8,7 @@ interface ProductRecentlyViewedSectionProps {
   isArabic: boolean
 }
 
-const STORAGE_KEY = 'layali_recently_viewed_ids'
+const STORAGE_KEY = 'alora_recently_viewed_ids'
 
 export function ProductRecentlyViewedSection({
   currentProductId,
@@ -71,18 +71,12 @@ export function ProductRecentlyViewedSection({
 
   return (
     <section className="py-14 sm:py-20 bg-sand/80 border-b border-border2/40 transition-colors">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Simple Horizontal Section Header */}
-        <div className="flex items-center justify-between gap-4 mb-8 sm:mb-10">
-          <div className="flex items-center gap-3">
-            <span className="w-8 sm:w-12 h-[1px] bg-walnut/60" />
-            <h3 className="font-serif text-sm sm:text-base lg:text-lg text-espresso tracking-wide font-normal uppercase">
-              {t('product.recentlyViewed.title', isArabic ? 'شاهدتِ مؤخراً' : 'Recently Viewed')}
-            </h3>
-          </div>
-          <span className="text-[11px] font-sans text-mocha tracking-wider uppercase">
-            {isArabic ? 'سجل التصفح الشخصي' : 'Personal Archive'}
-          </span>
+        <div className="mb-8 sm:mb-10">
+          <h3 className="font-serif text-sm sm:text-base lg:text-lg text-espresso tracking-wide font-normal uppercase">
+            {t('product.recentlyViewed.title', isArabic ? 'شاهدتِ مؤخراً' : 'Recently Viewed')}
+          </h3>
         </div>
 
         {/* Simple Horizontal Row of Small Cards with Soft Hover Animations and Bidirectional Edge Fading */}

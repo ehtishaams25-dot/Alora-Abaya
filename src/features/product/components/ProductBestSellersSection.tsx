@@ -25,22 +25,12 @@ export function ProductBestSellersSection({
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Editorial Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 sm:mb-20">
-          <div className="max-w-xl">
-            <span className="text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3">
-              {t('product.bestSellers.eyebrow', isArabic ? 'الأكثر طلباً وتقديراً' : 'Most Cherished')}
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
-              {t('product.bestSellers.title', isArabic ? 'القطع الأكثر مبيعاً' : 'Best Sellers')}
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-mocha font-sans leading-relaxed max-w-md lg:text-end">
-            {t('product.bestSellers.desc', isArabic
-              ? 'التصاميم الأيقونية التي حازت على إعجاب نخبة عميلاتنا في صالونات ليالي حول العالم.'
-              : 'Iconic silhouettes that have captivated our most discerning clientele across global salons.')}
-          </p>
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 lg:mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
+            {t('product.bestSellers.title', isArabic ? 'القطع الأكثر مبيعاً' : 'Best Sellers')}
+          </h2>
         </div>
 
         {/* Harmonious Symmetrical Grid with Luxury Ranking Indicators (Double sided on mobile) */}

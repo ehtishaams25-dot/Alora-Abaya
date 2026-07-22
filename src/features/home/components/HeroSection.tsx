@@ -21,7 +21,7 @@ export function HeroSection() {
         </div>
 
         {/* Minimalist Luxury Content Overlay */}
-        <div className="container-layali relative z-10 py-24 lg:py-32 flex flex-col items-center justify-center text-center min-h-[80vh] lg:min-h-[85vh]">
+        <div className="container-alora relative z-10 py-24 lg:py-32 flex flex-col items-center justify-center text-center min-h-[80vh] lg:min-h-[85vh]">
           {/* Editorial Typography Showcase */}
           <div className="max-w-4xl my-auto py-12 flex flex-col items-center">
             {/* Delicate Eyebrow */}
