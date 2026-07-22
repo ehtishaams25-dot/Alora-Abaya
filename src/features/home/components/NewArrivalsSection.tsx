@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { type ProductItem } from '../types'
-import { useShop } from '../../../providers/ShopProvider'
+
 import { QuickViewModal } from '../../../components/QuickViewModal'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 import { useLongPressQuickView } from '../../../hooks/useLongPressQuickView'
@@ -11,13 +11,11 @@ function NewArrivalProductCard({
   item,
   isArabic,
   t,
-  addToCart,
   onQuickView
 }: {
   item: ProductItem
   isArabic: boolean
   t: any
-  addToCart: any
   onQuickView: (item: ProductItem) => void
 }) {
   const navigate = useNavigate()
@@ -100,7 +98,7 @@ function NewArrivalProductCard({
 
 export function NewArrivalsSection() {
   const { t, i18n } = useTranslation()
-  const { addToCart } = useShop()
+
   const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
 
   const products: ProductItem[] = [
@@ -174,7 +172,6 @@ export function NewArrivalsSection() {
               item={item}
               isArabic={isArabic}
               t={t}
-              addToCart={addToCart}
               onQuickView={(p) => {
                 const found = DRESSES_DATA.find(d => d.id === p.id)
                 if (found) setQuickViewProduct(found)

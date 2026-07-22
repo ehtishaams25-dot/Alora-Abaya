@@ -19,7 +19,7 @@ export function ProductCuratedCard({
 }: ProductCuratedCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { addToCart, addToWishlist, removeFromWishlist, isInWishlist, openQuickView } = useShop()
+  const { addToWishlist, removeFromWishlist, isInWishlist, openQuickView } = useShop()
 
   const inWishlist = isInWishlist(product.id)
   const title = isArabic ? (product.nameAr || product.name) : product.name
