@@ -178,14 +178,14 @@ export function BestSellersSection() {
             {t('home.bestSellers.title')}
           </h2>
 
-          {/* Centered One-Liner Filter Tabs (30% more compact to fit cleanly on one row) */}
-          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-start md:justify-center gap-1 sm:gap-1.5 md:gap-2 max-w-full overflow-x-auto no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">
+          {/* Centered Filter Tabs (Forced single line) */}
+          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-center gap-1 sm:gap-2.5 md:gap-3 max-w-full w-full">
             {filters.map((filter) => (
               <button
                 key={filter.id}
                 type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-2 sm:px-3 md:px-3.5 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-[10.5px] uppercase tracking-wide font-medium transition-all min-h-[24px] sm:min-h-[28px] flex items-center justify-center whitespace-nowrap ${
+                className={`px-1.5 sm:px-3 md:px-3.5 py-1 sm:py-1.5 rounded-full text-[7.5px] min-[360px]:text-[8.5px] sm:text-[10px] md:text-[10.5px] uppercase tracking-wide font-medium transition-all min-h-[24px] sm:min-h-[28px] flex items-center justify-center whitespace-nowrap ${
                   activeFilter === filter.id
                     ? 'bg-espresso text-cream shadow-sm'
                     : 'bg-cream text-espresso border border-border2 hover:border-walnut'
