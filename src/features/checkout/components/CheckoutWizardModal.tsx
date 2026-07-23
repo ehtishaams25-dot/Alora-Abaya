@@ -127,10 +127,6 @@ export function CheckoutWizardModal() {
     }, 300)
   }
 
-  // Split payment calculations
-  const tabbySplit = Math.ceil(total / 4)
-  const tamaraSplit = Math.ceil(total / 3)
-
   return (
     <div
       className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-ink/70 backdrop-blur-md animate-fade-in"
