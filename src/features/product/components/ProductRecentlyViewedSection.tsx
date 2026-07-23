@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 
 interface ProductRecentlyViewedSectionProps {
@@ -74,20 +73,11 @@ export function ProductRecentlyViewedSection({
     <section className="py-14 sm:py-20 bg-sand/80 border-b border-border2/40 transition-colors">
       <div className="container-alora">
         {/* Simple Horizontal Section Header */}
-        <motion.div 
-          className="mb-8 sm:mb-10"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-          }}
-        >
+        <div className="mb-8 sm:mb-10">
           <h3 className="font-serif text-sm sm:text-base lg:text-lg text-espresso tracking-wide font-normal uppercase">
             {t('product.recentlyViewed.title', isArabic ? 'شاهدتِ مؤخراً' : 'Recently Viewed')}
           </h3>
-        </motion.div>
+        </div>
 
         {/* Simple Horizontal Row of Small Cards with Soft Hover Animations and Bidirectional Edge Fading */}
         <div className="relative w-full">
@@ -105,32 +95,21 @@ export function ProductRecentlyViewedSection({
             }`}
           />
 
-          <motion.div
+          <div
             ref={scrollRef}
             onScroll={checkScrollState}
             className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-              }
-            }}
           >
           {viewedProducts.map((item) => {
             const title = isArabic ? (item.nameAr || item.name) : item.name
             return (
-              <motion.div
+              <div
                 key={item.id}
                 onClick={() => {
                   navigate(`/product/${item.id}`)
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
-                className="group w-44 sm:w-52 lg:w-56 shrink-0 cursor-pointer flex flex-col bg-cream rounded-xl sm:rounded-2xl overflow-hidden border border-border2/60 hover:border-espresso/30 shadow-2xs hover:shadow-md transition-all duration-300 hover:-translate-y-1.5"
-                variants={{ hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+                className="group w-44 sm:w-52 lg:w-56 shrink-0 cursor-pointer flex flex-col bg-cream rounded-xl sm:rounded-2xl overflow-hidden border border-border2/60 hover:border-espresso/30 shadow-2xs hover:shadow-md transition-all duration-300"
               >
                 {/* Small Photography Container */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-sand">
@@ -157,10 +136,10 @@ export function ProductRecentlyViewedSection({
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
