@@ -537,7 +537,7 @@ export function CheckoutWizardModal() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('card')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
                     paymentMethod === 'card'
                       ? 'border-2 border-espresso bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-walnut'
@@ -560,7 +560,7 @@ export function CheckoutWizardModal() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('applepay')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
                     paymentMethod === 'applepay'
                       ? 'border-2 border-espresso bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-walnut'
@@ -581,7 +581,7 @@ export function CheckoutWizardModal() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('tabby_tamara')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
                     paymentMethod === 'tabby_tamara'
                       ? 'border-2 border-[#3ED3B9] bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-[#3ED3B9]'
@@ -845,7 +845,7 @@ export function CheckoutWizardModal() {
             </div>
 
             {/* Atelier Status Timeline */}
-            <div className="bg-sand border border-border2 rounded-3xl p-6 sm:p-8 text-left rtl:text-right space-y-5 shadow-sm">
+            <div className="bg-sand border border-border2 rounded-3xl p-6 sm:p-8 text-start space-y-5 shadow-sm">
               <span className="text-[10px] uppercase tracking-widest text-walnut font-bold block border-b border-border2/60 pb-2">
                 {isArabic ? 'مسار حياكة وتجهيز العباية الملكية' : 'ATELIER CRAFTSMANSHIP & DELIVERY TIMELINE'}
               </span>

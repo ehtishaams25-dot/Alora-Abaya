@@ -69,10 +69,10 @@ export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewPro
         {/* Column 2: Majestic Tall Silhouette Illustration (`h-[540px]`)            */}
         {/* Column 3: 4 Measurement Guidance Specifications Stretched Top-to-Bottom  */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch min-h-[560px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch min-h-[60svh]">
           
           {/* Column 1 (Left): Header + Unit Switcher + Stretched Size Matrix Table */}
-          <div className="lg:col-span-4 flex flex-col justify-between text-left rtl:text-right h-full space-y-6">
+          <div className="lg:col-span-4 flex flex-col justify-between text-start h-full space-y-6">
             <div>
               <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3 sm:mb-4">
                 {t('product.sizeCard.eyebrow', isArabic ? 'أتليه الرياض • النسب الفنية' : 'BESPOKE PROPORTIONS')}
@@ -126,7 +126,7 @@ export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewPro
                 </div>
 
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left rtl:text-right border-collapse text-xs">
+                  <table className="w-full text-start border-collapse text-xs">
                     <thead>
                       <tr className="bg-sand/40 border-b border-border2/60 uppercase tracking-wider text-[11px] text-mocha font-semibold">
                         <th className="py-2.5 px-3.5">{isArabic ? 'المقاس' : 'Size'}</th>
@@ -158,8 +158,8 @@ export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewPro
 
           {/* Column 2 (Middle): Tall, Majestic Silhouette Blueprint commanding full height */}
           <div className="lg:col-span-4 flex flex-col items-center justify-center relative py-2 h-full">
-            <div className="relative flex items-center justify-center w-full h-full min-h-[460px] sm:min-h-[520px]">
-              <svg className="w-80 sm:w-96 h-[460px] sm:h-[540px] transition-all duration-500 select-none drop-shadow-md" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="relative flex items-center justify-center w-full h-full min-h-[50svh]">
+              <svg className="w-80 sm:w-96 max-h-[60svh] transition-all duration-500 select-none drop-shadow-md" viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   {/* Luxury Silk & Satin Multi-Stop Drape Gradient */}
                   <linearGradient id="abayaGradLuxury" x1="180" y1="35" x2="180" y2="400" gradientUnits="userSpaceOnUse">

@@ -42,7 +42,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* DESKTOP VIEW: Zero-Scroll One-Pager Modal Dialog */}
-      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream rounded-3xl border border-border2 shadow-2xl overflow-hidden z-10 flex-row h-[88vh] max-h-[680px] animate-fade-up">
+      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream rounded-3xl border border-border2 shadow-2xl overflow-hidden z-10 flex-row h-[85svh] max-h-[900px] animate-fade-up">
         {/* Close Button Top Right */}
         <button
           type="button"

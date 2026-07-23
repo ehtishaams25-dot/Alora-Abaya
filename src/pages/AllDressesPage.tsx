@@ -780,7 +780,7 @@ export function AllDressesPage() {
 
       {/* Toast Notification for Quick Add */}
       {toastMessage && (
-        <div className="fixed bottom-6 sm:bottom-8 right-6 sm:right-8 rtl:right-auto rtl:left-6 sm:rtl:left-8 z-[100] bg-espresso text-cream px-6 py-3.5 rounded-full shadow-2xl text-xs uppercase tracking-[0.2em] font-medium flex items-center gap-2.5 animate-fade-up pointer-events-auto border border-cream/10">
+        <div className="fixed bottom-6 sm:bottom-8 end-6 sm:end-8 z-[100] bg-espresso text-cream px-6 py-3.5 rounded-full shadow-2xl text-xs uppercase tracking-[0.2em] font-medium flex items-center gap-2.5 animate-fade-up pointer-events-auto border border-cream/10">
           <span className="w-2 h-2 rounded-full bg-success inline-block animate-pulse" />
           <span>{toastMessage}</span>
         </div>

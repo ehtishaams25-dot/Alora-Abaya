@@ -13,22 +13,22 @@ export function ProductEditorialBreak({ isArabic }: ProductEditorialBreakProps) 
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return
-      
+
       const rect = sectionRef.current.getBoundingClientRect()
       const viewportHeight = window.innerHeight
-      
+
       // Check if element is in viewport
       if (rect.top < viewportHeight && rect.bottom > 0) {
         const elementCenter = rect.top + rect.height / 2
         const viewportCenter = viewportHeight / 2
         const distanceFromCenter = viewportCenter - elementCenter
-        
+
         // This gives a parallax effect relative to the center of the screen
         // Reduced speed to -0.1 to limit max travel
         setOffsetY(distanceFromCenter * -0.1)
       }
     }
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll() // initial calculation
     return () => window.removeEventListener('scroll', handleScroll)

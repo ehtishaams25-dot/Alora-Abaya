@@ -561,7 +561,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
                 </div>
 
                 <div className="overflow-x-auto border border-border2 rounded-2xl bg-cream/30 shadow-xs">
-                  <table className="w-full text-left rtl:text-right border-collapse">
+                  <table className="w-full text-start border-collapse">
                     <thead>
                       <tr className="bg-sand border-b border-border2 text-[11px] uppercase tracking-widest text-espresso font-semibold">
                         <th className="py-4 px-5">{isArabic ? 'المقاس (Size)' : 'Size'}</th>

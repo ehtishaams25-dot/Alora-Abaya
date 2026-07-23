@@ -116,7 +116,7 @@ export function LoginPage() {
                       className="peer bg-transparent border-0 border-b border-taupe py-2 sm:py-2.5 w-full text-espresso text-sm placeholder:text-mocha/45 focus:outline-none focus:ring-0 transition-colors font-sans"
                     />
                     {/* Animated bottom border focus highlight */}
-                    <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
+                    <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
                   </div>
                 </div>
               )}
@@ -140,7 +140,7 @@ export function LoginPage() {
                     className="peer bg-transparent border-0 border-b border-taupe py-2 sm:py-2.5 w-full text-espresso text-sm placeholder:text-mocha/45 focus:outline-none focus:ring-0 transition-colors font-sans"
                   />
                   {/* Animated focus underline */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
+                  <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
                 </div>
               </div>
 
@@ -163,7 +163,7 @@ export function LoginPage() {
                     className="peer bg-transparent border-0 border-b border-taupe py-2 sm:py-2.5 pe-10 rtl:pe-0 rtl:ps-10 w-full text-espresso text-sm placeholder:text-mocha/45 focus:outline-none focus:ring-0 transition-colors font-sans"
                   />
                   {/* Animated focus underline */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
+                  <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-espresso scale-x-0 peer-focus:scale-x-100 transition-transform duration-500 origin-left rtl:origin-right" />
                   
                   {/* Password Eye Toggle Icon */}
                   <button
