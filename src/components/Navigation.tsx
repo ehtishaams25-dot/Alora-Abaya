@@ -306,7 +306,6 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 <div className="flex justify-center gap-6 text-xs uppercase tracking-[0.2em] text-mocha pt-2">
                   <Link to="/#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.faq')}</Link>
                   <Link to="/#returns" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.returns')}</Link>
-                  <Link to="/#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.contact')}</Link>
                 </div>
               </div>
             </nav>

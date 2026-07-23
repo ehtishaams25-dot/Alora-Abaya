@@ -73,7 +73,6 @@ export function Footer() {
               <li><Link to="/#about" className="hover:text-espresso transition-colors">{t('navigation.aboutUs')}</Link></li>
               <li><Link to="/#faq" className="hover:text-espresso transition-colors">{t('navigation.faq')}</Link></li>
               <li><Link to="/#returns" className="hover:text-espresso transition-colors">{t('navigation.returns')}</Link></li>
-              <li><Link to="/#contact" className="hover:text-espresso transition-colors">{t('navigation.contact')}</Link></li>
             </ul>
           </div>
 

@@ -285,9 +285,6 @@ export function LoginPage() {
                 <a href="#returns" className="hover:text-espresso transition-colors">
                   {t('auth.returns', 'Returns')}
                 </a>
-                <a href="#contact" className="hover:text-espresso transition-colors">
-                  {t('auth.contact', 'Contact')}
-                </a>
               </nav>
 
               {/* Minimal Copyright & Atelier Signature */}

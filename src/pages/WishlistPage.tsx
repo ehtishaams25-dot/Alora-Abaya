@@ -431,7 +431,6 @@ export function WishlistPage() {
                   <a href="#privacy" className="hover:text-espresso transition-colors">{t('auth.privacyPolicy', 'Privacy Policy')}</a>
                   <a href="#terms" className="hover:text-espresso transition-colors">{t('auth.terms', 'Terms')}</a>
                   <a href="#returns" className="hover:text-espresso transition-colors">{t('auth.returns', 'Returns')}</a>
-                  <a href="#contact" className="hover:text-espresso transition-colors">{t('auth.contact', 'Contact')}</a>
                 </nav>
                 <div className="flex items-center gap-2 sm:gap-3 text-mocha/80 text-[11px]">
                   <span>© 2026 Alora</span>
