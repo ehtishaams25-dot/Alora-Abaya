@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 import { ProductCuratedCard } from './ProductCuratedCard'
 
@@ -69,7 +70,16 @@ export function ProductNewArrivalsCarousel({
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
       <div className="container-alora">
         {/* Editorial Section Header with Minimal Navigation Controls */}
-        <div className="flex items-center justify-between gap-6 mb-10 sm:mb-14">
+        <motion.div 
+          className="flex items-center justify-between gap-6 mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+          }}
+        >
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
             {t('product.newArrivals.title', isArabic ? 'وصل حديثاً إلى الأتليه' : 'New Arrivals')}
           </h2>
@@ -108,7 +118,7 @@ export function ProductNewArrivalsCarousel({
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Horizontal Premium Carousel with Smooth Bidirectional Edge Fading (No Card Clipping) */}
         <div className="relative w-full">
@@ -126,15 +136,26 @@ export function ProductNewArrivalsCarousel({
             }`}
           />
 
-          <div
+          <motion.div
             ref={scrollRef}
             onScroll={checkScrollState}
             className="flex gap-6 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-6 pt-2 -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+              }
+            }}
           >
             {carouselItems.map((item) => (
-              <div
+              <motion.div
                 key={item.id}
                 className="w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 snap-start flex flex-col"
+                variants={{ hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
               >
                 <ProductCuratedCard
                   product={item}
@@ -142,9 +163,9 @@ export function ProductNewArrivalsCarousel({
                   onQuickView={onQuickView}
                   variant="tall"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

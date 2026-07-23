@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { type ProductItem } from '../types'
 import { useShop } from '../../../providers/ShopProvider'
 import { QuickViewModal } from '../../../components/QuickViewModal'
@@ -170,16 +171,25 @@ export function BestSellersSection() {
     <section id="bestsellers" className="section-padding bg-sand">
       <div className="container-alora">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.bestSellers.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.bestSellers.title')}
-          </h2>
+          </motion.h2>
 
           {/* Centered Filter Tabs (Forced single line) */}
-          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-center gap-1 sm:gap-2.5 md:gap-3 max-w-full w-full">
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-center gap-1 sm:gap-2.5 md:gap-3 max-w-full w-full">
             {filters.map((filter) => (
               <button
                 key={filter.id}
@@ -194,25 +204,35 @@ export function BestSellersSection() {
                 {filter.label}
               </button>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Products Grid (Double sided on mobile: 2 columns side by side) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <motion.div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+          }}
+        >
           {filteredProducts.map((item) => (
-            <BestSellerProductCard
-              key={item.id}
-              item={item}
-              isArabic={isArabic}
-              t={t}
-              addToCart={addToCart}
-              onQuickView={(p) => {
-                const found = DRESSES_DATA.find(d => d.id === p.id)
-                if (found) setQuickViewProduct(found)
-              }}
-            />
+            <motion.div key={item.id} variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
+              <BestSellerProductCard
+                item={item}
+                isArabic={isArabic}
+                t={t}
+                addToCart={addToCart}
+                onQuickView={(p) => {
+                  const found = DRESSES_DATA.find(d => d.id === p.id)
+                  if (found) setQuickViewProduct(found)
+                }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {quickViewProduct && (

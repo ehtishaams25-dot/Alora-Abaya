@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { type ProductItem } from '../types'
 
 import { QuickViewModal } from '../../../components/QuickViewModal'
@@ -146,14 +147,23 @@ export function NewArrivalsSection() {
     <section id="new" className="section-padding bg-sand">
       <div className="container-alora">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.newArrivals.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.newArrivals.title')}
-          </h2>
-          <div className="mt-6 flex justify-center">
+          </motion.h2>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="mt-6 flex justify-center">
             <Link
               to="/dresses"
               className="btn-secondary flex items-center gap-2 group min-h-[44px]"
@@ -161,24 +171,34 @@ export function NewArrivalsSection() {
               <span>{t('common.viewAll')}</span>
               <span className="transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" aria-hidden="true">&rarr;</span>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Mobile-First Touch Swipe Carousel -> Desktop Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden">
+        <motion.div 
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+          }}
+        >
           {products.map((item) => (
-            <NewArrivalProductCard
-              key={item.id}
-              item={item}
-              isArabic={isArabic}
-              t={t}
-              onQuickView={(p) => {
-                const found = DRESSES_DATA.find(d => d.id === p.id)
-                if (found) setQuickViewProduct(found)
-              }}
-            />
+            <motion.div key={item.id} variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
+              <NewArrivalProductCard
+                item={item}
+                isArabic={isArabic}
+                t={t}
+                onQuickView={(p) => {
+                  const found = DRESSES_DATA.find(d => d.id === p.id)
+                  if (found) setQuickViewProduct(found)
+                }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {quickViewProduct && (

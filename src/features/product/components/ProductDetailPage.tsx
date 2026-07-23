@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { type ProductDress } from '../../../data/dressesData'
 import { QuickViewModal } from '../../../components/QuickViewModal'
 import { useProductDetail } from '../hooks/useProductDetail'
@@ -102,9 +103,23 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
             </span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-stretch flex-1 min-h-0 lg:overflow-hidden">
+          <motion.div 
+            className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-stretch flex-1 min-h-0 lg:overflow-hidden"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15 }
+              }
+            }}
+          >
             {/* Left Column: Photography Gallery */}
-            <div className="w-full lg:w-7/12 xl:w-2/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden">
+            <motion.div 
+              className="w-full lg:w-7/12 xl:w-2/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden"
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            >
               <ProductGallery
                 product={product}
                 galleryViews={state.galleryViews}
@@ -112,18 +127,21 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
                 onSelectImage={actions.setSelectedImageIdx}
                 isArabic={isArabic}
               />
-            </div>
+            </motion.div>
 
             {/* Right Column: Purchasing Details Panel */}
-            <div className="w-full lg:w-5/12 xl:w-1/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden">
+            <motion.div 
+              className="w-full lg:w-5/12 xl:w-1/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden"
+              variants={{ hidden: { opacity: 0, x: 30 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 } } }}
+            >
               <ProductPurchasePanel
                 product={product}
                 state={state}
                 actions={actions}
                 isArabic={isArabic}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

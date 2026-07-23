@@ -8,6 +8,7 @@ import {
   Eye,
   Sparkles
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export function InstagramGallerySection() {
   const { t, i18n } = useTranslation()
@@ -238,44 +239,62 @@ export function InstagramGallerySection() {
     <section id="instagram" className="section-padding bg-cream border-t border-border2 overflow-hidden relative">
       <div className="container-alora">
         {/* Section Header (Centered, focused typography) */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.25em] flex items-center justify-center gap-2">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.25em] flex items-center justify-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-walnut animate-pulse" />
             {t('home.instagram.eyebrow', 'Social Chronicle')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso">
             {t('home.instagram.title', 'Lifestyle & Journal @AloraAbaya')}
-          </h2>
-          <p className="text-body text-mocha mt-3 text-sm sm:text-base">
+          </motion.h2>
+          <motion.p variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-body text-mocha mt-3 text-sm sm:text-base">
             {t('home.instagram.description', 'Tag us or use #AloraAbayas to be featured in our monthly private salon chronicle.')}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
 
       {/* Continuous Infinite Scrolling Multi-Ratio Carousel Track (Pauses on Hover/Touch) */}
-      <div
-        ref={trackRef}
-        style={{ direction: 'ltr' }}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUpOrLeave}
-        onMouseLeave={() => {
-          isHoveredRef.current = false
-          handleMouseUpOrLeave()
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          show: { opacity: 1, y: 0, transition: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }
         }}
-        onMouseEnter={() => {
-          isHoveredRef.current = true
-        }}
-        onTouchStart={() => {
-          isHoveredRef.current = true
-        }}
-        onTouchEnd={() => {
-          isHoveredRef.current = false
-        }}
-        className={`overflow-hidden pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
-          }`}
       >
-        <div ref={trackInnerRef} className="flex items-center gap-4 sm:gap-6 w-max will-change-transform">
+        <div
+          ref={trackRef}
+          style={{ direction: 'ltr' }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={() => {
+            isHoveredRef.current = false
+            handleMouseUpOrLeave()
+          }}
+          onMouseEnter={() => {
+            isHoveredRef.current = true
+          }}
+          onTouchStart={() => {
+            isHoveredRef.current = true
+          }}
+          onTouchEnd={() => {
+            isHoveredRef.current = false
+          }}
+          className={`overflow-hidden pt-2 pb-6 px-4 sm:px-8 lg:px-12 transition-all ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
+            }`}
+        >
+          <div ref={trackInnerRef} className="flex items-center gap-4 sm:gap-6 w-max will-change-transform">
           {displayItems.map((item) => {
             const dims = getCardDimensions(item.ratio)
             const titleText = isRTL ? item.titleAr : item.title
@@ -346,6 +365,7 @@ export function InstagramGallerySection() {
           })}
         </div>
       </div>
+      </motion.div>
     </section>
   )
 }

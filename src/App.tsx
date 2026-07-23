@@ -16,26 +16,41 @@ import { ProductSizeGuideModal } from './features/product'
 import { SearchOverlayModal } from './features/search'
 import { AccountDashboardPage } from './features/profile'
 
-function ScrollToHashElement() {
+import { useLenis } from 'lenis/react'
+
+function ScrollToTop() {
   const { pathname, hash } = useLocation()
+  const lenis = useLenis()
 
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.replace('#', ''))
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        if (lenis) {
+          lenis.scrollTo(element)
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
       } else {
         setTimeout(() => {
           const delayedElement = document.getElementById(hash.replace('#', ''))
           if (delayedElement) {
-            delayedElement.scrollIntoView({ behavior: 'smooth' })
+            if (lenis) {
+              lenis.scrollTo(delayedElement)
+            } else {
+              delayedElement.scrollIntoView({ behavior: 'smooth' })
+            }
           }
         }, 100)
       }
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true })
+      } else {
+        window.scrollTo(0, 0)
+      }
     }
-  }, [pathname, hash])
+  }, [pathname, hash, lenis])
 
   return null
 }
@@ -55,7 +70,7 @@ export function App() {
     <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
       <QueryProvider>
         <ShopProvider>
-          <ScrollToHashElement />
+          <ScrollToTop />
           <CartDrawerModal />
           <GuestCheckoutModal />
           <GlobalQuickViewContainer />

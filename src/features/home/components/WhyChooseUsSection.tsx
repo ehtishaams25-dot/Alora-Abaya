@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { type PillarItem } from '../types'
 
 export function WhyChooseUsSection() {
@@ -40,20 +41,39 @@ export function WhyChooseUsSection() {
     <section id="about" className="py-16 sm:py-20 lg:py-24 bg-cream border-t border-border2 relative overflow-hidden">
       <div className="container-alora max-w-5xl mx-auto px-4 sm:px-6">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2.5 tracking-[0.3em] block uppercase text-xs">
+        <motion.div 
+          className="text-center max-w-xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2.5 tracking-[0.3em] block uppercase text-xs">
             {t('home.whyChooseUs.eyebrow')}
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-2xl sm:text-3xl lg:text-4xl font-serif text-espresso font-normal tracking-tight">
             {t('home.whyChooseUs.title')}
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Sleek Minimalist 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+          }}
+        >
           {pillars.map((pillar, idx) => (
-            <div
+            <motion.div
               key={pillar.id}
+              variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
               className="group bg-sand/60 hover:bg-sand rounded-2xl p-6 sm:p-8 border border-border2/80 hover:border-walnut/40 transition-all duration-500 flex flex-col justify-between"
             >
               <div>
@@ -95,9 +115,9 @@ export function WhyChooseUsSection() {
                 </span>
                 <span className="text-[10px] text-espresso/60 font-serif">ALORA</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

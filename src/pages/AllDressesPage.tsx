@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { Navigation } from '../components/Navigation'
@@ -875,22 +876,37 @@ export function AllDressesPage() {
             ) : (
               <>
                 {/* Responsive Grid: Desktop 4 columns, Tablet 3 columns, Mobile 2 columns with refined gap & padding */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 animate-fade-up">
+                <motion.div 
+                  className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: {
+                      opacity: 1,
+                      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+                    }
+                  }}
+                >
                   {displayedProducts.map((item) => (
-                    <AllDressesProductCard
-                      key={item.id}
-                      item={item}
-                      isArabic={isArabic}
-                      t={t}
-                      isInWishlist={isInWishlist}
-                      addToWishlist={addToWishlist}
-                      removeFromWishlist={removeFromWishlist}
-                      handleQuickAdd={handleQuickAdd}
-                      handleProductInteract={handleProductInteract}
-                      setQuickViewProduct={setQuickViewProduct}
-                    />
+                    <motion.div key={item.id} variants={{
+                      hidden: { opacity: 0, y: 40 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                    }}>
+                      <AllDressesProductCard
+                        item={item}
+                        isArabic={isArabic}
+                        t={t}
+                        isInWishlist={isInWishlist}
+                        addToWishlist={addToWishlist}
+                        removeFromWishlist={removeFromWishlist}
+                        handleQuickAdd={handleQuickAdd}
+                        handleProductInteract={handleProductInteract}
+                        setQuickViewProduct={setQuickViewProduct}
+                      />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
 
                 {/* Centered Load More Rounded Pill Button */}
                 {hasMore && (
