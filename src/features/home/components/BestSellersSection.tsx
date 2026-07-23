@@ -179,7 +179,7 @@ export function BestSellersSection() {
           </h2>
 
           {/* Centered One-Liner Filter Tabs (30% more compact to fit cleanly on one row) */}
-          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-center gap-1 sm:gap-1.5 md:gap-2 max-w-full overflow-x-auto no-scrollbar px-1 sm:px-0">
+          <div className="mt-5 sm:mt-6 flex flex-nowrap items-center justify-start md:justify-center gap-1 sm:gap-1.5 md:gap-2 max-w-full overflow-x-auto no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">
             {filters.map((filter) => (
               <button
                 key={filter.id}

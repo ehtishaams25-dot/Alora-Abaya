@@ -114,14 +114,14 @@ export function ProductNewArrivalsCarousel({
         <div className="relative w-full">
           {/* Start Edge Fade Overlay (Left in LTR, Right in RTL when scrolled) */}
           <div
-            className={`absolute top-0 bottom-4 start-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 start-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollLeft ? 'opacity-100' : 'opacity-0'
             }`}
           />
 
           {/* End Edge Fade Overlay (Right in LTR, Left in RTL when overflow available) */}
           <div
-            className={`absolute top-0 bottom-4 end-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 end-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollRight ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -129,7 +129,7 @@ export function ProductNewArrivalsCarousel({
           <div
             ref={scrollRef}
             onScroll={checkScrollState}
-            className="flex gap-6 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-6 pt-2"
+            className="flex gap-6 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-6 pt-2 -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
           >
             {carouselItems.map((item) => (
               <div
