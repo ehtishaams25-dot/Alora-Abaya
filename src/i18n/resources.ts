@@ -33,8 +33,8 @@ export const resources = {
       },
       home: {
         hero: {
-          eyebrow: "The Autumn / Winter Collection",
-          title: "Timeless Elegance Captured in Every Fold",
+          eyebrow: "ALORA",
+          title: "Crafted for Timeless Elegance",
           description: "Experience the calm sophistication of luxury modesty. Hand-tailored from fluid silks and pure double-layered chiffons, designed to drape effortlessly with dignified poise.",
           ctaExplore: "Explore Collection",
           ctaCraftsmanship: "Our Craftsmanship",
@@ -420,8 +420,8 @@ export const resources = {
       },
       home: {
         hero: {
-          eyebrow: "مجموعة الخريف والشتاء الحصرية",
-          title: "أناقة خالدة تتجسد في كل طية وتفصيل",
+          eyebrow: "ALORA",
+          title: "ُصُنعت لأناقة تدوم",
           description: "عيشي تجربة الهدوء والرقي مع الفخامة المحتشمة. مُخيطة يدوياً من الحرير الانسيابي والشيفون المزدوج الفاخر لتنسدل بقوام راقٍ ومظهر مهيب.",
           ctaExplore: "استكشفي المجموعة",
           ctaCraftsmanship: "حرفيتنا اليدوية",
