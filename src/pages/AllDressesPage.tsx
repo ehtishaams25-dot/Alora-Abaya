@@ -252,7 +252,7 @@ export function AllDressesPage() {
   const [sortBy, setSortBy] = useState<string>('newest')
 
   // Pagination / Load More State
-  const [visibleCount, setVisibleCount] = useState<number>(12)
+  // Removed per request to load all automatically
 
   // Mobile Bottom Sheet Filter State
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState<boolean>(false)
@@ -365,12 +365,7 @@ export function AllDressesPage() {
     sortBy
   ])
 
-  const displayedProducts = filteredProducts.slice(0, visibleCount)
-  const hasMore = visibleCount < filteredProducts.length
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 12)
-  }
+  const displayedProducts = filteredProducts
 
   const clearAllFilters = () => {
     setSelectedCategories([])
@@ -819,8 +814,10 @@ export function AllDressesPage() {
 
         <div className="flex items-start gap-8 xl:gap-12">
           {/* Desktop Persistent Left Sidebar (with Sort By right at top!) */}
-          <aside aria-label="Filters" className="hidden lg:block w-[260px] xl:w-[280px] shrink-0 border-e border-border2/80 pe-6 xl:pe-8 sticky top-[100px] max-h-[calc(100vh-120px)] overflow-y-auto no-scrollbar pb-10">
-            {renderSidebarContent()}
+          <aside aria-label="Filters" className="hidden lg:block w-[260px] xl:w-[280px] shrink-0 border-e border-border2/80 pe-6 xl:pe-8 sticky top-[100px] h-[calc(100vh-120px)]">
+            <div className="h-full w-full overflow-y-auto custom-scrollbar pb-32 pe-4">
+              {renderSidebarContent()}
+            </div>
           </aside>
 
           {/* Product Grid Area */}
@@ -907,21 +904,6 @@ export function AllDressesPage() {
                     </motion.div>
                   ))}
                 </motion.div>
-
-                {/* Centered Load More Rounded Pill Button */}
-                {hasMore && (
-                  <div className="mt-12 sm:mt-16 text-center animate-fade-up">
-                    <button
-                      type="button"
-                      onClick={handleLoadMore}
-                      className="rounded-full bg-espresso text-cream hover:bg-ink px-10 py-4 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
-                    >
-                      {isArabic
-                        ? `تحميل المزيد من الفساتين (${filteredProducts.length - visibleCount} باقية)`
-                        : `Load More (${filteredProducts.length - visibleCount} remaining)`}
-                    </button>
-                  </div>
-                )}
               </>
             )}
           </div>
@@ -950,7 +932,7 @@ export function AllDressesPage() {
             <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
               <div className="absolute top-0 bottom-4 end-0 w-16 sm:w-28 bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-10" />
 
-              <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 sm:gap-6 pb-4 pe-16 sm:pe-28">
+              <div className="flex overflow-x-auto custom-scrollbar snap-x snap-mandatory gap-4 sm:gap-6 pb-4 pe-16 sm:pe-28">
                 {recentlyViewed.map((item) => (
                   <RecentlyViewedProductCard
                     key={item.id}
