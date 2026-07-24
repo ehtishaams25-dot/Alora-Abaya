@@ -42,7 +42,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* DESKTOP VIEW: Zero-Scroll One-Pager Modal Dialog */}
-      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream rounded-3xl border border-border2 shadow-2xl overflow-hidden z-10 flex-row h-[88vh] max-h-[680px] animate-fade-up">
+      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream rounded-3xl border border-border2 shadow-2xl overflow-hidden z-10 flex-row h-[85svh] max-h-[900px] animate-fade-up">
         {/* Close Button Top Right */}
         <button
           type="button"
@@ -160,21 +160,26 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
                       key={idx}
                       type="button"
                       onClick={() => actions.setSelectedColorIdx(idx)}
-                      className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border transition-all duration-300 cursor-pointer flex items-center justify-center ${
-                        isSelected
-                          ? 'border-espresso scale-110 shadow-sm ring-1 ring-espresso/20 ring-offset-1 ring-offset-cream'
-                          : 'border-border2 hover:scale-105'
-                      }`}
-                      style={{ backgroundColor: hex }}
+                      className="group relative w-7 h-7 rounded-full p-0 flex-shrink-0 cursor-pointer focus:outline-none"
                       title={isArabic ? product.colorNamesAr?.[idx] : product.colorNames?.[idx]}
                     >
-                      {isSelected && (
-                        <span className={`w-1 h-1 rounded-full ${
-                          hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
-                            ? 'bg-espresso'
-                            : 'bg-cream'
-                        }`} />
-                      )}
+                      <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                        isSelected
+                          ? 'border-2 border-espresso shadow-xs'
+                          : 'border border-transparent group-hover:border-border2'
+                      }`} />
+                      <span
+                        className="absolute inset-1 rounded-full border border-black/10 shadow-inner flex items-center justify-center transition-transform duration-300"
+                        style={{ backgroundColor: hex }}
+                      >
+                        {isSelected && (
+                          <span className={`w-1 h-1 rounded-full ${
+                            hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
+                              ? 'bg-espresso'
+                              : 'bg-cream'
+                          }`} />
+                        )}
+                      </span>
                     </button>
                   )
                 })}

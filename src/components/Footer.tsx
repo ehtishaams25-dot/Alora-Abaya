@@ -7,7 +7,7 @@ export function Footer() {
 
   return (
     <footer className="bg-cream border-t border-border2 pt-16 pb-12 text-espresso font-sans mt-auto">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Top Section: VIP Circle Newsletter & Brand Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-border2">
           <div className="lg:col-span-5 flex flex-col items-start">
@@ -73,7 +73,6 @@ export function Footer() {
               <li><Link to="/#about" className="hover:text-espresso transition-colors">{t('navigation.aboutUs')}</Link></li>
               <li><Link to="/#faq" className="hover:text-espresso transition-colors">{t('navigation.faq')}</Link></li>
               <li><Link to="/#returns" className="hover:text-espresso transition-colors">{t('navigation.returns')}</Link></li>
-              <li><Link to="/#contact" className="hover:text-espresso transition-colors">{t('navigation.contact')}</Link></li>
             </ul>
           </div>
 

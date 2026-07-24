@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 import { ProductCuratedCard } from './ProductCuratedCard'
 
@@ -24,35 +25,48 @@ export function ProductYouMayAlsoLikeSection({
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Editorial Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-          <span className="text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3">
-            {t('product.alsoLike.eyebrow', isArabic ? 'اختيارات متناسقة من الأتليه' : 'Curated Recommendations')}
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug mb-4">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 lg:mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+          }}
+        >
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
             {t('product.alsoLike.title', isArabic ? 'قد ينال إعجابك أيضاً' : 'You May Also Like')}
           </h2>
-          <div className="w-12 h-[1px] bg-walnut/60 mx-auto mb-4" />
-          <p className="text-xs sm:text-sm text-mocha font-sans leading-relaxed max-w-xl mx-auto">
-            {t('product.alsoLike.desc', isArabic
-              ? 'قطع مكملة تم اختيارها بعناية فائقة لتتناغم مع خزانة ملابسك وتكمل إطلالتك الملكية.'
-              : 'Complementary silhouettes tailored with exquisite craftsmanship to harmonize effortlessly with your collection.')}
-          </p>
-        </div>
+        </motion.div>
 
         {/* 4 Premium Product Cards Grid with Generous Catalogue Spacing (Double sided on mobile) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 lg:gap-10">
+        <motion.div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 lg:gap-10"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+            }
+          }}
+        >
           {recommendations.map((item) => (
-            <ProductCuratedCard
-              key={item.id}
-              product={item}
-              isArabic={isArabic}
-              onQuickView={onQuickView}
-              variant="standard"
-            />
+            <motion.div key={item.id} variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
+              <ProductCuratedCard
+                product={item}
+                isArabic={isArabic}
+                onQuickView={onQuickView}
+                variant="standard"
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

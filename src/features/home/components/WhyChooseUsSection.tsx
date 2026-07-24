@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { type PillarItem } from '../types'
 
 export function WhyChooseUsSection() {
@@ -14,16 +15,6 @@ export function WhyChooseUsSection() {
       id: "wc-2",
       title: t('home.whyChooseUs.pillars.1.title'),
       description: t('home.whyChooseUs.pillars.1.description')
-    },
-    {
-      id: "wc-3",
-      title: t('home.whyChooseUs.pillars.2.title'),
-      description: t('home.whyChooseUs.pillars.2.description')
-    },
-    {
-      id: "wc-4",
-      title: t('home.whyChooseUs.pillars.3.title'),
-      description: t('home.whyChooseUs.pillars.3.description')
     }
   ]
 
@@ -32,74 +23,103 @@ export function WhyChooseUsSection() {
     switch (index) {
       case 0:
         return (
-          <svg className="w-6 h-6 text-walnut" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-walnut transition-transform duration-500 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
           </svg>
         )
       case 1:
-        return (
-          <svg className="w-6 h-6 text-walnut" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
-          </svg>
-        )
-      case 2:
-        return (
-          <svg className="w-6 h-6 text-walnut" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-          </svg>
-        )
-      case 3:
       default:
         return (
-          <svg className="w-6 h-6 text-walnut" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+          <svg className="w-5 h-5 text-walnut transition-transform duration-500 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
           </svg>
         )
     }
   }
 
   return (
-    <section id="about" className="section-padding bg-cream border-t border-border2">
-      <div className="container-layali">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-cream border-t border-border2 relative overflow-hidden">
+      <div className="container-alora max-w-5xl mx-auto px-4 sm:px-6">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2.5 tracking-[0.3em] block uppercase text-xs">
             {t('home.whyChooseUs.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-2xl sm:text-3xl lg:text-4xl font-serif text-espresso font-normal tracking-tight">
             {t('home.whyChooseUs.title')}
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Sleek Minimalist 2-Column Grid */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+          }}
+        >
           {pillars.map((pillar, idx) => (
-            <div
+            <motion.div
               key={pillar.id}
-              className="bg-sand/90 rounded-2xl p-6 sm:p-8 border border-border2/80 hover:border-walnut/60 transition-all duration-300 flex flex-col justify-between hover:shadow-md group"
+              variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+              className="group bg-sand/60 hover:bg-sand rounded-2xl p-6 sm:p-8 border border-border2/80 hover:border-walnut/40 transition-all duration-500 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-cream border border-border2 flex items-center justify-center mb-6">
-                  {getIcon(idx)}
+                {/* Minimal Header Line: Icon + Numeral + Quality Seal */}
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-10 h-10 rounded-xl bg-cream border border-border2 flex items-center justify-center text-walnut group-hover:scale-105 transition-transform duration-300 shadow-2xs">
+                      {getIcon(idx)}
+                    </div>
+                    <span className="font-serif text-xs tracking-[0.2em] text-walnut/90 uppercase font-semibold">
+                      {idx === 0 ? '01' : '02'}
+                    </span>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cream border border-border2/70 text-[10px] font-medium tracking-wider text-espresso/80 uppercase shadow-2xs">
+                    <span className="w-1 h-1 rounded-full bg-walnut inline-block" />
+                    {idx === 0
+                      ? t('home.whyChooseUs.features.fabrics.seal', 'Certified Authentic')
+                      : t('home.whyChooseUs.features.shipping.seal', 'VIP White-Glove Care')}
+                  </span>
                 </div>
 
-                <h3 className="font-serif text-lg sm:text-xl text-espresso font-medium mb-3 leading-snug">
+                {/* Title & Description */}
+                <h3 className="font-serif text-xl sm:text-2xl text-espresso font-normal mb-2.5 tracking-tight group-hover:text-black transition-colors duration-300">
                   {pillar.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-mocha leading-relaxed font-sans">
+                <p className="text-sm sm:text-base text-mocha leading-relaxed font-sans mb-6">
                   {pillar.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border2/50 flex items-center justify-between text-[11px] text-walnut uppercase tracking-widest font-medium">
-                <span>Layali Standard</span>
-                <span>0{idx + 1}</span>
+              {/* Minimal Bottom Hallmark Line */}
+              <div className="pt-4 border-t border-border2/60 flex items-center justify-between text-xs tracking-[0.12em] uppercase text-walnut font-medium">
+                <span className="flex items-center gap-2">
+                  <span className="text-[10px]">✦</span>
+                  {idx === 0
+                    ? t('home.whyChooseUs.features.fabrics.tag', '100% Japanese & Korean Silks')
+                    : t('home.whyChooseUs.features.shipping.tag', '24H Riyadh & GCC Express')}
+                </span>
+                <span className="text-[10px] text-espresso/60 font-serif">ALORA</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
 }
+

@@ -33,8 +33,8 @@ export const resources = {
       },
       home: {
         hero: {
-          eyebrow: "The Autumn / Winter Collection",
-          title: "Timeless Elegance Captured in Every Fold",
+          eyebrow: "ALORA",
+          title: "Crafted for Timeless Elegance",
           description: "Experience the calm sophistication of luxury modesty. Hand-tailored from fluid silks and pure double-layered chiffons, designed to drape effortlessly with dignified poise.",
           ctaExplore: "Explore Collection",
           ctaCraftsmanship: "Our Craftsmanship",
@@ -195,18 +195,28 @@ export const resources = {
             },
             "1": {
               id: "wc-2",
-              title: "Custom Atelier Lengths",
-              description: "Every abaya is tailored to your exact height and shoulder drape, complete with seamless French finishes that resist fraying and wear."
-            },
-            "2": {
-              id: "wc-3",
               title: "Express Saudi & GCC Shipping",
               description: "Delivered via express courier within 24 hours across Saudi Arabia (Riyadh, Jeddah, Al Khobar) and 48 hours across UAE, Qatar, and Kuwait, with express worldwide VIP customs handling."
+            }
+          },
+          features: {
+            fabrics: {
+              tag: "100% Japanese & Korean Silks",
+              seal: "Certified Authentic",
+              items: [
+                "Japanese Grade-A Nidha",
+                "Korean Mulberry Silk",
+                "Double-Layered Chiffon"
+              ]
             },
-            "3": {
-              id: "wc-4",
-              title: "Private Stylist Concierge",
-              description: "Complimentary consultation with our in-house stylists via WhatsApp for sizing advice, custom adjustments, and private salon appointments."
+            shipping: {
+              tag: "24H Riyadh & GCC Express",
+              seal: "VIP White-Glove Care",
+              items: [
+                "24H Riyadh, Jeddah & Khobar",
+                "48H GCC Express Delivery",
+                "Royal Gift Box Presentation"
+              ]
             }
           }
         },
@@ -410,8 +420,8 @@ export const resources = {
       },
       home: {
         hero: {
-          eyebrow: "مجموعة الخريف والشتاء الحصرية",
-          title: "أناقة خالدة تتجسد في كل طية وتفصيل",
+          eyebrow: "ALORA",
+          title: "ُصُنعت لأناقة تدوم",
           description: "عيشي تجربة الهدوء والرقي مع الفخامة المحتشمة. مُخيطة يدوياً من الحرير الانسيابي والشيفون المزدوج الفاخر لتنسدل بقوام راقٍ ومظهر مهيب.",
           ctaExplore: "استكشفي المجموعة",
           ctaCraftsmanship: "حرفيتنا اليدوية",
@@ -433,7 +443,7 @@ export const resources = {
         },
         newArrivals: {
           eyebrow: "إصدارات الموسم المختارة",
-          title: "أحدث وصول في دار ليالي",
+          title: "أحدث وصول في دار الورا للفساتين",
           description: "تصاميم كُشف عنها حديثاً تجمع بين تقنيات الثني المعاصرة ومعايير الحشمة التقليدية العريقة.",
           products: [
             {
@@ -572,18 +582,28 @@ export const resources = {
             },
             "1": {
               id: "wc-2",
-              title: "تفصيل مخصص حسب الطول والقوام",
-              description: "تُخاط كل عباية خصيصاً لتناسب طولكِ وقياس كتفيكِ بدقة تامة، مع تشطيبات فرنسية مخفية تقاوم التلف وتمنحكِ ثقة فائقة."
-            },
-            "2": {
-              id: "wc-3",
               title: "شحن سريع في السعودية والخليج",
               description: "توصيل فوري عبر البريد السريع خلال 24 ساعة في أنحاء المملكة العربية السعودية (الرياض، جدة، الخبر) و48 ساعة لبقية دول الخليج والعالم مع تخليص جمركي VIP."
+            }
+          },
+          features: {
+            fabrics: {
+              tag: "حرير ياباني وكوري 100%",
+              seal: "جودة معتمدة أصلية",
+              items: [
+                "نسيج الندا الياباني A+",
+                "حرير التوت الكوري الملكي",
+                "شيفون فرنسي مزدوج الطبقات"
+              ]
             },
-            "3": {
-              id: "wc-4",
-              title: "مستشارة مظهر خاصة لخدمتك",
-              description: "استشارة مجانية مع خبيرات المظهر في دارنا عبر واتساب لاختيار المقاس المثالي والتعديلات الخاصة وحجز مواعيد الصالون."
+            shipping: {
+              tag: "توصيل سريع خلال 24 ساعة للرياض والخليج",
+              seal: "عناية فائقة وتغليف ملكي",
+              items: [
+                "24 ساعة للرياض وجدة والخبر",
+                "48 ساعة لدول الخليج العربية",
+                "تغليف ملكي وتخليص جمركي VIP"
+              ]
             }
           }
         },

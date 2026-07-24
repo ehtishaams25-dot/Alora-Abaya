@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -14,9 +14,9 @@
   --color-success: #4A5D23;
 
   /* Typography Tokens */
-  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: "Outfit", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-arabic: "Amiri", serif;
+  --font-serif: "Spectral", "Libre Baskerville", "EB Garamond", "Noto Naskh Arabic", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-arabic: "Noto Naskh Arabic", "IBM Plex Sans Arabic", serif;
 
   /* Layout Tokens */
   --radius: 1rem;
@@ -82,6 +82,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root[dir="rtl"], html[dir="rtl"], :root:lang(ar) {
+  --font-serif: "Noto Naskh Arabic", "Spectral", "Libre Baskerville", Georgia, Cambria, serif;
+  --font-sans: "IBM Plex Sans Arabic", "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Noto Naskh Arabic", "IBM Plex Sans Arabic", serif;
+}
+
 body {
   min-width: 320px;
   min-height: 100vh;
@@ -98,31 +104,40 @@ body {
   select {
     font: inherit;
   }
+
+  /* Prevent connected Arabic characters from pulling apart when wide English tracking utilities are used */
+  html[dir="rtl"] [class*="tracking-["] {
+    letter-spacing: 0.04em !important;
+  }
+  html[dir="rtl"] .tracking-widest,
+  html[dir="rtl"] .tracking-wider {
+    letter-spacing: 0.03em !important;
+  }
 }
 
 @layer components {
   /* Typography Scale */
   .text-h1 {
-    @apply font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-espresso;
+    @apply font-serif text-5xl sm:text-6xl lg:text-7xl tracking-[-0.015em] rtl:tracking-normal leading-[1.02] rtl:leading-[1.12] text-espresso font-normal;
   }
   .text-h2 {
-    @apply font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-espresso;
+    @apply font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight rtl:tracking-normal leading-[1.15] rtl:leading-[1.24] text-espresso font-normal;
   }
   .text-h3 {
-    @apply font-serif text-xl sm:text-2xl lg:text-3xl text-espresso;
+    @apply font-serif text-xl sm:text-2xl lg:text-3xl tracking-tight rtl:tracking-normal leading-[1.25] rtl:leading-[1.3] text-espresso font-medium;
   }
   .text-eyebrow {
-    @apply font-sans text-xs uppercase tracking-[0.28em] text-walnut font-medium;
+    @apply font-sans text-xs uppercase tracking-[0.18em] rtl:tracking-[0.05em] text-walnut font-semibold leading-normal;
   }
   .text-body {
-    @apply font-sans text-base leading-relaxed text-mocha;
+    @apply font-sans text-base sm:text-[16.5px] leading-[1.75] text-mocha font-normal;
   }
   .text-small {
-    @apply font-sans text-sm tracking-wide text-mocha;
+    @apply font-sans text-sm tracking-normal rtl:tracking-normal leading-[1.65] text-mocha font-normal;
   }
 
   /* Layout & Container */
-  .container-layali {
+  .container-alora {
     @apply max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full;
   }
   .section-padding {
@@ -131,10 +146,10 @@ body {
 
   /* Component Tokens */
   .btn-primary {
-    @apply bg-espresso text-cream rounded-full px-8 py-4 text-sm uppercase tracking-[0.2em] hover:bg-ink transition-colors cursor-pointer inline-flex items-center justify-center font-sans font-medium;
+    @apply bg-espresso text-cream rounded-full px-8 py-4 text-xs sm:text-sm uppercase tracking-[0.16em] rtl:tracking-[0.05em] hover:bg-ink transition-colors cursor-pointer inline-flex items-center justify-center font-sans font-semibold min-h-[46px] select-none;
   }
   .btn-secondary {
-    @apply border-b border-espresso pb-1 text-sm uppercase tracking-[0.2em] text-espresso hover:text-walnut hover:border-walnut transition-colors cursor-pointer inline-flex items-center justify-center font-sans font-medium;
+    @apply border-b border-espresso pb-1 text-xs sm:text-sm uppercase tracking-[0.16em] rtl:tracking-[0.05em] text-espresso hover:text-walnut hover:border-walnut transition-colors cursor-pointer inline-flex items-center justify-center font-sans font-semibold select-none;
   }
   .card-product {
     @apply bg-cream rounded-2xl overflow-hidden cursor-pointer;
@@ -149,7 +164,7 @@ body {
   .input-underline {
     @apply bg-transparent border-b border-taupe focus:border-espresso outline-none py-3 w-full text-espresso transition-colors font-sans;
   }
-  .nav-layali {
+  .nav-alora {
     @apply sticky top-0 z-40 backdrop-blur-xl bg-[#FAF9F6]/85 border-b border-[#E8E1D9] py-5 transition-all duration-300;
   }
 }

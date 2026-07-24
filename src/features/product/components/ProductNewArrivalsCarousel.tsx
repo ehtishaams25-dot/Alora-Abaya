@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 import { ProductCuratedCard } from './ProductCuratedCard'
 
@@ -67,25 +68,24 @@ export function ProductNewArrivalsCarousel({
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 bg-sand border-b border-border2/60 relative overflow-hidden">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Editorial Section Header with Minimal Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-xl">
-            <span className="text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3">
-              {t('product.newArrivals.eyebrow', isArabic ? 'إبداعات الموسم الجديدة' : 'Seasonal Debut')}
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug mb-3">
-              {t('product.newArrivals.title', isArabic ? 'وصل حديثاً إلى الأتليه' : 'New Arrivals')}
-            </h2>
-            <p className="text-xs sm:text-sm text-mocha font-sans leading-relaxed">
-              {t('product.newArrivals.desc', isArabic
-                ? 'أحدث الابتكارات المصممة من أجود أقمشة الحرير والكريب بلمسات يدوية استثنائية.'
-                : 'The latest creations unveiled at our atelier, featuring fluid silks and masterful French draping.')}
-            </p>
-          </div>
+        <motion.div 
+          className="flex items-center justify-between gap-6 mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+          }}
+        >
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-snug">
+            {t('product.newArrivals.title', isArabic ? 'وصل حديثاً إلى الأتليه' : 'New Arrivals')}
+          </h2>
 
           {/* Minimal Navigation Arrows */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0 self-start md:self-end">
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={handleScrollPrev}
@@ -118,33 +118,44 @@ export function ProductNewArrivalsCarousel({
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Horizontal Premium Carousel with Smooth Bidirectional Edge Fading (No Card Clipping) */}
         <div className="relative w-full">
           {/* Start Edge Fade Overlay (Left in LTR, Right in RTL when scrolled) */}
           <div
-            className={`absolute top-0 bottom-4 start-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 start-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollLeft ? 'opacity-100' : 'opacity-0'
             }`}
           />
 
           {/* End Edge Fade Overlay (Right in LTR, Left in RTL when overflow available) */}
           <div
-            className={`absolute top-0 bottom-4 end-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 end-0 w-16 sm:w-28 lg:w-36 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollRight ? 'opacity-100' : 'opacity-0'
             }`}
           />
 
-          <div
+          <motion.div
             ref={scrollRef}
             onScroll={checkScrollState}
-            className="flex gap-6 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-6 pt-2"
+            className="flex gap-6 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-6 pt-2 -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+              }
+            }}
           >
             {carouselItems.map((item) => (
-              <div
+              <motion.div
                 key={item.id}
                 className="w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 snap-start flex flex-col"
+                variants={{ hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
               >
                 <ProductCuratedCard
                   product={item}
@@ -152,9 +163,9 @@ export function ProductNewArrivalsCarousel({
                   onQuickView={onQuickView}
                   variant="tall"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

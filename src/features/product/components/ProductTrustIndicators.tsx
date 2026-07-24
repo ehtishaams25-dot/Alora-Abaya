@@ -44,11 +44,11 @@ export function ProductTrustIndicators() {
 
   return (
     <div className="pt-3.5 mt-3.5 border-t border-border2/60 shrink-0">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 sm:gap-y-3">
         {indicators.map((item) => (
-          <div key={item.key} className="flex items-center gap-1.5 text-mocha/80 font-sans">
+          <div key={item.key} className="flex items-center gap-2 text-mocha/85 font-sans">
             {item.icon}
-            <span className="text-[10px] sm:text-[11px] leading-tight font-normal tracking-wide">
+            <span className="text-[10px] sm:text-[11px] leading-snug font-normal tracking-wide">
               {item.label}
             </span>
           </div>

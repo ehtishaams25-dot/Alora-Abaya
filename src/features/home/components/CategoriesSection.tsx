@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 interface CategoryCardItem {
   id: string
@@ -57,49 +58,68 @@ export function CategoriesSection() {
 
   return (
     <section id="dresses" className="section-padding bg-cream border-t border-b border-border2">
-      <div id="categories" className="container-layali">
+      <div id="categories" className="container-alora">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.categories.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.categories.title')}
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Mobile-First Category Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <motion.div 
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+          }}
+        >
           {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              to={`/dresses?category=${encodeURIComponent(cat.filterCategory)}`}
-              className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl"
-            >
-              <img
-                src={cat.image}
-                alt={isArabic ? (cat.titleAr || cat.title) : cat.title}
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-              />
-              
-              {/* Dark Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
-
-              {/* Content Box */}
-              <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end items-center text-center">
-                <span className="text-[10px] sm:text-xs text-sand/80 uppercase tracking-[0.2em] mb-1 font-sans">
-                  {isArabic ? (cat.countAr || cat.count) : cat.count}
-                </span>
-                <h3 className="font-serif text-base sm:text-xl text-cream font-medium leading-tight group-hover:text-sand transition-colors">
-                  {isArabic ? (cat.titleAr || cat.title) : cat.title}
-                </h3>
+            <motion.div key={cat.id} variants={{ hidden: { opacity: 0, scale: 0.95, y: 30 }, show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
+              <Link
+                to={`/dresses?category=${encodeURIComponent(cat.filterCategory)}`}
+                className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl"
+              >
+                <img
+                  src={cat.image}
+                  alt={isArabic ? (cat.titleAr || cat.title) : cat.title}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
                 
-                <div className="w-8 h-0.5 bg-walnut mt-3" />
-              </div>
-            </Link>
+                {/* Dark Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/40 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
+
+                {/* Content Box */}
+                <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end items-center text-center">
+                  <span className="text-[10px] sm:text-xs text-sand/80 uppercase tracking-[0.2em] mb-1 font-sans">
+                    {isArabic ? (cat.countAr || cat.count) : cat.count}
+                  </span>
+                  <h3 className="font-serif text-base sm:text-xl text-cream font-medium leading-tight group-hover:text-sand transition-colors">
+                    {isArabic ? (cat.titleAr || cat.title) : cat.title}
+                  </h3>
+                  
+                  <div className="w-8 h-0.5 bg-walnut mt-3" />
+                </div>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import { type ReviewItem } from '../types'
 
 export function CustomerReviewsSection() {
@@ -37,22 +38,41 @@ export function CustomerReviewsSection() {
 
   return (
     <section className="section-padding bg-sand">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.reviews.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.reviews.title')}
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Touch Swipeable Cards on Mobile -> Desktop Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none px-4 sm:px-0">
+        <motion.div 
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+          }}
+        >
           {reviews.map((item) => (
-            <div
+            <motion.div
               key={item.id}
+              variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
               className="bg-cream border border-border2/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between flex-shrink-0 w-[290px] sm:w-auto snap-start shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div>
@@ -86,9 +106,9 @@ export function CustomerReviewsSection() {
                   {item.author.charAt(0)}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

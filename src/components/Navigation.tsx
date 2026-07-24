@@ -43,7 +43,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
       {/* Luxury Announcement Top Bar with Dismiss Cross Button */}
       {!hideAnnouncement && !announcementDismissed && (
         <div className="bg-espresso text-cream py-2 px-4 text-center transition-all relative flex items-center justify-center min-h-[36px]">
-          <p className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-sans font-medium flex items-center justify-center gap-2 pr-6 sm:pr-8">
+          <p className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-sans font-medium flex items-center justify-center gap-2 pe-6 sm:pe-8">
             <span>{t('navigation.announcement', 'NEW ARRIVALS EVERY MONDAY — EXPLORE OUR SIGNATURE ATELIER EDITION')}</span>
             <Link to="/#new" className="underline underline-offset-4 hover:text-walnut transition-colors hidden sm:inline-block">
               {t('navigation.exploreNow', 'DISCOVER')}
@@ -69,7 +69,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
           : 'bg-sand/80 backdrop-blur-md py-5 border-b border-border2/50'
           }`}
       >
-        <div className="container-layali relative flex items-center justify-between min-h-[44px]">
+        <div className="container-alora relative flex items-center justify-between min-h-[44px]">
           {/* Start Side: Mobile Menu Toggle & All Dress / Collection Navigation Links */}
           <div className="flex items-center justify-start gap-4 xl:gap-7 z-10 flex-1">
             <button
@@ -100,14 +100,14 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                   className="text-[11px] xl:text-[12px] uppercase tracking-[0.22em] xl:tracking-[0.26em] text-espresso hover:text-walnut transition-colors font-sans font-medium whitespace-nowrap py-1 relative group"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 right-0 h-[1px] bg-walnut scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rtl:origin-right" />
+                  <span className="absolute bottom-0 inset-x-0 h-[1px] bg-walnut scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rtl:origin-right" />
                 </Link>
               ))}
             </nav>
           </div>
 
           {/* Center: Centered Luxury ALORA Brand Logo on mobile, absolute centered on desktop */}
-          <div className="flex flex-col items-center justify-center z-10 pointer-events-auto shrink-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
+          <div className="flex flex-col items-center justify-center z-10 pointer-events-auto shrink-0 lg:absolute lg:start-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 rtl:lg:translate-x-1/2">
             <Link
               to="/"
               className="group flex flex-col items-center transition-transform hover:scale-[1.02] duration-500 py-1"
@@ -245,7 +245,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
 
         {/* Mobile Menu Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 w-full bg-sand/98 backdrop-blur-2xl border-b border-border2 px-6 py-8 shadow-2xl animate-fade-up">
+          <div className="lg:hidden absolute top-full inset-x-0 w-full bg-sand/98 backdrop-blur-2xl border-b border-border2 px-6 py-8 shadow-2xl animate-fade-up">
             <nav className="flex flex-col gap-6 text-center">
               {navLinks.map((link) => (
                 <Link
@@ -306,7 +306,6 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
                 <div className="flex justify-center gap-6 text-xs uppercase tracking-[0.2em] text-mocha pt-2">
                   <Link to="/#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.faq')}</Link>
                   <Link to="/#returns" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.returns')}</Link>
-                  <Link to="/#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-espresso">{t('navigation.contact')}</Link>
                 </div>
               </div>
             </nav>

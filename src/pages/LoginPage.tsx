@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { Navigation } from '../components/Navigation'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
-import { LoginForm, RegisterForm } from '@/features/auth'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Navigation } from "../components/Navigation";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { LoginForm, RegisterForm } from "@/features/auth";
 
 export function LoginPage() {
-  const { t } = useTranslation()
-  const navigate = useNavigate()
-  useDocumentTitle('Layali | Account Authentication ليالي')
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  useDocumentTitle("Layali | Account Authentication ليالي");
 
-  const [isRegister, setIsRegister] = useState(false)
+  const [isRegister, setIsRegister] = useState(false);
 
   const handleSuccess = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   return (
     <div className="h-screen max-h-screen bg-sand text-espresso font-sans flex flex-col overflow-x-hidden md:overflow-hidden selection:bg-taupe/20 selection:text-espresso">
@@ -30,7 +30,7 @@ export function LoginPage() {
           <div className="absolute inset-0 z-0 overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1762605135326-5c4bcc5ef006?auto=format&fit=crop&w=1600&q=90"
-              alt={t('auth.imageTitle', 'Timeless Elegance')}
+              alt={t("auth.imageTitle", "Timeless Elegance")}
               className="w-full h-full object-cover object-top sm:object-center transition-transform duration-[3000ms] ease-out group-hover:scale-105 animate-scale-in"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent mix-blend-normal" />
@@ -40,10 +40,13 @@ export function LoginPage() {
 
           <div className="relative z-10 max-w-lg animate-fade-up">
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-cream font-normal tracking-tight leading-[1.08] drop-shadow-sm">
-              {t('auth.imageTitle', 'Timeless Elegance')}
+              {t("auth.imageTitle", "Timeless Elegance")}
             </h2>
             <p className="font-sans text-xs sm:text-sm text-cream/85 tracking-wide mt-2 sm:mt-2.5 leading-relaxed max-w-md">
-              {t('auth.imageSubtitle', 'Crafted for women who appreciate understated luxury.')}
+              {t(
+                "auth.imageSubtitle",
+                "Crafted for women who appreciate understated luxury.",
+              )}
             </p>
           </div>
         </section>
@@ -54,41 +57,65 @@ export function LoginPage() {
             {/* Card Header */}
             <header className="mb-6 sm:mb-7 text-start shrink-0">
               <span className="text-eyebrow block mb-1.5 font-medium">
-                {t('auth.eyebrow', 'ACCOUNT')}
+                {t("auth.eyebrow", "ACCOUNT")}
               </span>
               <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso tracking-tight font-normal leading-tight">
                 {isRegister
-                  ? t('auth.createAccountTitle', 'Create Account')
-                  : t('auth.title', 'Welcome Back')}
+                  ? t("auth.createAccountTitle", "Create Account")
+                  : t("auth.title", "Welcome Back")}
               </h1>
               <p className="text-[13px] text-mocha mt-1.5 leading-relaxed">
                 {isRegister
-                  ? t('auth.createAccountSubtitle', 'Join our private circle for bespoke drops and atelier orders.')
-                  : t('auth.subtitle', 'Sign in to access your orders, wishlist, and exclusive collections.')}
+                  ? t(
+                      "auth.createAccountSubtitle",
+                      "Join our private circle for bespoke drops and atelier orders.",
+                    )
+                  : t(
+                      "auth.subtitle",
+                      "Sign in to access your orders, wishlist, and exclusive collections.",
+                    )}
               </p>
             </header>
 
             {/* Form */}
             {isRegister ? (
-              <RegisterForm onSuccess={handleSuccess} onToggleLogin={() => setIsRegister(false)} />
+              <RegisterForm
+                onSuccess={handleSuccess}
+                onToggleLogin={() => setIsRegister(false)}
+              />
             ) : (
-              <LoginForm onSuccess={handleSuccess} onToggleRegister={() => setIsRegister(true)} />
+              <LoginForm
+                onSuccess={handleSuccess}
+                onToggleRegister={() => setIsRegister(true)}
+              />
             )}
           </div>
 
           {/* Minimalist Footer */}
           <footer className="px-6 sm:px-10 py-4 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-[11px] text-mocha/70 uppercase tracking-[0.18em] font-sans border-t border-taupe/20 shrink-0 gap-2">
             <div className="flex items-center gap-4 sm:gap-6">
-              <a href="#privacy" className="hover:text-espresso transition-colors">
+              <a
+                href="#privacy"
+                className="hover:text-espresso transition-colors"
+              >
                 PRIVACY POLICY
               </a>
-              <a href="#terms" className="hover:text-espresso transition-colors">
+              <a
+                href="#terms"
+                className="hover:text-espresso transition-colors"
+              >
                 TERMS
               </a>
-              <a href="#returns" className="hover:text-espresso transition-colors">
+              <a
+                href="#returns"
+                className="hover:text-espresso transition-colors"
+              >
                 RETURNS
               </a>
-              <a href="#contact" className="hover:text-espresso transition-colors">
+              <a
+                href="#contact"
+                className="hover:text-espresso transition-colors"
+              >
                 CONTACT
               </a>
             </div>
@@ -97,5 +124,5 @@ export function LoginPage() {
         </section>
       </main>
     </div>
-  )
+  );
 }

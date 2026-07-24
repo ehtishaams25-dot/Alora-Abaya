@@ -127,21 +127,21 @@ function WishlistProductCard({
         </button>
       </div>
 
-      <div className="p-5 flex flex-col flex-1 justify-between bg-cream">
+      <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between bg-cream">
         <div>
-          <h3 className="font-serif text-base sm:text-lg text-espresso font-medium leading-snug group-hover:text-walnut transition-colors line-clamp-1 mb-2">
+          <h3 className="font-serif text-sm sm:text-lg text-espresso font-medium leading-snug group-hover:text-walnut transition-colors line-clamp-1 mb-2">
             {title}
           </h3>
           
-          <div className="flex items-center justify-between text-xs text-mocha font-sans mb-1">
-            <span>{selectedColor}</span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0 text-[10px] sm:text-xs text-mocha font-sans mb-1">
+            <span className="truncate">{selectedColor}</span>
             <span>{selectedSize}</span>
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border2/60 flex flex-col gap-3">
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-border2/60 flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-sans text-espresso font-semibold uppercase tracking-wider">
+            <span className="text-xs sm:text-sm font-sans text-espresso font-semibold uppercase tracking-wider">
               {item.price} {t('common.priceAed', 'SAR')}
             </span>
           </div>
@@ -153,7 +153,7 @@ function WishlistProductCard({
               handleAddToBag(item)
             }}
             disabled={isAdded}
-            className={`w-full rounded-full py-3 px-6 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+            className={`w-full rounded-full py-2.5 sm:py-3 px-3 sm:px-6 text-[9px] sm:text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
               isAdded
                 ? 'bg-success text-cream shadow-sm'
                 : 'bg-espresso text-cream hover:bg-ink hover:shadow-md'
@@ -161,13 +161,13 @@ function WishlistProductCard({
           >
             {isAdded ? (
               <>
-                <span className="w-2 h-2 rounded-full bg-cream inline-block animate-pulse" />
-                <span>{isArabic ? "تمت الإضافة للحقيبة" : "Added to Bag"}</span>
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-cream inline-block animate-pulse shrink-0" />
+                <span className="truncate">{isArabic ? "تمت الإضافة" : "Added"}</span>
               </>
             ) : (
               <>
-                <span>{isArabic ? "أضف إلى الحقيبة" : "Add to Bag"}</span>
-                <svg className="w-4 h-4 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
+                <span className="truncate">{isArabic ? "أضف للحقيبة" : "Add to Bag"}</span>
+                <svg className="w-3.5 sm:w-4 h-3.5 sm:h-4 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
                 </svg>
               </>
@@ -183,7 +183,7 @@ export function WishlistPage() {
   const { t, i18n } = useTranslation()
   const { isLoggedIn, setIsLoggedIn, wishlistItems, removeFromWishlist, addToCart } = useShop()
   const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
-  useDocumentTitle(i18n.language.startsWith('ar') ? 'ليالي | قائمة الأمنيات' : 'Layali | Curated Wishlist')
+  useDocumentTitle(i18n.language.startsWith('ar') ? 'الورا للفساتين | قائمة الأمنيات' : 'Alora | Curated Wishlist')
 
   const isArabic = i18n.language.startsWith('ar')
   const [authMode, setAuthMode] = useState<'welcome' | 'login' | 'register'>('welcome')
@@ -431,7 +431,6 @@ export function WishlistPage() {
                   <a href="#privacy" className="hover:text-espresso transition-colors">{t('auth.privacyPolicy', 'Privacy Policy')}</a>
                   <a href="#terms" className="hover:text-espresso transition-colors">{t('auth.terms', 'Terms')}</a>
                   <a href="#returns" className="hover:text-espresso transition-colors">{t('auth.returns', 'Returns')}</a>
-                  <a href="#contact" className="hover:text-espresso transition-colors">{t('auth.contact', 'Contact')}</a>
                 </nav>
                 <div className="flex items-center gap-2 sm:gap-3 text-mocha/80 text-[11px]">
                   <span>© 2026 Alora</span>
@@ -451,7 +450,7 @@ export function WishlistPage() {
     <div className="min-h-screen bg-sand text-espresso font-sans flex flex-col selection:bg-taupe/20 selection:text-espresso">
       <Navigation />
 
-      <main className="flex-1 container-layali py-6 sm:py-8 lg:py-10">
+      <main className="flex-1 container-alora py-6 sm:py-8 lg:py-10">
         {/* Minimal Left-Aligned Header */}
         <header className="mb-6 sm:mb-8 animate-fade-up">
           <span className="text-eyebrow text-walnut mb-1 tracking-[0.28em] block">
@@ -491,7 +490,7 @@ export function WishlistPage() {
           </div>
         ) : (
           /* Spacious Responsive Grid */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-7 animate-fade-up">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 animate-fade-up">
             {wishlistItems.map((item) => (
               <WishlistProductCard
                 key={item.id}

@@ -8,7 +8,7 @@ interface ProductRecentlyViewedSectionProps {
   isArabic: boolean
 }
 
-const STORAGE_KEY = 'layali_recently_viewed_ids'
+const STORAGE_KEY = 'alora_recently_viewed_ids'
 
 export function ProductRecentlyViewedSection({
   currentProductId,
@@ -71,32 +71,26 @@ export function ProductRecentlyViewedSection({
 
   return (
     <section className="py-14 sm:py-20 bg-sand/80 border-b border-border2/40 transition-colors">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Simple Horizontal Section Header */}
-        <div className="flex items-center justify-between gap-4 mb-8 sm:mb-10">
-          <div className="flex items-center gap-3">
-            <span className="w-8 sm:w-12 h-[1px] bg-walnut/60" />
-            <h3 className="font-serif text-sm sm:text-base lg:text-lg text-espresso tracking-wide font-normal uppercase">
-              {t('product.recentlyViewed.title', isArabic ? 'شاهدتِ مؤخراً' : 'Recently Viewed')}
-            </h3>
-          </div>
-          <span className="text-[11px] font-sans text-mocha tracking-wider uppercase">
-            {isArabic ? 'سجل التصفح الشخصي' : 'Personal Archive'}
-          </span>
+        <div className="mb-8 sm:mb-10">
+          <h3 className="font-serif text-sm sm:text-base lg:text-lg text-espresso tracking-wide font-normal uppercase">
+            {t('product.recentlyViewed.title', isArabic ? 'شاهدتِ مؤخراً' : 'Recently Viewed')}
+          </h3>
         </div>
 
         {/* Simple Horizontal Row of Small Cards with Soft Hover Animations and Bidirectional Edge Fading */}
         <div className="relative w-full">
           {/* Start Edge Fade Overlay */}
           <div
-            className={`absolute top-0 bottom-4 start-0 w-16 sm:w-24 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 start-0 w-16 sm:w-24 ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollLeft ? 'opacity-100' : 'opacity-0'
             }`}
           />
 
           {/* End Edge Fade Overlay */}
           <div
-            className={`absolute top-0 bottom-4 end-0 w-16 sm:w-24 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
+            className={`hidden sm:block absolute top-0 bottom-4 end-0 w-16 sm:w-24 ltr:bg-gradient-to-l rtl:bg-gradient-to-r from-sand via-sand/80 to-transparent pointer-events-none z-20 transition-opacity duration-500 ${
               canScrollRight ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -104,7 +98,7 @@ export function ProductRecentlyViewedSection({
           <div
             ref={scrollRef}
             onScroll={checkScrollState}
-            className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth"
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
           >
           {viewedProducts.map((item) => {
             const title = isArabic ? (item.nameAr || item.name) : item.name
@@ -115,7 +109,7 @@ export function ProductRecentlyViewedSection({
                   navigate(`/product/${item.id}`)
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
-                className="group w-44 sm:w-52 lg:w-56 shrink-0 cursor-pointer flex flex-col bg-cream rounded-xl sm:rounded-2xl overflow-hidden border border-border2/60 hover:border-espresso/30 shadow-2xs hover:shadow-md transition-all duration-300 hover:-translate-y-1.5"
+                className="group w-44 sm:w-52 lg:w-56 shrink-0 cursor-pointer flex flex-col bg-cream rounded-xl sm:rounded-2xl overflow-hidden border border-border2/60 hover:border-espresso/30 shadow-2xs hover:shadow-md transition-all duration-300"
               >
                 {/* Small Photography Container */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-sand">

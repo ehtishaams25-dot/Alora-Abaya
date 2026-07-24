@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { type ProductItem } from '../types'
-import { useShop } from '../../../providers/ShopProvider'
+
 import { QuickViewModal } from '../../../components/QuickViewModal'
 import { DRESSES_DATA, type ProductDress } from '../../../data/dressesData'
 import { useLongPressQuickView } from '../../../hooks/useLongPressQuickView'
@@ -11,13 +12,11 @@ function NewArrivalProductCard({
   item,
   isArabic,
   t,
-  addToCart,
   onQuickView
 }: {
   item: ProductItem
   isArabic: boolean
   t: any
-  addToCart: any
   onQuickView: (item: ProductItem) => void
 }) {
   const navigate = useNavigate()
@@ -51,47 +50,18 @@ function NewArrivalProductCard({
         )}
 
         {/* Sleek, Compact Hover Actions (Desktop Only) */}
-        <div className="absolute bottom-3 inset-x-3 hidden lg:flex items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              addToCart(item, item.colors?.[0])
-            }}
-            className="bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-1.5 px-2.5 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap border border-border2/50 shrink-0"
-            title={isArabic ? 'إضافة للحقيبة' : 'Quick Add to Bag'}
-          >
-            <svg className="w-3.5 h-3.5 stroke-current fill-none shrink-0" strokeWidth="1.6" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-            </svg>
-            <span>{isArabic ? 'إضافة' : 'Quick Add'}</span>
-          </button>
+        <div className="absolute bottom-3 inset-x-3 hidden lg:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation()
               onQuickView(item)
             }}
-            className="flex-1 bg-cream/95 backdrop-blur-md text-espresso hover:bg-walnut hover:text-cream py-1.5 px-3 rounded-xl text-[9px] uppercase tracking-[0.15em] font-medium shadow-sm transition-colors flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/50"
+            className="w-full bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream py-2 px-3 rounded-xl text-[10px] uppercase tracking-[0.16em] font-medium shadow-sm transition-colors flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/50"
           >
             <span>{isArabic ? 'نظرة سريعة' : 'Quick View'}</span>
           </button>
         </div>
-
-        {/* Mobile touch clean mini button */}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation()
-            addToCart(item, item.colors?.[0])
-          }}
-          className="lg:hidden absolute bottom-3 end-3 w-8 h-8 rounded-full bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream shadow-sm flex items-center justify-center transition-colors z-10"
-          title={t('common.addToBag')}
-        >
-          <svg className="w-4 h-4 stroke-current fill-none" strokeWidth="1.6" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-          </svg>
-        </button>
       </div>
 
       {/* Card Details */}
@@ -129,7 +99,7 @@ function NewArrivalProductCard({
 
 export function NewArrivalsSection() {
   const { t, i18n } = useTranslation()
-  const { addToCart } = useShop()
+
   const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
 
   const products: ProductItem[] = [
@@ -175,16 +145,25 @@ export function NewArrivalsSection() {
 
   return (
     <section id="new" className="section-padding bg-sand">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Minimalist Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
+        <motion.div 
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
             {t('home.newArrivals.eyebrow')}
-          </span>
-          <h2 className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          </motion.span>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
             {t('home.newArrivals.title')}
-          </h2>
-          <div className="mt-6 flex justify-center">
+          </motion.h2>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="mt-6 flex justify-center">
             <Link
               to="/dresses"
               className="btn-secondary flex items-center gap-2 group min-h-[44px]"
@@ -192,25 +171,34 @@ export function NewArrivalsSection() {
               <span>{t('common.viewAll')}</span>
               <span className="transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" aria-hidden="true">&rarr;</span>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Mobile-First Touch Swipe Carousel -> Desktop Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none px-4 sm:px-0">
+        <motion.div 
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+          }}
+        >
           {products.map((item) => (
-            <NewArrivalProductCard
-              key={item.id}
-              item={item}
-              isArabic={isArabic}
-              t={t}
-              addToCart={addToCart}
-              onQuickView={(p) => {
-                const found = DRESSES_DATA.find(d => d.id === p.id)
-                if (found) setQuickViewProduct(found)
-              }}
-            />
+            <motion.div key={item.id} variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
+              <NewArrivalProductCard
+                item={item}
+                isArabic={isArabic}
+                t={t}
+                onQuickView={(p) => {
+                  const found = DRESSES_DATA.find(d => d.id === p.id)
+                  if (found) setQuickViewProduct(found)
+                }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {quickViewProduct && (

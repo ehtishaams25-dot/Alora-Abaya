@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { type ProductDress } from '../../../data/dressesData'
 import { QuickViewModal } from '../../../components/QuickViewModal'
 import { useProductDetail } from '../hooks/useProductDetail'
@@ -34,7 +35,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
   if (isModal) {
     return (
       <div className="bg-sand w-full h-full flex flex-col justify-center py-4 sm:py-6 lg:py-3 animate-[fadeIn_0.6s_ease-out] min-h-0 overflow-y-auto lg:overflow-hidden">
-        <div className="container-layali flex flex-col lg:h-full lg:max-h-[740px] my-auto min-h-0">
+        <div className="container-alora flex flex-col lg:h-full lg:max-h-[740px] my-auto min-h-0">
           {/* Editorial Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-[11px] font-sans text-mocha mb-3 sm:mb-4 tracking-wider uppercase shrink-0">
             <Link to="/" className="hover:text-espresso transition-colors">
@@ -83,7 +84,7 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
     <div className="w-full flex flex-col font-sans animate-[fadeIn_0.6s_ease-out] pb-20 lg:pb-0">
       {/* Main Product Hero Section: Perfectly sized to fill the remaining browser window under the navigation bar so the next section never peeks from below on desktop */}
       <section className="bg-sand w-full py-4 sm:py-6 lg:py-5 border-b border-border2/60 flex flex-col justify-center lg:h-[calc(100vh-120px)] lg:min-h-[580px]">
-        <div className="container-layali flex flex-col lg:h-full flex-1 min-h-0 justify-center">
+        <div className="container-alora flex flex-col lg:h-full flex-1 min-h-0 justify-center">
           {/* Editorial Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-[11px] font-sans text-mocha mb-3 sm:mb-4 tracking-wider uppercase shrink-0">
             <Link to="/" className="hover:text-espresso transition-colors">
@@ -102,9 +103,23 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
             </span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-stretch flex-1 min-h-0 lg:overflow-hidden">
+          <motion.div 
+            className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-stretch flex-1 min-h-0 lg:overflow-hidden"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15 }
+              }
+            }}
+          >
             {/* Left Column: Photography Gallery */}
-            <div className="w-full lg:w-7/12 xl:w-2/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden">
+            <motion.div 
+              className="w-full lg:w-7/12 xl:w-2/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden"
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+            >
               <ProductGallery
                 product={product}
                 galleryViews={state.galleryViews}
@@ -112,18 +127,21 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
                 onSelectImage={actions.setSelectedImageIdx}
                 isArabic={isArabic}
               />
-            </div>
+            </motion.div>
 
             {/* Right Column: Purchasing Details Panel */}
-            <div className="w-full lg:w-5/12 xl:w-1/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden">
+            <motion.div 
+              className="w-full lg:w-5/12 xl:w-1/3 lg:h-full min-h-0 flex flex-col lg:overflow-hidden"
+              variants={{ hidden: { opacity: 0, x: 30 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 } } }}
+            >
               <ProductPurchasePanel
                 product={product}
                 state={state}
                 actions={actions}
                 isArabic={isArabic}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -201,11 +219,10 @@ export function ProductDetailPage({ product, isModal = false }: ProductDetailPag
                   window.scrollTo({ top: 380, behavior: 'smooth' })
                 }
               }}
-              className={`min-h-[46px] px-6 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer ${
-                state.sizeError
-                  ? 'bg-[#8B2626] text-cream animate-shake'
-                  : 'bg-espresso text-cream hover:bg-ink'
-              }`}
+              className={`min-h-[46px] px-6 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium transition-all duration-300 flex items-center justify-center gap-1.5 active:scale-95 shrink-0 shadow-md cursor-pointer ${state.sizeError
+                ? 'bg-[#8B2626] text-cream animate-shake'
+                : 'bg-espresso text-cream hover:bg-ink'
+                }`}
             >
               <span>
                 {state.sizeError

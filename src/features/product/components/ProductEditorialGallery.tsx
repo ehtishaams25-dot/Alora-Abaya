@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { type ProductDress } from '../../../data/dressesData'
 
 interface ProductEditorialGalleryProps {
@@ -22,7 +21,6 @@ interface EditorialFeature {
 }
 
 export function ProductEditorialGallery({ product, isArabic }: ProductEditorialGalleryProps) {
-  const { t } = useTranslation()
 
   // Sourced luxury fashion editorial photography specifically capturing high-end fabric, embroidery, tailoring seams, sleeves, and graceful motion
   const features: EditorialFeature[] = [
@@ -110,23 +108,6 @@ export function ProductEditorialGallery({ product, isArabic }: ProductEditorialG
 
   return (
     <div className="w-full flex flex-col font-sans">
-      {/* Editorial Storytelling Introduction Banner */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-sand border-b border-border2/60 text-center relative overflow-hidden">
-        <div className="container-layali relative z-10 max-w-2xl mx-auto">
-          <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-walnut font-medium block mb-3 sm:mb-4">
-            {t('product.editorialGallery.eyebrow', isArabic ? 'فلسفة التصميم والحرفية' : 'Atelier Craftsmanship')}
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-espresso font-normal tracking-tight leading-[1.25] mb-4 sm:mb-5">
-            {t('product.editorialGallery.title', isArabic ? 'تفاصيل في ضوء النهار' : 'Captured in the Light')}
-          </h2>
-          <p className="text-sm sm:text-base text-mocha leading-relaxed font-sans max-w-xl mx-auto">
-            {t('product.editorialGallery.description', isArabic
-              ? 'رحلة بصرية متأنية تستعرض أسرار الخياطة، وجودة الأقمشة، وسحر الحركة في كل جزء من إبداعات ألورا.'
-              : 'An unhurried, chapter-by-chapter exploration of tactile fabric, concealed architecture, and kinetic motion.')}
-          </p>
-        </div>
-      </section>
-
       {/* Individual Premium Feature Sections */}
       {features.map((feature, index) => {
         // Alternating layout: index 0 is Image Left, index 1 is Text Left (Image Right), etc.
@@ -144,7 +125,7 @@ export function ProductEditorialGallery({ product, isArabic }: ProductEditorialG
               }`}
             />
 
-            <div className="container-layali relative z-10 w-full">
+            <div className="container-alora relative z-10 w-full">
               <div
                 className={`flex flex-col gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center justify-center ${
                   isImageLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
@@ -160,17 +141,6 @@ export function ProductEditorialGallery({ product, isArabic }: ProductEditorialG
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-60 pointer-events-none" />
-
-                    {/* Chapter Plate Overlay inside image corner */}
-                    <div className="absolute top-4 start-4 sm:top-6 sm:start-6 bg-cream/95 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border2/60 shadow-md flex items-center gap-2.5">
-                      <span className="font-serif text-xs font-medium text-walnut">
-                        {feature.number}
-                      </span>
-                      <span className="w-1 h-1 rounded-full bg-border2" />
-                      <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-espresso">
-                        {isArabic ? feature.eyebrowAr : feature.eyebrowEn}
-                      </span>
-                    </div>
                   </div>
                 </div>
 

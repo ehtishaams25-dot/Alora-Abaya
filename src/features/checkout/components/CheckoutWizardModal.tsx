@@ -39,7 +39,7 @@ export function CheckoutWizardModal() {
   })
 
   // Payment Selection State
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'applepay' | 'googlepay' | 'tabby' | 'tamara' | 'cod'>('card')
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'applepay' | 'tabby_tamara'>('card')
   const [cardDetails, setCardDetails] = useState({
     number: '•••• •••• •••• 4242',
     expiry: '08/28',
@@ -126,10 +126,6 @@ export function CheckoutWizardModal() {
       setStep(isLoggedIn ? 'shipping' : 'auth')
     }, 300)
   }
-
-  // Split payment calculations
-  const tabbySplit = Math.ceil(total / 4)
-  const tamaraSplit = Math.ceil(total / 3)
 
   return (
     <div
@@ -541,7 +537,7 @@ export function CheckoutWizardModal() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('card')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
                     paymentMethod === 'card'
                       ? 'border-2 border-espresso bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-walnut'
@@ -564,7 +560,7 @@ export function CheckoutWizardModal() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('applepay')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
                     paymentMethod === 'applepay'
                       ? 'border-2 border-espresso bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-walnut'
@@ -581,89 +577,28 @@ export function CheckoutWizardModal() {
                   </span>
                 </button>
 
-                {/* 3. Tabby (Split in 4) */}
+                {/* 3. Tabby & Tamara */}
                 <button
                   type="button"
-                  onClick={() => setPaymentMethod('tabby')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
-                    paymentMethod === 'tabby'
+                  onClick={() => setPaymentMethod('tabby_tamara')}
+                  className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex flex-col justify-between ${
+                    paymentMethod === 'tabby_tamara'
                       ? 'border-2 border-[#3ED3B9] bg-cream shadow-md'
                       : 'border-border2 bg-sand hover:border-[#3ED3B9]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-serif text-sm font-bold text-[#1F2937]">tabby</span>
+                    <span className="font-serif text-sm font-bold text-[#1F2937]">Tabby & Tamara</span>
                     <span className="text-[10px] font-bold uppercase tracking-widest bg-[#3ED3B9]/20 text-[#0F766E] px-2 py-0.5 rounded-full">
                       0% Interest
                     </span>
                   </div>
                   <span className="text-xs text-mocha block font-medium">
-                    {isArabic ? `قسّميها على 4 دفعات بقيمة ${tabbySplit} SAR` : `4 payments of ${tabbySplit} SAR • No interest`}
+                    {isArabic ? `قسّميها على 3 أو 4 دفعات بدون فوائد` : `Split into 3 or 4 payments • No interest`}
                   </span>
                 </button>
 
-                {/* 4. Tamara (Split in 3) */}
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('tamara')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
-                    paymentMethod === 'tamara'
-                      ? 'border-2 border-[#E18C79] bg-cream shadow-md'
-                      : 'border-border2 bg-sand hover:border-[#E18C79]'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-serif text-sm font-bold text-[#D97706]">tamara</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest bg-[#E18C79]/20 text-[#B45309] px-2 py-0.5 rounded-full">
-                      0% Interest
-                    </span>
-                  </div>
-                  <span className="text-xs text-mocha block font-medium">
-                    {isArabic ? `قسّميها على 3 دفعات بقيمة ${tamaraSplit} SAR` : `3 payments of ${tamaraSplit} SAR • Sharia compliant`}
-                  </span>
-                </button>
 
-                {/* 5. Google Pay */}
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('googlepay')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
-                    paymentMethod === 'googlepay'
-                      ? 'border-2 border-espresso bg-cream shadow-md'
-                      : 'border-border2 bg-sand hover:border-walnut'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-serif text-sm font-semibold text-espresso">Google Pay</span>
-                    <span className="text-[10px] uppercase font-bold text-taupe">GPay</span>
-                  </div>
-                  <span className="text-xs text-mocha block">
-                    {isArabic ? 'دفع سريع وسهل عبر حساب جوجل' : 'Express checkout with GPay'}
-                  </span>
-                </button>
-
-                {/* 6. Cash on Delivery (COD) */}
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('cod')}
-                  className={`p-4 rounded-2xl border text-left rtl:text-right transition-all cursor-pointer flex flex-col justify-between ${
-                    paymentMethod === 'cod'
-                      ? 'border-2 border-espresso bg-cream shadow-md'
-                      : 'border-border2 bg-sand hover:border-walnut'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-serif text-sm font-semibold text-espresso">
-                      {isArabic ? 'الدفع عند الاستلام (COD)' : 'Cash on Delivery'}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-widest bg-walnut/20 text-walnut px-2 py-0.5 rounded-full">
-                      VIP Courier
-                    </span>
-                  </div>
-                  <span className="text-xs text-mocha block">
-                    {isArabic ? 'ادفعي نقدًا أو بالشبكة عند وصول المندوب لباب منزلك' : 'Pay via Card or Cash upon door delivery'}
-                  </span>
-                </button>
               </div>
 
               {/* Conditional Form Inputs for Card */}
@@ -733,13 +668,13 @@ export function CheckoutWizardModal() {
               )}
 
               {/* Tabby/Tamara badge preview */}
-              {(paymentMethod === 'tabby' || paymentMethod === 'tamara') && (
+              {paymentMethod === 'tabby_tamara' && (
                 <div className="bg-success/15 border border-success/40 rounded-2xl p-4 text-xs text-espresso flex items-center gap-3 animate-fade-in">
                   <span className="w-2.5 h-2.5 rounded-full bg-success shrink-0 animate-pulse" />
                   <span>
                     {isArabic
-                      ? `تمت الموافقة المبدئية على حد الائتمان الملكي. سيتم توجيهك بأمان لإتمام التقسيط على ${paymentMethod === 'tabby' ? '4' : '3'} دفعات بدون أي رسوم.`
-                      : `Instant VIP credit approved. You will split payment into ${paymentMethod === 'tabby' ? '4' : '3'} interest-free installments safely.`}
+                      ? `تمت الموافقة المبدئية على حد الائتمان الملكي. سيتم توجيهك بأمان لإتمام التقسيط بدون أي رسوم.`
+                      : `Instant VIP credit approved. You will split payment safely.`}
                   </span>
                 </div>
               )}
@@ -823,10 +758,7 @@ export function CheckoutWizardModal() {
                     <strong className="text-espresso text-sm uppercase block">
                       {paymentMethod === 'card' && `Card ending in ${cardDetails.number.slice(-4)}`}
                       {paymentMethod === 'applepay' && 'Apple Pay Biometric'}
-                      {paymentMethod === 'tabby' && `Tabby Split (4x ${tabbySplit} SAR)`}
-                      {paymentMethod === 'tamara' && `Tamara Split (3x ${tamaraSplit} SAR)`}
-                      {paymentMethod === 'googlepay' && 'Google Pay'}
-                      {paymentMethod === 'cod' && 'Cash on Delivery (COD)'}
+                      {paymentMethod === 'tabby_tamara' && `Tabby & Tamara Split`}
                     </strong>
                   </div>
                   <button
@@ -913,7 +845,7 @@ export function CheckoutWizardModal() {
             </div>
 
             {/* Atelier Status Timeline */}
-            <div className="bg-sand border border-border2 rounded-3xl p-6 sm:p-8 text-left rtl:text-right space-y-5 shadow-sm">
+            <div className="bg-sand border border-border2 rounded-3xl p-6 sm:p-8 text-start space-y-5 shadow-sm">
               <span className="text-[10px] uppercase tracking-widest text-walnut font-bold block border-b border-border2/60 pb-2">
                 {isArabic ? 'مسار حياكة وتجهيز العباية الملكية' : 'ATELIER CRAFTSMANSHIP & DELIVERY TIMELINE'}
               </span>

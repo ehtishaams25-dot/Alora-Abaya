@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export function HeroSection() {
   const { t } = useTranslation()
@@ -21,29 +22,46 @@ export function HeroSection() {
         </div>
 
         {/* Minimalist Luxury Content Overlay */}
-        <div className="container-layali relative z-10 py-24 lg:py-32 flex flex-col items-center justify-center text-center min-h-[80vh] lg:min-h-[85vh]">
+        <div className="container-alora relative z-10 py-24 lg:py-32 flex flex-col items-center justify-center text-center min-h-[80vh] lg:min-h-[85vh]">
           {/* Editorial Typography Showcase */}
-          <div className="max-w-4xl my-auto py-12 flex flex-col items-center">
+          <motion.div 
+            className="max-w-4xl my-auto py-12 flex flex-col items-center"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+            }}
+          >
             {/* Delicate Eyebrow */}
-            <span className="text-cream/90 text-[11px] sm:text-xs tracking-[0.32em] uppercase font-sans mb-6 block font-medium">
+            <motion.span 
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
+              className="text-cream/90 text-[11px] sm:text-xs tracking-[0.32em] uppercase font-sans mb-6 block font-medium"
+            >
               {t('home.hero.eyebrow', 'EXCLUSIVELY HANDCRAFTED IN RIYADH, KSA')}
-            </span>
+            </motion.span>
 
             {/* Grand Minimalist Serif Title */}
-            <h1 className="font-serif text-5xl sm:text-7xl lg:text-[90px] text-cream font-normal tracking-tight leading-[0.95] drop-shadow-sm">
+            <motion.h1 
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
+              className="font-serif text-5xl sm:text-7xl lg:text-[90px] text-cream font-normal tracking-tight leading-[0.95] drop-shadow-sm"
+            >
               {t('home.hero.title', 'Timeless Modest Elegance')}
-            </h1>
+            </motion.h1>
 
             {/* Refined Single Luxury Call-to-Action */}
-            <div className="mt-10 sm:mt-12">
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
+              className="mt-10 sm:mt-12"
+            >
               <Link
                 to="/dresses"
                 className="bg-cream text-espresso rounded-full px-10 py-4.5 text-xs sm:text-sm uppercase tracking-[0.26em] hover:bg-white transition-colors font-sans font-semibold shadow-2xl inline-flex items-center justify-center min-h-[50px]"
               >
                 {t('home.hero.ctaExplore', 'EXPLORE THE COLLECTION')}
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

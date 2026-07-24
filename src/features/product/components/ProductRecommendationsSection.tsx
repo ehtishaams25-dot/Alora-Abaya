@@ -127,7 +127,7 @@ export function ProductRecommendationsSection({ currentProductId, isArabic }: Pr
 
   return (
     <section className="py-12 sm:py-16 lg:py-16 bg-sand border-b border-border2/60 relative">
-      <div className="container-layali">
+      <div className="container-alora">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
           <span className="text-xs uppercase tracking-[0.25em] text-walnut font-medium block mb-3">
@@ -143,8 +143,8 @@ export function ProductRecommendationsSection({ currentProductId, isArabic }: Pr
           </p>
         </div>
 
-        {/* Recommendations Grid */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible no-scrollbar px-1 sm:px-0">
+        {/* Grid/Scroll Container */}
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden">
           {recommended.map((item) => (
             <RecommendedProductCard
               key={item.id}

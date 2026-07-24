@@ -55,7 +55,7 @@ export function ProductCraftsmanshipSection({ product, isArabic }: ProductCrafts
       {/* Editorial Decorative Background Subtle Glow */}
       <div className="absolute top-0 end-0 w-80 h-80 bg-sand/80 rounded-full blur-3xl -z-0 pointer-events-none opacity-50" />
       
-      <div className="container-layali relative z-10 w-full">
+      <div className="container-alora relative z-10 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16 xl:gap-20">
           {/* Refined Boutique Lifestyle Image Side */}
           <div className="w-full lg:w-5/12 shrink-0 flex justify-center">

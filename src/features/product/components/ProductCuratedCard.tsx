@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { type ProductDress } from '../../../data/dressesData'
@@ -20,8 +19,7 @@ export function ProductCuratedCard({
 }: ProductCuratedCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { addToCart, addToWishlist, removeFromWishlist, isInWishlist, openQuickView } = useShop()
-  const [isAdding, setIsAdding] = useState(false)
+  const { addToWishlist, removeFromWishlist, isInWishlist, openQuickView } = useShop()
 
   const inWishlist = isInWishlist(product.id)
   const title = isArabic ? (product.nameAr || product.name) : product.name
@@ -35,17 +33,6 @@ export function ProductCuratedCard({
     } else {
       addToWishlist(product)
     }
-  }
-
-  const handleQuickAdd = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setIsAdding(true)
-    const defaultColor = product.colors?.[0] || product.colorNames?.[0]
-    const defaultSize = product.sizes?.[0] || 'M'
-    addToCart(product, defaultColor, defaultSize)
-    setTimeout(() => {
-      setIsAdding(false)
-    }, 1000)
   }
 
   const handleQuickViewClick = (e: React.MouseEvent) => {
@@ -141,67 +128,17 @@ export function ProductCuratedCard({
           </svg>
         </button>
 
-        {/* Hover Action Bar: Quick Add & Quick View */}
-        <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 hidden lg:flex items-center justify-center gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-20">
+        {/* Hover Action Bar: Quick View */}
+        <div className="absolute bottom-3 sm:bottom-4 inset-x-3 sm:inset-x-4 hidden lg:flex items-center justify-center opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-20">
           <button
             type="button"
-            onClick={handleQuickAdd}
-            disabled={isAdding}
-            className={`flex-1 py-2.5 px-3 rounded-xl text-[10px] uppercase tracking-[0.16em] font-medium shadow-lg transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap border ${
-              isAdding
-                ? 'bg-success text-cream border-success'
-                : 'bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream border-border2/60'
-            }`}
+            onClick={handleQuickViewClick}
+            className="w-full py-3 px-4 rounded-xl text-[10px] sm:text-xs uppercase tracking-[0.18em] font-medium shadow-lg transition-all duration-300 bg-cream/95 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap border border-border2/60"
+            title={isArabic ? 'نظرة سريعة على التفاصيل' : 'Quick View'}
           >
-            {isAdding ? (
-              <>
-                <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                <span>{isArabic ? 'تمت الإضافة' : 'Added'}</span>
-              </>
-            ) : (
-              <>
-                <svg className="w-3.5 h-3.5 stroke-current fill-none shrink-0" strokeWidth="1.8" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                <span>{isArabic ? 'إضافة سريعة' : 'Quick Add'}</span>
-              </>
-            )}
+            <span>{isArabic ? 'نظرة سريعة' : 'Quick View'}</span>
           </button>
-
-          {onQuickView && (
-            <button
-              type="button"
-              onClick={handleQuickViewClick}
-              className="py-2.5 px-3.5 rounded-xl text-[10px] uppercase tracking-[0.16em] font-medium shadow-lg transition-all duration-300 bg-walnut/95 backdrop-blur-md text-cream hover:bg-espresso hover:text-cream flex items-center justify-center cursor-pointer whitespace-nowrap border border-border2/40"
-              title={isArabic ? 'نظرة سريعة على التفاصيل' : 'Quick View'}
-            >
-              <span>{isArabic ? 'نظرة سريعة' : 'Quick View'}</span>
-            </button>
-          )}
         </div>
-
-        {/* Mobile touch clean mini button */}
-        <button
-          type="button"
-          onClick={handleQuickAdd}
-          disabled={isAdding}
-          className="lg:hidden absolute bottom-2.5 end-2.5 sm:bottom-3.5 sm:end-3.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-cream/90 backdrop-blur-md text-espresso hover:bg-espresso hover:text-cream shadow-sm flex items-center justify-center transition-colors z-20"
-          title={t('common.addToBag')}
-        >
-          {isAdding ? (
-            <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-          ) : (
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-current fill-none" strokeWidth="1.6" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-            </svg>
-          )}
-        </button>
       </div>
 
       {/* Catalogue Card Details */}
