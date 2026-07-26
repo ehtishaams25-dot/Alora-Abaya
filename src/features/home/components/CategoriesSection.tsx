@@ -18,12 +18,12 @@ export function CategoriesSection() {
   const categories: CategoryCardItem[] = [
     {
       id: "cat-1",
-      title: "Daily Modest Abayas",
-      titleAr: "عبايات الاستخدام اليومي",
+      title: "Daily Modest Dresses",
+      titleAr: "فساتين الاستخدام اليومي",
       count: "24 Pieces",
       countAr: "24 قطعة",
       image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85",
-      filterCategory: "Abayas"
+      filterCategory: "Dresses"
     },
     {
       id: "cat-2",

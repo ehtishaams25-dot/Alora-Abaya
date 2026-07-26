@@ -105,8 +105,8 @@ export function NewArrivalsSection() {
   const products: ProductItem[] = [
     {
       id: "na-1",
-      name: "Royal Silk Bisht Abaya",
-      nameAr: "عباية بشت ملكية من الحرير",
+      name: "Royal Silk Bisht Dress",
+      nameAr: "فستان بشت ملكية من الحرير",
       price: "2,450",
       image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
       colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
@@ -114,8 +114,8 @@ export function NewArrivalsSection() {
     },
     {
       id: "na-2",
-      name: "Midnight Velvet Gilded Abaya",
-      nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
+      name: "Midnight Velvet Gilded Dress",
+      nameAr: "فستان مخملية منتصف الليل مطرزة بالذهب",
       price: "3,100",
       image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
       colors: ["#0D1321", "#4A5D23"],
@@ -124,7 +124,7 @@ export function NewArrivalsSection() {
     {
       id: "na-3",
       name: "Desert Sand Double Nidha",
-      nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
+      nameAr: "فستان ندا مزدوجة بلون رمال الصحراء",
       price: "1,850",
       image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
       colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],

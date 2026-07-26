@@ -78,7 +78,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
       titleAr: 'نظرة شاملة على تناسق أبعاد الأتليه',
       instructionEn: 'Our bespoke silhouettes are engineered with a generous 4 to 6 inches of flowing ease across the bust and hips, ensuring graceful movement and royal drape across all heights.',
       instructionAr: 'تتميز تصاميمنا الملكية باتساع مدروس يراوح بين ٤ و٦ بوصات إضافية عند الصدر والوركين، لضمان انسيابية استثنائية وحركةสงيمة تناسب مختلف القامات.',
-      proTipEn: 'When selecting your abaya size, your vertical length with heels is the most critical factor for achieving a floor-sweeping luxury finish.',
+      proTipEn: 'When selecting your dress size, your vertical length with heels is the most critical factor for achieving a floor-sweeping luxury finish.',
       proTipAr: 'عند اختيار مقاس العباءة، يُعد الطول الكلي مع الحذاء أو الكعب هو العامل الأهم للحصول على مظهر فاخر يلامس الأرض بانسيابية.'
     },
     bust: {
@@ -86,7 +86,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
       titleAr: '١. محيط الصدر (Bust)',
       instructionEn: 'Pass the measuring tape under your arms and wrap it across the fullest part of your bust. Ensure the tape rests horizontally flat right across your shoulder blades.',
       instructionAr: 'مرري شريط القياس تحت ذراعيك وحول الجزء الأوسع من الصدر. تأكدي من أن الشريط مستوٍ تماماً وأفقي عبر لوحي الكتف من الخلف.',
-      proTipEn: 'Keep the tape comfortably level without pulling tight. Our abayas inherently provide generous ease over your actual bust measurement.',
+      proTipEn: 'Keep the tape comfortably level without pulling tight. Our dresses inherently provide generous ease over your actual bust measurement.',
       proTipAr: 'حافظي على استواء الشريط دون شده بقوة. عباءاتنا مصممة باتساع مريح وراقي يتجاوز قياس الصدر الفعلي لمنحك حرية تامة.'
     },
     waist: {
@@ -100,7 +100,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
     hips: {
       titleEn: '3. Hips & Lower Drape',
       titleAr: '٣. محيط الورك والانسيابية (Hips)',
-      instructionEn: 'Stand upright with your heels together. Measure right around the fullest part of your hips and upper thighs where the abaya begins its fluid A-line fall.',
+      instructionEn: 'Stand upright with your heels together. Measure right around the fullest part of your hips and upper thighs where the dress begins its fluid A-line fall.',
       instructionAr: 'قفي باستقامة مع تقريب الكعبين من بعضهما. قيسي حول الجزء الأوسع من الوركين وأعلى الفخذين حيث يبدأ انسدال العباءة بانسيابية.',
       proTipEn: 'Our bespoke cut widens gracefully down from the waist, ensuring ample silhouette room across the hips without any unwanted clinging.',
       proTipAr: 'تتسع قصتنا الملكية بانسيابية رائعة ابتداءً من الخصر، مما يضمن اتساعاً أريحيّاً ورقياً حول الوركين دون أي الالتصاق.'
@@ -270,7 +270,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
                     <span className="text-walnut font-medium">{isArabic ? stepDetails[activeStep].titleAr.split(' ')[1] : stepDetails[activeStep].titleEn}</span>
                   </div>
 
-                  {/* Elegant Line Drawing Female & Abaya Silhouette with Animated Measuring Tapes */}
+                  {/* Elegant Line Drawing Female & Dress Silhouette with Animated Measuring Tapes */}
                   <div className="relative py-4 flex items-center justify-center w-full min-h-[300px]">
                     <svg className="w-48 h-72 stroke-espresso/85 fill-none" strokeWidth="1.2" viewBox="0 0 120 190">
                       {/* Neckline & Shoulders */}
@@ -451,7 +451,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
                       {isArabic ? 'مستشار المقاسات الذكي' : 'BESPOKE FIT ADVISOR'}
                     </span>
                     <h3 className="font-serif text-lg sm:text-xl text-espresso">
-                      {isArabic ? 'احصلي على التوصية الفورية للطول والمقاس الملكي' : 'Find Your Tailored Abaya Proportion & Length'}
+                      {isArabic ? 'احصلي على التوصية الفورية للطول والمقاس الملكي' : 'Find Your Tailored Dress Proportion & Length'}
                     </h3>
                   </div>
                   <div className="bg-espresso text-cream px-4 py-2 rounded-full text-xs font-serif font-medium shrink-0 flex items-center gap-2">
@@ -627,7 +627,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
                   <p className="text-xs sm:text-sm text-mocha leading-relaxed">
                     {isArabic
                       ? 'لا تُقاس العباءات الفاخرة بالالتصاق، بل بانسيابيتها حول الجسد. نترك في كل قصة ٤ إلى ٦ بوصات إضافية عند الصدر والوركين لتمنحك حركة مهيبة تشبه انسياب الحرير.'
-                      : 'Unlike traditional body-con garments, royal abayas are designed with 4 to 6 inches of intentional ease across the bust and hips, allowing the fabric to move gracefully like liquid silk.'}
+                      : 'Unlike traditional body-con garments, royal dresses are designed with 4 to 6 inches of intentional ease across the bust and hips, allowing the fabric to move gracefully like liquid silk.'}
                   </p>
                 </div>
 
@@ -639,7 +639,7 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
                   <p className="text-xs sm:text-sm text-mocha leading-relaxed">
                     {isArabic
                       ? 'إذا كنتِ ترتدين كعباً بارتفاع ٧ سم أو أكثر في المناسبات المسائية، نوصي باختيار مقاس أكبر بدرجة واحدة في الطول (مثلاً المقاس ٥٦ بدلاً من ٥٤) للحفاظ على الانسدال الملامس للأرض.'
-                      : 'If you frequently style your abaya with 3-inch (7cm) heels for evening soirées, we recommend stepping up one size in length (e.g. Size 56 instead of 54) to maintain the royal floor-sweeping drape.'}
+                      : 'If you frequently style your dress with 3-inch (7cm) heels for evening soirées, we recommend stepping up one size in length (e.g. Size 56 instead of 54) to maintain the royal floor-sweeping drape.'}
                   </p>
                 </div>
 

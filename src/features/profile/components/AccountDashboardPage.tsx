@@ -52,7 +52,7 @@ export function AccountDashboardPage() {
 
   // Mock restock notifications list
   const [restockList, setRestockList] = useState([
-    { id: 'restock-1', productName: 'Royal Velvet Abaya', size: 'Size 56 (L)', dateAdded: 'July 10, 2026', status: 'In Production' },
+    { id: 'restock-1', productName: 'Royal Velvet Dress', size: 'Size 56 (L)', dateAdded: 'July 10, 2026', status: 'In Production' },
     { id: 'restock-2', productName: 'Silk Organza Evening Drape', size: 'Size 54 (M)', dateAdded: 'June 28, 2026', status: 'Restocking Soon' }
   ])
 
@@ -569,7 +569,7 @@ export function AccountDashboardPage() {
                       to="/dresses"
                       className="px-8 py-3.5 rounded-full bg-espresso text-cream text-xs uppercase tracking-widest font-medium hover:bg-ink transition-colors inline-block"
                     >
-                      {isArabic ? 'استكشاف العبايات' : 'Explore Abayas'}
+                      {isArabic ? 'استكشاف الفساتين' : 'Explore Dresses'}
                     </Link>
                   </div>
                 ) : (

@@ -7,7 +7,7 @@ The `home` feature encapsulates the complete **Mobile-First**, **Bilingual (Engl
 
 ## Exposed Public API (`index.ts`)
 - `HeroSection`: Large hero banner featuring a Signature Collection Masterpiece image tab and an Atelier Runway Video showcase.
-- `NewArrivalsSection`: Mobile touch-swipeable carousel (`snap-x`) displaying latest seasonal abaya drops with badges, pricing (`AED`), and swatches.
+- `NewArrivalsSection`: Mobile touch-swipeable carousel (`snap-x`) displaying latest seasonal dress drops with badges, pricing (`AED`), and swatches.
 - `CategoriesSection`: Visual 4-tile grid (`Daily Modest`, `Occasion & Evening`, `Bisht & Kaftans`, `Luxury Sets`) with dark image overlays and hover/touch scaling.
 - `BestSellersSection`: Top-rated client favorites (`5.0 ★★★★★`) with mobile-friendly category filter tabs (`All`, `Embroidered Silks`, `Daily Modest`, `Occasion Gowns`).
 - `WhyChooseUsSection`: The 2 wide pillars of Alora luxury distinction (`Grade A+ Fabrics` and `Express Shipping`) presented in a spacious, editorial 2-column format with quality assurance tags.

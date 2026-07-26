@@ -115,7 +115,7 @@ export function BestSellersSection() {
     {
       id: "bs-1",
       name: "Noor Pearl-Trimmed Chiffon",
-      nameAr: "عباية نور شيفون مزينة باللؤلؤ",
+      nameAr: "فستان نور شيفون مزينة باللؤلؤ",
       price: "2,650",
       image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
       rating: "5.0",
@@ -124,8 +124,8 @@ export function BestSellersSection() {
     },
     {
       id: "bs-2",
-      name: "Al-Dana Pleated Crepe Abaya",
-      nameAr: "عباية الدانة كريب بكسرات أنيقة",
+      name: "Al-Dana Pleated Crepe Dress",
+      nameAr: "فستان الدانة كريب بكسرات أنيقة",
       price: "1,950",
       image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
       rating: "4.9",

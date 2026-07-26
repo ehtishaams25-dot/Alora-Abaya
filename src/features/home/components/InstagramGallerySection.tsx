@@ -29,8 +29,8 @@ export function InstagramGallerySection() {
       id: "vid-1",
       ratio: "vertical",
       image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=800&q=80",
-      title: "Royal Velvet & Silk Abaya Walk",
-      titleAr: "عرض عباية المخمل والحرير الملكي",
+      title: "Royal Velvet & Silk Dress Walk",
+      titleAr: "عرض فستان المخمل والحرير الملكي",
       subtitle: "Vertical • 4K Salon Runway",
       subtitleAr: "عمودي • عرض الصالون بدقة 4K",
       duration: "0:42",
@@ -254,10 +254,10 @@ export function InstagramGallerySection() {
             {t('home.instagram.eyebrow', 'Social Chronicle')}
           </motion.span>
           <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso">
-            {t('home.instagram.title', 'Lifestyle & Journal @AloraAbaya')}
+            {t('home.instagram.title', 'Lifestyle & Journal @AloraDress')}
           </motion.h2>
           <motion.p variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-body text-mocha mt-3 text-sm sm:text-base">
-            {t('home.instagram.description', 'Tag us or use #AloraAbayas to be featured in our monthly private salon chronicle.')}
+            {t('home.instagram.description', 'Tag us or use #AloraDresses to be featured in our monthly private salon chronicle.')}
           </motion.p>
         </motion.div>
       </div>

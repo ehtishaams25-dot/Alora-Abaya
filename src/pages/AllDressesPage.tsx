@@ -232,7 +232,7 @@ export function AllDressesPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const isArabic = i18n.language.startsWith('ar')
 
-  useDocumentTitle(isArabic ? 'الورا للفساتين | كافة العبايات والفساتين الفاخرة' : 'Alora | All Dresses & Gowns')
+  useDocumentTitle(isArabic ? 'الورا للفساتين | كافة الفساتين والفساتين الفاخرة' : 'Alora | All Dresses & Gowns')
 
   // Read initial query params if user clicked a specific category from home page
   const initialCategoryParam = searchParams.get('category') || ''
@@ -406,7 +406,7 @@ export function AllDressesPage() {
   ]
 
   const categoriesList = [
-    { id: 'Abayas', label: isArabic ? 'عبايات' : 'Abayas' },
+    { id: 'Dresses', label: isArabic ? 'فساتين' : 'Dresses' },
     { id: 'Dresses', label: isArabic ? 'فساتين' : 'Dresses' },
     { id: 'Kaftans', label: isArabic ? 'كفطان' : 'Kaftans' },
     { id: 'Occasion Wear', label: isArabic ? 'فساتين سهرة' : 'Occasion Wear' }
@@ -998,7 +998,7 @@ export function AllDressesPage() {
           {/* Bottom Sheet Header */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-border2 bg-sand/98 backdrop-blur-md shrink-0">
             <span className="font-serif text-xl text-espresso">
-              {isArabic ? 'تصفية وترتيب العبايات' : 'Filter & Sort'}
+              {isArabic ? 'تصفية وترتيب الفساتين' : 'Filter & Sort'}
             </span>
             <button
               type="button"

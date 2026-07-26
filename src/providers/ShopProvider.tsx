@@ -83,8 +83,8 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined)
 const INITIAL_WISHLIST: ProductItem[] = [
   {
     id: "bs-2",
-    name: "Al-Dana Pleated Crepe Abaya",
-    nameAr: "عباية الدانة كريب بكسرات أنيقة",
+    name: "Al-Dana Pleated Crepe Dress",
+    nameAr: "فستان الدانة كريب بكسرات أنيقة",
     price: "1,950",
     image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
     rating: "4.9",
@@ -105,8 +105,8 @@ const INITIAL_WISHLIST: ProductItem[] = [
   },
   {
     id: "na-1",
-    name: "Royal Silk Bisht Abaya",
-    nameAr: "عباية بشت ملكية من الحرير",
+    name: "Royal Silk Bisht Dress",
+    nameAr: "فستان بشت ملكية من الحرير",
     price: "2,450",
     image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
     rating: "5.0",
@@ -120,7 +120,7 @@ const INITIAL_CART: CartItem[] = [
   {
     id: "bs-1",
     name: "Noor Pearl-Trimmed Chiffon",
-    nameAr: "عباية نور شيفون مزينة باللؤلؤ",
+    nameAr: "فستان نور شيفون مزينة باللؤلؤ",
     price: "2,650",
     numericPrice: 2650,
     image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
@@ -210,7 +210,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
           {
             productId: 'bs-1',
             name: 'Noor Pearl-Trimmed Chiffon',
-            nameAr: 'عباية نور شيفون مزينة باللؤلؤ',
+            nameAr: 'فستان نور شيفون مزينة باللؤلؤ',
             price: '2,650',
             size: 'Size 56',
             color: 'Midnight Nidha',
@@ -240,8 +240,8 @@ export function ShopProvider({ children }: { children: ReactNode }) {
           },
           {
             productId: 'bs-2',
-            name: 'Al-Dana Pleated Crepe Abaya',
-            nameAr: 'عباية الدانة كريب بكسرات أنيقة',
+            name: 'Al-Dana Pleated Crepe Dress',
+            nameAr: 'فستان الدانة كريب بكسرات أنيقة',
             price: '1,950',
             size: 'Size 56',
             color: 'Midnight Black',

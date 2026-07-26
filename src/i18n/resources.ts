@@ -61,8 +61,8 @@ export const resources = {
           products: [
             {
               id: "na-1",
-              name: "Royal Silk Bisht Abaya",
-              nameAr: "عباية بشت ملكية من الحرير",
+              name: "Royal Silk Bisht Dress",
+              nameAr: "فستان بشت ملكية من الحرير",
               price: "2,450",
               image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
@@ -70,8 +70,8 @@ export const resources = {
             },
             {
               id: "na-2",
-              name: "Midnight Velvet Gilded Abaya",
-              nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
+              name: "Midnight Velvet Gilded Dress",
+              nameAr: "فستان مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
               image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
@@ -80,7 +80,7 @@ export const resources = {
             {
               id: "na-3",
               name: "Desert Sand Double Nidha",
-              nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
+              nameAr: "فستان ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
               image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
@@ -104,8 +104,8 @@ export const resources = {
           items: [
             {
               id: "cat-1",
-              title: "Daily Modest Abayas",
-              titleAr: "عبايات الاستخدام اليومي",
+              title: "Daily Modest Dresses",
+              titleAr: "فساتين الاستخدام اليومي",
               count: "24 Pieces",
               countAr: "24 قطعة",
               image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
@@ -144,7 +144,7 @@ export const resources = {
             {
               id: "bs-1",
               name: "Noor Pearl-Trimmed Chiffon",
-              nameAr: "عباية نور شيفون مزينة باللؤلؤ",
+              nameAr: "فستان نور شيفون مزينة باللؤلؤ",
               price: "2,650",
               image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
@@ -153,8 +153,8 @@ export const resources = {
             },
             {
               id: "bs-2",
-              name: "Al-Dana Pleated Crepe Abaya",
-              nameAr: "عباية الدانة كريب بكسرات أنيقة",
+              name: "Al-Dana Pleated Crepe Dress",
+              nameAr: "فستان الدانة كريب بكسرات أنيقة",
               price: "1,950",
               image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
@@ -243,7 +243,7 @@ export const resources = {
               id: "rev-3",
               author: "Lady Sarah Jenkins",
               location: "London, UK",
-              quote: "I ordered for a gala in London and the express shipping arrived in just 3 days beautifully boxed. Every time I wear this abaya I receive endless compliments.",
+              quote: "I ordered for a gala in London and the express shipping arrived in just 3 days beautifully boxed. Every time I wear this dress I receive endless compliments.",
               rating: "5.0"
             },
             "3": {
@@ -257,9 +257,9 @@ export const resources = {
         },
         instagram: {
           eyebrow: "Social Chronicle",
-          title: "Lifestyle & Journal @AloraAbaya",
-          description: "Tag us or use #AloraAbayas to be featured in our monthly private salon chronicle.",
-          handle: "@AloraAbaya",
+          title: "Lifestyle & Journal @AloraDress",
+          description: "Tag us or use #AloraDresses to be featured in our monthly private salon chronicle.",
+          handle: "@AloraDress",
           followBtn: "Follow Our Instagram",
           posts: [
             { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },
@@ -406,7 +406,7 @@ export const resources = {
         filterOccasion: "فساتين سهرة",
       },
       navigation: {
-        allDresses: "كافة العبايات",
+        allDresses: "كافة الفساتين",
         newArrivals: "وصل حديثاً",
         bestSellers: "الأكثر مبيعاً",
         categories: "التصنيفات",
@@ -448,8 +448,8 @@ export const resources = {
           products: [
             {
               id: "na-1",
-              name: "Royal Silk Bisht Abaya",
-              nameAr: "عباية بشت ملكية من الحرير",
+              name: "Royal Silk Bisht Dress",
+              nameAr: "فستان بشت ملكية من الحرير",
               price: "2,450",
               image: "https://images.unsplash.com/photo-1772474500365-c2c520545f44?auto=format&fit=crop&w=800&q=85",
               colors: ["#1A1A1A", "#3B2F2F", "#8B7355"],
@@ -457,8 +457,8 @@ export const resources = {
             },
             {
               id: "na-2",
-              name: "Midnight Velvet Gilded Abaya",
-              nameAr: "عباية مخملية منتصف الليل مطرزة بالذهب",
+              name: "Midnight Velvet Gilded Dress",
+              nameAr: "فستان مخملية منتصف الليل مطرزة بالذهب",
               price: "3,100",
               image: "https://images.unsplash.com/photo-1724412665971-114bd351a42d?auto=format&fit=crop&w=800&q=85",
               colors: ["#0D1321", "#4A5D23"],
@@ -467,7 +467,7 @@ export const resources = {
             {
               id: "na-3",
               name: "Desert Sand Double Nidha",
-              nameAr: "عباية ندا مزدوجة بلون رمال الصحراء",
+              nameAr: "فستان ندا مزدوجة بلون رمال الصحراء",
               price: "1,850",
               image: "https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=800&q=85",
               colors: ["#FAF9F6", "#B38B6D", "#6E5C53"],
@@ -491,8 +491,8 @@ export const resources = {
           items: [
             {
               id: "cat-1",
-              title: "Daily Modest Abayas",
-              titleAr: "عبايات الاستخدام اليومي الأنيقة",
+              title: "Daily Modest Dresses",
+              titleAr: "فساتين الاستخدام اليومي الأنيقة",
               count: "24 Pieces",
               countAr: "24 قطعة فاخرة",
               image: "https://images.unsplash.com/photo-1752794673269-dc356838c5fd?auto=format&fit=crop&w=800&q=85"
@@ -531,7 +531,7 @@ export const resources = {
             {
               id: "bs-1",
               name: "Noor Pearl-Trimmed Chiffon",
-              nameAr: "عباية نور شيفون مزينة باللؤلؤ",
+              nameAr: "فستان نور شيفون مزينة باللؤلؤ",
               price: "2,650",
               image: "https://images.unsplash.com/photo-1772474511860-9cef46d98ea6?auto=format&fit=crop&w=800&q=85",
               rating: "5.0",
@@ -540,8 +540,8 @@ export const resources = {
             },
             {
               id: "bs-2",
-              name: "Al-Dana Pleated Crepe Abaya",
-              nameAr: "عباية الدانة كريب بكسرات أنيقة",
+              name: "Al-Dana Pleated Crepe Dress",
+              nameAr: "فستان الدانة كريب بكسرات أنيقة",
               price: "1,950",
               image: "https://images.unsplash.com/photo-1772474557170-4818d01d7bca?auto=format&fit=crop&w=800&q=85",
               rating: "4.9",
@@ -623,14 +623,14 @@ export const resources = {
               id: "rev-2",
               author: "فاطمة المكتوم",
               location: "دبي، الإمارات العربية المتحدة",
-              quote: "جودة القماش في عباية البشت الملكي استثنائية بحق. طلبتها من الرياض ووصلت إلى دبي بسرعة فائقة وبجمال وهدوء رائع، والتطريز دقيق وراقي يعكس فخامة حقيقية.",
+              quote: "جودة القماش في فستان البشت الملكي استثنائية بحق. طلبتها من الرياض ووصلت إلى دبي بسرعة فائقة وبجمال وهدوء رائع، والتطريز دقيق وراقي يعكس فخامة حقيقية.",
               rating: "5.0"
             },
             "2": {
               id: "rev-3",
               author: "اللتيدي سارة جينكنز",
               location: "لندن، المملكة المتحدة",
-              quote: "طلبت عباية لحضور حفل خيري في لندن ووصل الشحن السريع خلال 3 أيام بتغليف ملوكي يبهر الأنفاس. في كل مرة أرتديها أتلقى إشادات لا تتوقف.",
+              quote: "طلبت فستان لحضور حفل خيري في لندن ووصل الشحن السريع خلال 3 أيام بتغليف ملوكي يبهر الأنفاس. في كل مرة أرتديها أتلقى إشادات لا تتوقف.",
               rating: "5.0"
             },
             "3": {
@@ -644,9 +644,9 @@ export const resources = {
         },
         instagram: {
           eyebrow: "يوميات دار ألورا",
-          title: "أسلوب الحياة والمجلة @AloraAbaya",
-          description: "شاركوا إطلالاتكم عبر وسم #AloraAbayas للظهور في مجلتنا الشهرية الخاصة بالصالون.",
-          handle: "@AloraAbaya",
+          title: "أسلوب الحياة والمجلة @AloraDress",
+          description: "شاركوا إطلالاتكم عبر وسم #AloraDresses للظهور في مجلتنا الشهرية الخاصة بالصالون.",
+          handle: "@AloraDress",
           followBtn: "تابعي حسابنا على انستغرام",
           posts: [
             { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },

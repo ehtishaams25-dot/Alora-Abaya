@@ -293,7 +293,7 @@ export function CheckoutWizardModal() {
                 <p className="text-xs text-mocha leading-relaxed">
                   {isArabic
                     ? 'يمكنك إتمام الشراء وتتبع شحنتك عبر البريد الإلكتروني دون الحاجة لإنشاء حساب في الوقت الحالي.'
-                    : 'You can complete your order and track your bespoke abayas via email without registering right now.'}
+                    : 'You can complete your order and track your bespoke dresses via email without registering right now.'}
                 </p>
                 <div className="space-y-2.5 pt-2 text-xs text-espresso/90">
                   <div className="flex items-center gap-2.5">
@@ -847,7 +847,7 @@ export function CheckoutWizardModal() {
             {/* Atelier Status Timeline */}
             <div className="bg-sand border border-border2 rounded-3xl p-6 sm:p-8 text-start space-y-5 shadow-sm">
               <span className="text-[10px] uppercase tracking-widest text-walnut font-bold block border-b border-border2/60 pb-2">
-                {isArabic ? 'مسار حياكة وتجهيز العباية الملكية' : 'ATELIER CRAFTSMANSHIP & DELIVERY TIMELINE'}
+                {isArabic ? 'مسار حياكة وتجهيز الفستان الملكية' : 'ATELIER CRAFTSMANSHIP & DELIVERY TIMELINE'}
               </span>
 
               <div className="space-y-4 pt-1 text-xs sm:text-sm">

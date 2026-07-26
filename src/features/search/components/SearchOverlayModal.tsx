@@ -87,13 +87,13 @@ export function SearchOverlayModal() {
   }
 
   // Trending & Category suggestions
-  const trendingTermsEn = ['Royal Velvet', 'Silk Abaya', 'Midnight Noir', 'Atelier Edition', 'Embroidery', 'Linen']
-  const trendingTermsAr = ['مخمل ملكي', 'عباية حرير', 'أسود ملكي', 'إصدار الأتليه', 'تطريز يدوي', 'كتان فاخر']
+  const trendingTermsEn = ['Royal Velvet', 'Silk Dress', 'Midnight Noir', 'Atelier Edition', 'Embroidery', 'Linen']
+  const trendingTermsAr = ['مخمل ملكي', 'فستان حرير', 'أسود ملكي', 'إصدار الأتليه', 'تطريز يدوي', 'كتان فاخر']
   const trendingTerms = isArabic ? trendingTermsAr : trendingTermsEn
 
   const popularCategories = [
     { labelEn: 'All', labelAr: 'الكل', value: null },
-    { labelEn: 'Abayas', labelAr: 'العبايات', value: 'Abayas' },
+    { labelEn: 'Dresses', labelAr: 'الفساتين', value: 'Dresses' },
     { labelEn: 'Occasion Wear', labelAr: 'أزياء المناسبات', value: 'Occasion Wear' },
     { labelEn: 'Kaftans', labelAr: 'القفاطين', value: 'Kaftans' },
     { labelEn: 'Dresses', labelAr: 'الفساتين', value: 'Dresses' },
@@ -170,7 +170,7 @@ export function SearchOverlayModal() {
                 saveRecentSearch(query)
               }
             }}
-            placeholder={isArabic ? 'ابحثي عن عباية، تشكيلة، قماش، أو لون...' : 'Search signature abayas, fabrics, colors, or tags...'}
+            placeholder={isArabic ? 'ابحثي عن فستان، تشكيلة، قماش، أو لون...' : 'Search signature dresses, fabrics, colors, or tags...'}
             className="w-full bg-transparent border-none outline-none font-serif text-xl sm:text-2xl lg:text-3xl text-espresso placeholder:text-taupe/60 placeholder:font-sans placeholder:text-lg sm:placeholder:text-xl"
           />
 
@@ -369,7 +369,7 @@ export function SearchOverlayModal() {
                       }}
                       className="px-6 py-3 rounded-full border border-espresso text-espresso text-xs uppercase tracking-widest font-medium hover:bg-cream transition-colors cursor-pointer"
                     >
-                      {isArabic ? 'عرض كل العبايات' : 'Browse All Abayas'}
+                      {isArabic ? 'عرض كل الفساتين' : 'Browse All Dresses'}
                     </button>
                   </div>
                 </div>
