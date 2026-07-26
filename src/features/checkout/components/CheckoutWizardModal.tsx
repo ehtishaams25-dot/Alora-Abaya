@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useShop } from '../../../providers/ShopProvider'
+import { useCustomer } from '@/features/auth'
 
 type WizardStep = 'auth' | 'shipping' | 'payment' | 'review' | 'confirmation'
 
@@ -10,8 +11,6 @@ export function CheckoutWizardModal() {
   const {
     isCheckoutModalOpen,
     closeCheckoutModal,
-    isLoggedIn,
-    setIsLoggedIn,
     cartItems,
     subtotal,
     total,
@@ -19,6 +18,8 @@ export function CheckoutWizardModal() {
     userProfile,
     addOrder,
   } = useShop()
+  const { data: customer } = useCustomer()
+  const isLoggedIn = !!customer
   const navigate = useNavigate()
   const isArabic = i18n.language.startsWith('ar')
 
@@ -59,7 +60,6 @@ export function CheckoutWizardModal() {
     setTimeout(() => {
       setLoading(false)
       if (mode !== 'guest') {
-        setIsLoggedIn(true)
         setShippingData((prev) => ({
           ...prev,
           fullName: userProfile.name,

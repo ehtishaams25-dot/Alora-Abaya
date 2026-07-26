@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import { Navigation } from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { useShop } from '../providers/ShopProvider'
+import { useCustomer } from '@/features/auth'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function CartPage() {
   const { t, i18n } = useTranslation()
   const {
-    isLoggedIn,
     cartItems,
     removeFromCart,
     updateQuantity,
@@ -19,6 +19,9 @@ export function CartPage() {
     total,
     openCheckoutModal
   } = useShop()
+
+  const { data: customer } = useCustomer()
+  const isLoggedIn = !!customer
 
   const isArabic = i18n.language.startsWith('ar')
   useDocumentTitle(isArabic ? 'الورا للفساتين | حقيبة التسوق' : 'Alora | Shopping Bag')

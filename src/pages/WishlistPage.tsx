@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Navigation } from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { useShop } from '../providers/ShopProvider'
+import { useCustomer } from '@/features/auth'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { type ProductItem } from '../features/home/types'
 import { QuickViewModal } from '../components/QuickViewModal'
@@ -181,7 +182,9 @@ function WishlistProductCard({
 
 export function WishlistPage() {
   const { t, i18n } = useTranslation()
-  const { isLoggedIn, setIsLoggedIn, wishlistItems, removeFromWishlist, addToCart } = useShop()
+  const { setIsLoggedIn, wishlistItems, removeFromWishlist, addToCart } = useShop()
+  const { data: customer } = useCustomer()
+  const isLoggedIn = !!customer
   const [quickViewProduct, setQuickViewProduct] = useState<ProductDress | null>(null)
   useDocumentTitle(i18n.language.startsWith('ar') ? 'الورا للفساتين | قائمة الأمنيات' : 'Alora | Curated Wishlist')
 

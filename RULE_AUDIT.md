@@ -43,9 +43,8 @@
 - [x] `src/features/auth/` (Created 4-layer feature module: `services/`, `hooks/`, `components/`, `types/`, `index.ts`, `README.md`)
 - [ ] `src/pages/WishlistPage.tsx`
   - [L24](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/WishlistPage.tsx#L24): `t: any`
-- [ ] `src/pages/AllDressesPage.tsx`
-  - [L25](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/AllDressesPage.tsx#L25): `t: any`
-  - [L186](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/AllDressesPage.tsx#L186): `t: any`
+- [x] `src/pages/AllDressesPage.tsx`
+  - [x] `t: any` removed and replaced with explicit `TFunction` type
 
 ---
 
@@ -79,7 +78,7 @@
 ### Category 4: Monolithic Page Components
 *Rule: Pages should be lightweight wrappers orchestrating feature components. UI rendering and business logic must be separated.*
 
-- [ ] `src/pages/AllDressesPage.tsx` (~1,000 lines / 47 KB monolithic file combining UI, filtering, modal state, and hardcoded items)
+- [x] `src/pages/AllDressesPage.tsx` (Refactored into `src/features/catalog/` module)
 - [ ] `src/pages/WishlistPage.tsx` (27 KB monolithic file)
 - [ ] `src/pages/LoginPage.tsx` (18 KB monolithic file)
 - [ ] `src/pages/CartPage.tsx` (17 KB monolithic file)
@@ -100,7 +99,7 @@
 
 - [ ] `src/components/Navigation.tsx` ([L46](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/components/Navigation.tsx#L46), [L103](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/components/Navigation.tsx#L103), [L110](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/components/Navigation.tsx#L110), [L248](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/components/Navigation.tsx#L248))
 - [ ] `src/pages/LoginPage.tsx` ([L119](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/LoginPage.tsx#L119), [L143](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/LoginPage.tsx#L143), [L166](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/LoginPage.tsx#L166))
-- [ ] `src/pages/AllDressesPage.tsx` ([L780](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/pages/AllDressesPage.tsx#L780))
+- [x] `src/pages/AllDressesPage.tsx` (Fixed physical direction classes)
 - [ ] `src/features/home/components/InstagramGallerySection.tsx` ([L301](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/features/home/components/InstagramGallerySection.tsx#L301))
 - [ ] `src/features/product/components/ProductSizeGuidePreview.tsx` ([L25](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/features/product/components/ProductSizeGuidePreview.tsx#L25))
 - [ ] `src/features/product/components/ProductSizeGuideModal.tsx` ([L215](file:///home/ahmad/Desktop/Projects/alora/frontend/Alora-Abaya/src/features/product/components/ProductSizeGuideModal.tsx#L215))

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useShop } from '../../../providers/ShopProvider'
+import { useCustomer, useLogout } from '@/features/auth'
 import { DRESSES, type ProductDress } from '../../../data/dressesData'
 import { Navigation } from '../../../components/Navigation'
 import { Footer } from '../../../components/Footer'
@@ -18,7 +19,10 @@ type TabType =
 
 export function AccountDashboardPage() {
   const { i18n } = useTranslation()
-  const { isLoggedIn, userProfile, logout, wishlistItems, removeFromWishlist, addToCart } = useShop()
+  const { userProfile, wishlistItems, removeFromWishlist, addToCart } = useShop()
+  const { data: customer } = useCustomer()
+  const logoutMutation = useLogout()
+  const isLoggedIn = !!customer
   const navigate = useNavigate()
   const location = useLocation()
   const isArabic = i18n.language.startsWith('ar')
@@ -200,8 +204,9 @@ export function AccountDashboardPage() {
             <button
               type="button"
               onClick={() => {
-                logout()
-                navigate('/')
+                logoutMutation.mutate(undefined, {
+                  onSuccess: () => navigate('/')
+                })
               }}
               className="text-xs uppercase tracking-wider text-taupe hover:text-espresso border border-border2 bg-sand hover:bg-cream px-4 py-2 rounded-full transition-all cursor-pointer"
             >
@@ -303,8 +308,9 @@ export function AccountDashboardPage() {
                 <button
                   type="button"
                   onClick={() => {
-                    logout()
-                    navigate('/')
+                    logoutMutation.mutate(undefined, {
+                      onSuccess: () => navigate('/')
+                    })
                   }}
                   className="w-full text-left rtl:text-right px-4 py-3 rounded-2xl text-xs sm:text-sm text-[#8B2626] font-medium hover:bg-[#8B2626]/10 transition-colors flex items-center gap-3 cursor-pointer"
                 >

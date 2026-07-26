@@ -74,8 +74,10 @@ export const authService = {
    */
   async getCurrentCustomer(): Promise<Customer | null> {
     const token = getAuthToken()
+    if (!token) return null
+
     try {
-      const headers = token ? { authorization: `Bearer ${token}` } : undefined
+      const headers = { authorization: `Bearer ${token}` }
       const response = await medusa.store.customer.retrieve({}, headers)
 
       if (!response.customer) return null
@@ -100,6 +102,11 @@ export const authService = {
    * Logout current customer
    */
   async logout(): Promise<void> {
+    try {
+      await medusa.auth.logout()
+    } catch {
+      // Ignore API errors on logout
+    }
     removeAuthToken()
   },
 }

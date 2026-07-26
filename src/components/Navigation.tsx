@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 import { useShop } from '../providers/ShopProvider'
+import { useCustomer } from '@/features/auth'
 
 export interface NavigationProps {
   hideAnnouncement?: boolean
@@ -10,7 +11,9 @@ export interface NavigationProps {
 
 export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
-  const { isLoggedIn, toggleLogin, wishlistItems, cartItems, openCartDrawer, openSearch } = useShop()
+  const { wishlistItems, cartItems, openCartDrawer, openSearch } = useShop()
+  const { data: customer } = useCustomer()
+  const isLoggedIn = !!customer
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [announcementDismissed, setAnnouncementDismissed] = useState(false)
@@ -125,16 +128,14 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
           <div className="flex items-center justify-end gap-1 sm:gap-2.5 xl:gap-3.5 z-10 flex-1">
             <div className="flex items-center gap-1.5 sm:gap-3 xl:gap-4">
               
-              {/* Subtle Luxury Guest/VIP Status Switcher (for effortless previewing of both flows) */}
-              <button
-                type="button"
-                onClick={toggleLogin}
-                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border2 bg-cream/70 text-[9px] font-medium uppercase tracking-[0.18em] text-mocha hover:border-walnut hover:text-espresso transition-all cursor-pointer select-none"
-                title="Click to switch between Guest (Logged Out) and VIP Client (Logged In) view"
+              {/* Actual Login Status Indicator */}
+              <div
+                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border2 bg-cream/70 text-[9px] font-medium uppercase tracking-[0.18em] text-mocha transition-all select-none"
+                title={isLoggedIn ? "Logged in securely" : "Guest browsing"}
               >
                 <span className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-success animate-pulse' : 'bg-taupe'}`} />
-                <span>{isLoggedIn ? (isArabic ? 'عميلة VIP' : 'VIP Client') : (isArabic ? 'زائرة' : 'Guest Mode')}</span>
-              </button>
+                <span>{isLoggedIn ? (customer?.first_name ? (isArabic ? `أهلاً، ${customer.first_name}` : `Welcome, ${customer.first_name}`) : (isArabic ? 'عميلة VIP' : 'VIP Client')) : (isArabic ? 'زائرة' : 'Guest')}</span>
+              </div>
 
               {/* Language Toggle Button */}
               <button
@@ -259,17 +260,13 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
               ))}
               <div className="pt-6 border-t border-border2 flex flex-col gap-4 items-center">
                 
-                {/* Status indicator button in mobile menu */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    toggleLogin()
-                  }}
-                  className="px-4 py-1.5 rounded-full border border-border2 bg-cream text-[10px] uppercase tracking-widest text-espresso font-medium flex items-center gap-2 cursor-pointer"
+                {/* Status indicator in mobile menu */}
+                <div
+                  className="px-4 py-1.5 rounded-full border border-border2 bg-cream text-[10px] uppercase tracking-widest text-espresso font-medium flex items-center gap-2"
                 >
                   <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-success animate-pulse' : 'bg-taupe'}`} />
-                  <span>{isLoggedIn ? (isArabic ? 'وضع عميلة VIP' : 'Mode: VIP Client') : (isArabic ? 'وضع زائرة' : 'Mode: Guest Mode')}</span>
-                </button>
+                  <span>{isLoggedIn ? (customer?.first_name ? (isArabic ? `أهلاً، ${customer.first_name}` : `Welcome, ${customer.first_name}`) : (isArabic ? 'وضع عميلة VIP' : 'Mode: VIP Client')) : (isArabic ? 'وضع زائرة' : 'Mode: Guest Mode')}</span>
+                </div>
 
                 <div className="flex items-center justify-center gap-5 text-xs uppercase tracking-widest text-espresso font-medium pb-2 flex-wrap">
                   <Link to={isLoggedIn ? "/account" : "/login"} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-1.5 hover:text-walnut">
