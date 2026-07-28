@@ -254,10 +254,10 @@ export function InstagramGallerySection() {
             {t('home.instagram.eyebrow', 'Social Chronicle')}
           </motion.span>
           <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso">
-            {t('home.instagram.title', 'Lifestyle & Journal @AloraDress')}
+            {t('home.instagram.title', 'Lifestyle & Journal @alloorraa1')}
           </motion.h2>
           <motion.p variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-body text-mocha mt-3 text-sm sm:text-base">
-            {t('home.instagram.description', 'Tag us or use #AloraDresses to be featured in our monthly private salon chronicle.')}
+            {t('home.instagram.description', 'Tag us or use #alloorraa1 to be featured in our monthly private salon chronicle.')}
           </motion.p>
         </motion.div>
       </div>

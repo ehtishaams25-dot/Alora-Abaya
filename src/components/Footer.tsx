@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { Instagram } from 'lucide-react'
 import aloraLogo from '../assets/logos/Artboard 13@4x.png'
 
 export function Footer() {
@@ -92,13 +93,37 @@ export function Footer() {
             <p className="text-mocha leading-relaxed">
               {t('home.instagram.description')}
             </p>
-            <a
-              href="#instagram"
-              className="text-walnut hover:text-espresso font-medium inline-flex items-center gap-1 mt-1 transition-colors"
-            >
-              <span>{t('home.instagram.handle')}</span>
-              <span aria-hidden="true">&rarr;</span>
-            </a>
+            <div className="flex flex-col gap-3 mt-2">
+              <a
+                href="https://instagram.com/alloorraa1"
+                target="_blank" rel="noopener noreferrer"
+                className="text-walnut hover:text-espresso font-medium inline-flex items-center gap-2.5 transition-colors w-fit group/link"
+              >
+                <Instagram className="w-4 h-4 group-hover/link:-translate-y-0.5 transition-transform" />
+                <span dir="ltr" className="pt-0.5">@alloorraa1</span>
+              </a>
+              <a
+                href="https://tiktok.com/@alloora1"
+                target="_blank" rel="noopener noreferrer"
+                className="text-walnut hover:text-espresso font-medium inline-flex items-center gap-2.5 transition-colors w-fit group/link"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/link:-translate-y-0.5 transition-transform">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+                <span dir="ltr" className="pt-0.5">@alloora1</span>
+              </a>
+              <a
+                href="https://wa.me/966560344904"
+                target="_blank" rel="noopener noreferrer"
+                className="text-walnut hover:text-espresso font-medium inline-flex items-center gap-2.5 transition-colors w-fit group/link"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/link:-translate-y-0.5 transition-transform">
+                  <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                  <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+                </svg>
+                <span dir="ltr" className="pt-0.5">+966 560344904</span>
+              </a>
+            </div>
           </div>
         </div>
 

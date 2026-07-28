@@ -257,9 +257,9 @@ export const resources = {
         },
         instagram: {
           eyebrow: "Social Chronicle",
-          title: "Lifestyle & Journal @AloraDress",
-          description: "Tag us or use #AloraDresses to be featured in our monthly private salon chronicle.",
-          handle: "@AloraDress",
+          title: "Lifestyle & Journal @alloorraa1",
+          description: "Tag us or use #alloorraa1 to be featured in our monthly private salon chronicle.",
+          handle: "@alloorraa1",
           followBtn: "Follow Our Instagram",
           posts: [
             { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },
@@ -644,9 +644,9 @@ export const resources = {
         },
         instagram: {
           eyebrow: "يوميات دار ألورا",
-          title: "أسلوب الحياة والمجلة @AloraDress",
-          description: "شاركوا إطلالاتكم عبر وسم #AloraDresses للظهور في مجلتنا الشهرية الخاصة بالصالون.",
-          handle: "@AloraDress",
+          title: "أسلوب الحياة والمجلة @alloorraa1",
+          description: "شاركوا إطلالاتكم عبر وسم #alloorraa1 للظهور في مجلتنا الشهرية الخاصة بالصالون.",
+          handle: "@alloorraa1",
           followBtn: "تابعي حسابنا على انستغرام",
           posts: [
             { id: "ig-1", likes: "1,420", comments: "48", image: "https://images.unsplash.com/photo-1682195721373-93bf6c181938?auto=format&fit=crop&w=600&q=80" },
