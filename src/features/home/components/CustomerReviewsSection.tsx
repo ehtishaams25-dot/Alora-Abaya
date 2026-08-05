@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { type ReviewItem } from '../types'
 
 export function CustomerReviewsSection() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isArabic = i18n.language.startsWith('ar')
 
   const reviews: ReviewItem[] = [
     {
@@ -26,89 +27,101 @@ export function CustomerReviewsSection() {
       location: t('home.reviews.items.2.location'),
       quote: t('home.reviews.items.2.quote'),
       rating: t('home.reviews.items.2.rating')
-    },
-    {
-      id: "rev-4",
-      author: t('home.reviews.items.3.author'),
-      location: t('home.reviews.items.3.location'),
-      quote: t('home.reviews.items.3.quote'),
-      rating: t('home.reviews.items.3.rating')
     }
   ]
 
   return (
-    <section className="section-padding bg-sand">
-      <div className="container-alora">
-        {/* Minimalist Centered Section Header */}
-        <motion.div 
-          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-          }}
-        >
-          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-2 tracking-[0.28em] block">
-            {t('home.reviews.eyebrow')}
-          </motion.span>
-          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
-            {t('home.reviews.title')}
-          </motion.h2>
-        </motion.div>
+    <section className="py-24 lg:py-32 bg-ink text-cream relative overflow-hidden">
+      {/* Background Accent */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-espresso/20 blur-3xl opacity-50 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-full bg-walnut/10 blur-3xl opacity-50 pointer-events-none" />
 
-        {/* Touch Swipeable Cards on Mobile -> Desktop Grid */}
-        <motion.div 
-          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-0 sm:overflow-visible scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0 scroll-px-5 sm:scroll-px-0 after:content-[''] after:w-px after:shrink-0 sm:after:hidden"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
-          }}
-        >
-          {reviews.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
-              className="bg-cream border border-border2/80 rounded-2xl p-6 sm:p-7 flex flex-col justify-between flex-shrink-0 w-[290px] sm:w-auto snap-start shadow-sm hover:shadow-lg transition-all duration-300"
+      <div className="container-alora relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
+          
+          {/* Section Header (Sticky on Desktop) */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:pb-16">
+            <motion.div 
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+              }}
             >
-              <div>
-                {/* Rating & Verified Badge */}
-                <div className="flex items-center justify-between gap-2 mb-5">
-                  <div className="flex text-taupe text-sm">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                  </div>
-                  <span className="bg-sand px-2.5 py-1 rounded-full text-[10px] uppercase tracking-wider text-success border border-border2 font-medium">
-                    {t('common.verifiedBuyer')}
-                  </span>
-                </div>
-
-                {/* Quote */}
-                <blockquote className="font-serif text-sm sm:text-base text-espresso leading-relaxed italic mb-6">
-                  &ldquo;{item.quote}&rdquo;
-                </blockquote>
-              </div>
-
-              {/* Author Info */}
-              <div className="pt-4 border-t border-border2/60 flex items-center justify-between">
-                <div>
-                  <h4 className="font-serif text-sm sm:text-base font-semibold text-espresso">
-                    {item.author}
-                  </h4>
-                  <p className="text-[11px] font-sans text-mocha uppercase tracking-wider mt-0.5">
-                    {item.location}
-                  </p>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-sand border border-border2 flex items-center justify-center text-walnut font-serif text-xs font-medium">
-                  {item.author.charAt(0)}
-                </div>
-              </div>
+              <motion.span 
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+                className="text-cream/70 text-[10px] sm:text-[11px] tracking-[0.3em] block uppercase mb-6"
+              >
+                {t('home.reviews.eyebrow')}
+              </motion.span>
+              <motion.h2 
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+                className="font-serif text-4xl sm:text-5xl lg:text-6xl text-cream font-normal tracking-tight leading-[1.1] mb-6"
+              >
+                {isArabic ? 'بأصواتهم' : 'In Their Words'}
+              </motion.h2>
+              <motion.p 
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+                className="text-cream/80 text-sm sm:text-base leading-relaxed font-sans max-w-sm"
+              >
+                {isArabic 
+                  ? 'اكتشف كيف تنسق عميلاتنا المميزات تصاميم ألورا، ليعبرن عن الأناقة الخالدة بأسلوبهن الخاص.' 
+                  : 'Discover how our distinguished clientele style their Alora pieces, embodying timeless elegance in every setting.'}
+              </motion.p>
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+
+          {/* Reviews List */}
+          <div className="lg:col-span-7 lg:col-start-6">
+            <motion.div 
+              className="flex flex-col gap-12 sm:gap-16"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.2 } }
+              }}
+            >
+              {reviews.map((item) => (
+                <motion.div
+                  key={item.id}
+                  variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
+                  className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start group"
+                >
+                  {/* Avatar / Monogram */}
+                  <div className="w-16 sm:w-20 h-16 sm:h-20 shrink-0 rounded-full border border-cream/20 flex items-center justify-center bg-espresso/30 text-cream font-serif text-xl sm:text-2xl transition-colors duration-500 group-hover:bg-cream group-hover:text-ink">
+                    {item.author.charAt(0)}
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 pb-10 sm:pb-12 border-b border-cream/10">
+                    <div className="flex text-cream/90 text-sm mb-6 gap-1">
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    
+                    <blockquote className="font-serif text-xl sm:text-2xl text-cream leading-relaxed font-light italic mb-8 relative">
+                      <span className="absolute -start-4 -top-3 text-4xl text-cream/20 font-sans">"</span>
+                      {item.quote}
+                    </blockquote>
+                    
+                    <div>
+                      <h4 className="font-sans text-sm sm:text-base font-semibold tracking-wide text-cream uppercase mb-1">
+                        {item.author}
+                      </h4>
+                      <p className="text-xs font-sans text-cream/60 uppercase tracking-[0.15em]">
+                        {item.location}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+        </div>
       </div>
     </section>
   )

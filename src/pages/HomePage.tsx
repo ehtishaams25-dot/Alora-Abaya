@@ -2,8 +2,9 @@ import {
   HeroSection,
   NewArrivalsSection,
   CategoriesSection,
+  EditorialBreakSection,
   BestSellersSection,
-  WhyChooseUsSection,
+  AtelierSection,
   CustomerReviewsSection,
   InstagramGallerySection
 } from '../features/home'
@@ -18,8 +19,9 @@ export function HomePage() {
       <HeroSection />
       <NewArrivalsSection />
       <CategoriesSection />
+      <EditorialBreakSection />
+      <AtelierSection />
       <BestSellersSection />
-      <WhyChooseUsSection />
       <CustomerReviewsSection />
       <InstagramGallerySection />
     </AppLayout>
