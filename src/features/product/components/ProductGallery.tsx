@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { type ProductDress } from '../../../data/dressesData'
 import { type ProductGalleryView } from '../types'
+import { ReactLenis } from 'lenis/react'
 
 interface ProductGalleryProps {
   product: ProductDress
@@ -13,8 +14,6 @@ interface ProductGalleryProps {
 export function ProductGallery({
   product,
   galleryViews,
-  selectedImageIdx,
-  onSelectImage,
   isArabic
 }: ProductGalleryProps) {
   const { t } = useTranslation()
@@ -22,71 +21,36 @@ export function ProductGallery({
   const badgeText = isArabic ? (product.badgeAr || product.badge) : product.badge
 
   return (
-    <div className="w-full lg:h-full flex flex-col-reverse lg:flex-row gap-3 sm:gap-4 lg:overflow-hidden">
-      {/* Vertically Stacked Thumbnails beside primary image on desktop (Horizontal on mobile/tablet below primary image) */}
-      <div className="flex flex-row lg:flex-col gap-2 sm:gap-2.5 shrink-0 overflow-x-auto lg:overflow-y-auto no-scrollbar lg:h-full py-1 lg:py-0 px-1 lg:px-0 animate-[fadeUp_0.7s_ease-out_0.6s_both]">
-        {galleryViews.map((view, idx) => {
-          const isSelected = selectedImageIdx === idx
-          const label = t(view.labelKey, isArabic ? view.labelAr : view.labelEn)
+    <div className="w-full lg:h-full relative overflow-hidden bg-sand animate-[fadeIn_0.8s_ease-out_0.1s_both]">
+      {/* Scrollable Gallery Container */}
+      <ReactLenis className="w-full h-full overflow-x-auto overflow-y-hidden lg:overflow-y-auto lg:overflow-x-hidden no-scrollbar flex snap-x snap-mandatory lg:snap-y lg:snap-proximity" options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
+        <div className="flex flex-row lg:flex-col w-full h-full">
+          {galleryViews.map((view) => {
+            const label = t(view.labelKey, isArabic ? view.labelAr : view.labelEn)
 
-          return (
-            <button
-              key={view.id}
-              type="button"
-              onClick={() => onSelectImage(idx)}
-              className={`w-14 h-18 sm:w-16 sm:h-21 lg:w-16 lg:h-21 rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer shrink-0 relative group ${
-                isSelected
-                  ? 'border-espresso shadow-md scale-102 z-10'
-                  : 'border-border2/60 opacity-65 hover:opacity-100 hover:border-walnut'
-              }`}
-              title={label}
-              aria-label={label}
-            >
-              <img
-                src={view.url}
-                alt={`${title} - ${label}`}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              
-              {/* Subtle overlay indicator on active thumbnail */}
-              {isSelected && (
-                <div className="absolute inset-0 ring-1 ring-inset ring-espresso/20 rounded-xl pointer-events-none" />
-              )}
-            </button>
-          )
-        })}
-      </div>
+            return (
+              <div
+                key={view.id}
+                className="w-full h-auto lg:h-auto flex-shrink-0 snap-center lg:snap-start relative aspect-[4/5] lg:aspect-auto"
+              >
+                <img
+                  src={view.url}
+                  alt={`${title} - ${label}`}
+                  className="w-full h-full object-cover object-top block"
+                  loading="lazy"
+                />
+              </div>
+            )
+          })}
+        </div>
+      </ReactLenis>
 
-      {/* Primary Editorial Image Container with Smooth Crossfade Animation - Exactly fills height on desktop, aspect-[3/4] on mobile */}
-      <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:flex-1 lg:h-full min-h-[380px] sm:min-h-[460px] lg:min-h-0 overflow-hidden rounded-2xl sm:rounded-3xl bg-sand border border-border2/60 shadow-sm shrink-0 animate-[fadeIn_0.8s_ease-out_0.1s_both]">
-        {galleryViews.map((view, idx) => {
-          const isSelected = selectedImageIdx === idx
-          const label = t(view.labelKey, isArabic ? view.labelAr : view.labelEn)
-
-          return (
-            <div
-              key={view.id}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
-                isSelected ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
-              }`}
-            >
-              <img
-                src={view.url}
-                alt={`${title} - ${label}`}
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-          )
-        })}
-
-        {/* Editorial Collection Badge Overlay */}
-        {badgeText && (
-          <div className="absolute top-4 start-4 z-20 bg-espresso/90 backdrop-blur-md text-cream px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] rtl:tracking-[0.05em] font-medium font-sans shadow-xs pointer-events-none">
-            {badgeText}
-          </div>
-        )}
-      </div>
+      {/* Editorial Collection Badge Overlay */}
+      {badgeText && (
+        <div className="absolute top-4 start-4 z-20 bg-espresso/90 backdrop-blur-md text-cream px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] rtl:tracking-[0.05em] font-medium font-sans shadow-xs pointer-events-none">
+          {badgeText}
+        </div>
+      )}
     </div>
   )
 }

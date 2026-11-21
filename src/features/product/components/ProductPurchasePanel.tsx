@@ -32,31 +32,17 @@ export function ProductPurchasePanel({
 
   return (
     <div className={isModal
-      ? "bg-transparent p-0 font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
-      : "bg-cream p-4 sm:p-5 lg:p-5 rounded-3xl border border-border2/80 shadow-xs font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
+      ? "bg-transparent p-0 font-sans w-full h-full min-h-0 flex flex-col overflow-y-auto no-scrollbar"
+      : "bg-cream p-4 sm:p-5 lg:p-5 border border-border2/80 shadow-xs font-sans w-full h-full min-h-0 flex flex-col justify-between overflow-y-auto no-scrollbar"
     }>
       <div>
         {/* Category & Fabric Header */}
-        <div className="text-[11px] uppercase tracking-[0.2em] text-mocha mb-2 animate-[fadeUp_0.6s_ease-out_0.25s_both]">
+        <div className={`text-[11px] uppercase tracking-[0.2em] text-mocha ${isModal ? 'mb-3' : 'mb-2'} animate-[fadeUp_0.6s_ease-out_0.25s_both]`}>
           <span>{categoryLabel} • {fabricLabel}</span>
         </div>
 
-        {/* Optional link to Full Product Detail Page when inside Quick View Modal */}
-        {isModal && (
-          <div className="mb-2">
-            <Link
-              to={`/product/${product.id}`}
-              onClick={onClose}
-              className="group inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-walnut hover:text-espresso transition-colors font-medium"
-            >
-              <span className="underline underline-offset-4 decoration-border2/80 group-hover:decoration-espresso transition-colors">{t('product.viewFullDetails', isArabic ? 'عرض الصفحة الكاملة للقطعة' : 'View Full Editorial Page')}</span>
-              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180">→</span>
-            </Link>
-          </div>
-        )}
-
         {/* Product Title */}
-        <h1 className="font-serif text-xl sm:text-2xl lg:text-3xl text-espresso font-normal tracking-tight leading-snug mb-2.5 animate-[fadeUp_0.6s_ease-out_0.3s_both]">
+        <h1 className={`font-serif text-xl sm:text-2xl lg:text-3xl text-espresso font-normal tracking-tight leading-snug mb-2.5 animate-[fadeUp_0.6s_ease-out_0.3s_both]`}>
           {title}
         </h1>
 
@@ -65,15 +51,15 @@ export function ProductPurchasePanel({
           <span className="text-lg sm:text-xl font-semibold text-espresso tracking-wide">
             {product.price} {t('common.priceAed', 'SAR')}
           </span>
-          <div className="flex items-center gap-1 bg-sand border border-border2 px-2.5 py-0.5 rounded-full text-[11px] text-mocha font-medium">
+          <div className="flex items-center gap-1 bg-sand border border-border2 px-2.5 py-0.5 text-[11px] text-mocha font-medium">
             <span className="text-taupe">★</span>
             <span className="font-semibold text-espresso">{product.rating}</span>
             <span className="text-mocha/60">({product.reviewsCount} {t('product.reviews', 'reviews')})</span>
           </div>
         </div>
 
-        {/* Editorial Short Description (Constrained to fit one section without overflow) */}
-        <p className="text-xs text-mocha leading-relaxed mb-3 line-clamp-3 animate-[fadeUp_0.6s_ease-out_0.4s_both]">
+        {/* Editorial Short Description */}
+        <p className={`text-xs text-mocha leading-relaxed ${isModal ? 'mb-6 line-clamp-4' : 'mb-3 line-clamp-3'} animate-[fadeUp_0.6s_ease-out_0.4s_both]`}>
           {desc}
         </p>
         
@@ -92,26 +78,18 @@ export function ProductPurchasePanel({
                     key={idx}
                     type="button"
                     onClick={() => actions.setSelectedColorIdx(idx)}
-                    className="group relative w-8 h-8 rounded-full p-0 flex-shrink-0 cursor-pointer focus:outline-none"
+                    className="group relative w-8 h-8 flex-shrink-0 cursor-pointer focus:outline-none"
                     title={isArabic ? product.colorNamesAr?.[idx] : product.colorNames?.[idx]}
                   >
-                    <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                    <span className={`absolute inset-0 rounded-sm transition-all duration-300 ${
                       isSelected
-                        ? 'border-2 border-espresso shadow-xs'
+                        ? 'border-[1.5px] border-espresso'
                         : 'border border-transparent group-hover:border-border2'
                     }`} />
                     <span
-                      className="absolute inset-1 rounded-full border border-black/10 shadow-inner flex items-center justify-center transition-transform duration-300"
+                      className="absolute inset-[3px] rounded-sm border border-black/10 shadow-sm flex items-center justify-center transition-transform duration-300"
                       style={{ backgroundColor: hex }}
-                    >
-                      {isSelected && (
-                        <span className={`w-1.5 h-1.5 rounded-full ${
-                          hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
-                            ? 'bg-espresso'
-                            : 'bg-cream'
-                        }`} />
-                      )}
-                    </span>
+                    />
                   </button>
                 )
               })}
@@ -144,7 +122,7 @@ export function ProductPurchasePanel({
                 {t('product.sizeGuide', isArabic ? 'دليل القياسات' : 'Size Guide')}
               </button>
             </div>
-            <div className={`flex flex-wrap gap-2 p-1.5 -m-1.5 rounded-2xl transition-all duration-300 ${
+            <div className={`flex flex-wrap gap-2 p-1.5 -m-1.5 transition-all duration-300 ${
               state.sizeError ? 'animate-shake ring-2 ring-[#8B2626]/60 bg-[#8B2626]/5' : ''
             }`}>
               {product.sizes.map((size) => {
@@ -154,10 +132,10 @@ export function ProductPurchasePanel({
                     key={size}
                     type="button"
                     onClick={() => actions.setSelectedSize(size)}
-                    className={`min-w-[42px] px-3.5 py-2 rounded-xl text-xs uppercase font-medium tracking-wider border transition-all duration-300 cursor-pointer ${
+                    className={`min-w-[42px] px-3.5 py-2 text-xs uppercase font-medium tracking-wider border transition-all duration-300 cursor-pointer ${
                       isSelected
                         ? 'bg-espresso text-cream border-espresso shadow-sm scale-102'
-                        : 'bg-sand text-espresso border-border2 hover:border-walnut'
+                        : 'bg-transparent text-espresso border-border2 hover:border-walnut'
                     }`}
                   >
                     {size}
@@ -176,12 +154,12 @@ export function ProductPurchasePanel({
       </div>
 
       {/* Purchasing Actions Panel */}
-      <div className="mt-auto pt-3 border-t border-border2/80 shrink-0 animate-[fadeUp_0.6s_ease-out_0.55s_both]">
-        <div className="flex flex-col sm:flex-row gap-2.5">
+      <div className={`${isModal ? 'mt-8' : 'mt-auto pt-3 border-t border-border2/80'} shrink-0 animate-[fadeUp_0.6s_ease-out_0.55s_both]`}>
+        <div className="flex flex-row gap-2.5">
           <button
             type="button"
             onClick={actions.handleAddToBag}
-            className={`flex-1 rounded-full py-3.5 px-6 text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+            className={`flex-1 py-3.5 px-6 text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
               state.isAddedToast
                 ? 'bg-success text-cream shadow-md'
                 : 'bg-espresso text-cream hover:bg-ink hover:shadow-lg'
@@ -205,7 +183,7 @@ export function ProductPurchasePanel({
           <button
             type="button"
             onClick={actions.handleWishlistToggle}
-            className={`px-5 py-3.5 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer shrink-0 ${
+            className={`px-5 py-3.5 border transition-all duration-300 flex items-center justify-center cursor-pointer shrink-0 ${
               state.inWishlist
                 ? 'bg-sand border-walnut text-walnut shadow-sm'
                 : 'border-border2 bg-transparent text-espresso hover:border-walnut hover:text-walnut'
@@ -228,7 +206,21 @@ export function ProductPurchasePanel({
         </div>
 
         {/* Minimal Trust Indicators Row */}
-        <ProductTrustIndicators />
+        {!isModal && <ProductTrustIndicators />}
+        
+        {/* Optional link to Full Product Detail Page when inside Quick View Modal */}
+        {isModal && (
+          <div className="mt-6 text-center animate-[fadeUp_0.6s_ease-out_0.6s_both]">
+            <Link
+              to={`/product/${product.id}`}
+              onClick={onClose}
+              className="group inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-mocha hover:text-espresso transition-all duration-300 font-medium"
+            >
+              <span className="border-b border-border2/60 group-hover:border-espresso pb-0.5 transition-colors">{t('product.viewFullDetails', isArabic ? 'عرض الصفحة الكاملة للقطعة' : 'View Full Editorial Page')}</span>
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180">→</span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )

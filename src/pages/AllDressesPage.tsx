@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { Navigation } from '../components/Navigation'
@@ -8,6 +8,7 @@ import { QuickViewModal } from '../components/QuickViewModal'
 import { DRESSES_DATA, type ProductDress } from '../data/dressesData'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { useLongPressQuickView } from '../hooks/useLongPressQuickView'
+import { useLenis } from 'lenis/react'
 
 import { LuxuryProductCard } from '../components/ui/LuxuryProductCard'
 
@@ -128,6 +129,22 @@ export function AllDressesPage() {
       setSelectedCategories([cat])
     }
   }, [searchParams])
+
+  const lenis = useLenis()
+  useEffect(() => {
+    if (isMobileFiltersOpen) {
+      const originalOverflow = document.body.style.overflow
+      const originalHtmlOverflow = document.documentElement.style.overflow
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+      lenis?.stop()
+      return () => {
+        document.body.style.overflow = originalOverflow
+        document.documentElement.style.overflow = originalHtmlOverflow
+        lenis?.start()
+      }
+    }
+  }, [isMobileFiltersOpen, lenis])
 
   const handleProductInteract = (product: ProductDress) => {
     setRecentlyViewed((prev) => {
@@ -277,22 +294,6 @@ export function AllDressesPage() {
   // Render Sidebar Content (Sort By at Top + Accordion Filter Sections)
   const renderSidebarContent = () => (
     <div className="flex flex-col text-sm font-sans select-none pe-2">
-      {/* Active Filters Summary Header if any */}
-      {activeFilterCount > 0 && (
-        <div className="pb-4 mb-4 border-b border-border2 flex items-center justify-between">
-          <span className="text-xs uppercase tracking-[0.2em] font-medium text-espresso">
-            {isArabic ? `الفلاتر المحددة (${activeFilterCount})` : `Active Filters (${activeFilterCount})`}
-          </span>
-          <button
-            type="button"
-            onClick={clearAllFilters}
-            className="text-xs text-taupe hover:text-espresso underline underline-offset-4 font-medium transition-colors cursor-pointer"
-          >
-            {isArabic ? 'مسح الكل' : 'Clear All'}
-          </button>
-        </div>
-      )}
-
       {/* 0. Sort By Section inside Left Sidebar */}
       <div className="border-b border-border2/60 pb-5 mb-1">
         <button
@@ -308,19 +309,18 @@ export function AllDressesPage() {
             {sortOptions.map((opt) => {
               const checked = sortBy === opt.id
               return (
-                <label
+                <div
                   key={opt.id}
-                  className="flex items-center gap-3 cursor-pointer text-mocha hover:text-espresso transition-colors text-xs sm:text-sm py-0.5"
+                  onClick={() => setSortBy(opt.id)}
+                  className="flex items-center gap-4 cursor-pointer group py-2"
                 >
-                  <input
-                    type="radio"
-                    name="sidebar-sort"
-                    checked={checked}
-                    onChange={() => setSortBy(opt.id)}
-                    className="w-3.5 h-3.5 text-espresso border-border2 focus:ring-0 cursor-pointer accent-espresso"
-                  />
-                  <span className={checked ? 'text-espresso font-medium' : ''}>{opt.label}</span>
-                </label>
+                  <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors duration-300 ${checked ? 'border-espresso' : 'border-border2 group-hover:border-espresso'}`}>
+                    {checked && <div className="w-2 h-2 rounded-full bg-espresso animate-fade-up" style={{ animationDuration: '0.2s' }} />}
+                  </div>
+                  <span className={`text-sm ${checked ? 'text-espresso font-medium' : 'text-mocha group-hover:text-espresso'} transition-colors`}>
+                    {opt.label}
+                  </span>
+                </div>
               )
             })}
           </div>
@@ -339,26 +339,32 @@ export function AllDressesPage() {
         </button>
         {openSections.category && (
           <div className="mt-4 flex flex-col gap-2.5 animate-fade-up">
-            {categoriesList.map((cat) => {
+            {categoriesList.map((cat, idx) => {
+              // Ensure uniqueness if categoriesList has duplicates, using index for key fallback
+              const uniqueKey = `${cat.id}-${idx}`
               const checked = selectedCategories.includes(cat.id)
               return (
-                <label
-                  key={cat.id}
-                  className="flex items-center justify-between gap-3 cursor-pointer text-mocha hover:text-espresso transition-colors text-xs sm:text-sm py-0.5 group"
+                <div
+                  key={uniqueKey}
+                  onClick={() => toggleArrayItem(setSelectedCategories, cat.id)}
+                  className="flex items-center justify-between gap-3 cursor-pointer group py-2"
                 >
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleArrayItem(setSelectedCategories, cat.id)}
-                      className="w-4 h-4 rounded border-border2 text-espresso focus:ring-0 cursor-pointer accent-espresso"
-                    />
-                    <span className={checked ? 'text-espresso font-medium' : ''}>{cat.label}</span>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${checked ? 'bg-espresso border-espresso' : 'border-border2 bg-transparent group-hover:border-espresso'}`}>
+                      {checked && (
+                        <svg className="w-3 h-3 text-cream animate-fade-up" style={{ animationDuration: '0.2s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className={`text-sm ${checked ? 'text-espresso font-medium' : 'text-mocha group-hover:text-espresso'} transition-colors`}>
+                      {cat.label}
+                    </span>
                   </div>
-                  <span className="text-xs text-mocha/60">
+                  <span className="text-xs text-mocha/50">
                     ({DRESSES_DATA.filter((p) => p.category === cat.id).length})
                   </span>
-                </label>
+                </div>
               )
             })}
           </div>
@@ -384,9 +390,9 @@ export function AllDressesPage() {
                   key={size}
                   type="button"
                   onClick={() => toggleArrayItem(setSelectedSizes, size)}
-                  className={`py-2 rounded-xl text-xs uppercase tracking-wider font-medium border transition-all cursor-pointer ${selected
-                    ? 'bg-espresso text-cream border-espresso shadow-xs'
-                    : 'bg-cream text-espresso border-border2/80 hover:border-walnut'
+                  className={`py-2.5 rounded-none text-xs uppercase tracking-wider font-medium border transition-all cursor-pointer ${selected
+                    ? 'bg-espresso text-cream border-espresso'
+                    : 'bg-transparent text-espresso border-border2 hover:border-espresso hover:bg-espresso/5'
                     }`}
                 >
                   {size}
@@ -498,20 +504,24 @@ export function AllDressesPage() {
             {fabricsList.map((fab) => {
               const checked = selectedFabrics.includes(fab.id)
               return (
-                <label
+                <div
                   key={fab.id}
-                  className="flex items-center justify-between gap-3 cursor-pointer text-mocha hover:text-espresso transition-colors text-xs sm:text-sm py-0.5"
+                  onClick={() => toggleArrayItem(setSelectedFabrics, fab.id)}
+                  className="flex items-center justify-between gap-3 cursor-pointer group py-2"
                 >
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleArrayItem(setSelectedFabrics, fab.id)}
-                      className="w-4 h-4 rounded border-border2 text-espresso focus:ring-0 cursor-pointer accent-espresso"
-                    />
-                    <span className={checked ? 'text-espresso font-medium' : ''}>{fab.label}</span>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${checked ? 'bg-espresso border-espresso' : 'border-border2 bg-transparent group-hover:border-espresso'}`}>
+                      {checked && (
+                        <svg className="w-3 h-3 text-cream animate-fade-up" style={{ animationDuration: '0.2s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className={`text-sm ${checked ? 'text-espresso font-medium' : 'text-mocha group-hover:text-espresso'} transition-colors`}>
+                      {fab.label}
+                    </span>
                   </div>
-                </label>
+                </div>
               )
             })}
           </div>
@@ -533,20 +543,24 @@ export function AllDressesPage() {
             {collectionsList.map((col) => {
               const checked = selectedCollections.includes(col.id)
               return (
-                <label
+                <div
                   key={col.id}
-                  className="flex items-center justify-between gap-3 cursor-pointer text-mocha hover:text-espresso transition-colors text-xs sm:text-sm py-0.5"
+                  onClick={() => toggleArrayItem(setSelectedCollections, col.id)}
+                  className="flex items-center justify-between gap-3 cursor-pointer group py-2"
                 >
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleArrayItem(setSelectedCollections, col.id)}
-                      className="w-4 h-4 rounded border-border2 text-espresso focus:ring-0 cursor-pointer accent-espresso"
-                    />
-                    <span className={checked ? 'text-espresso font-medium' : ''}>{col.label}</span>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${checked ? 'bg-espresso border-espresso' : 'border-border2 bg-transparent group-hover:border-espresso'}`}>
+                      {checked && (
+                        <svg className="w-3 h-3 text-cream animate-fade-up" style={{ animationDuration: '0.2s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className={`text-sm ${checked ? 'text-espresso font-medium' : 'text-mocha group-hover:text-espresso'} transition-colors`}>
+                      {col.label}
+                    </span>
                   </div>
-                </label>
+                </div>
               )
             })}
           </div>
@@ -568,20 +582,24 @@ export function AllDressesPage() {
             {availabilityList.map((avail) => {
               const checked = selectedAvailability.includes(avail.id)
               return (
-                <label
+                <div
                   key={avail.id}
-                  className="flex items-center justify-between gap-3 cursor-pointer text-mocha hover:text-espresso transition-colors text-xs sm:text-sm py-0.5"
+                  onClick={() => toggleArrayItem(setSelectedAvailability, avail.id)}
+                  className="flex items-center justify-between gap-3 cursor-pointer group py-2"
                 >
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleArrayItem(setSelectedAvailability, avail.id)}
-                      className="w-4 h-4 rounded border-border2 text-espresso focus:ring-0 cursor-pointer accent-espresso"
-                    />
-                    <span className={checked ? 'text-espresso font-medium' : ''}>{avail.label}</span>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${checked ? 'bg-espresso border-espresso' : 'border-border2 bg-transparent group-hover:border-espresso'}`}>
+                      {checked && (
+                        <svg className="w-3 h-3 text-cream animate-fade-up" style={{ animationDuration: '0.2s' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className={`text-sm ${checked ? 'text-espresso font-medium' : 'text-mocha group-hover:text-espresso'} transition-colors`}>
+                      {avail.label}
+                    </span>
                   </div>
-                </label>
+                </div>
               )
             })}
           </div>
@@ -595,16 +613,30 @@ export function AllDressesPage() {
       {/* Navigation Top Bar */}
       <Navigation />
 
-      {/* Hero Section — Elegant, Restrained with generous padding */}
-
+      {/* Hero Section — Wide Banner Image with Centered Text */}
+      <div className="relative w-full h-[30vh] sm:h-[35vh] lg:h-[40vh] flex flex-col items-center justify-center text-center px-4">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={`${import.meta.env.BASE_URL}images/alora_dresses_banner.png`} 
+            alt={isArabic ? 'أناقة خالدة' : 'Timeless Elegance'} 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight font-normal leading-[1.1] drop-shadow-lg">
+            {isArabic ? 'أناقة خالدة، مصممة لكِ' : 'Timeless Elegance, Crafted for You.'}
+          </h1>
+        </div>
+      </div>
 
       {/* Main Content Area: Persistent Left Sidebar + Spacious Product Grid */}
-      <main className="flex-1 container-alora px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Mobile Header Bar (when sidebar is hidden on mobile screens) */}
-        <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-border2/60 lg:hidden">
+      <main className="flex-1 container-alora px-4 sm:px-6 lg:px-12 py-12 sm:py-20">
+        {/* Universal Filter & Sort Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-border2/60">
           <div className="flex items-center gap-2">
             <span className="text-xs uppercase tracking-[0.2em] text-espresso font-semibold">
-              {isArabic ? `${filteredProducts.length} قطعة` : `${filteredProducts.length} Pieces`}
+              {isArabic ? `عرض ${filteredProducts.length} من ${DRESSES_DATA.length} قطعة` : `Showing ${filteredProducts.length} of ${DRESSES_DATA.length} Pieces`}
             </span>
             {activeFilterCount > 0 && (
               <span className="bg-cream border border-border2 px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider text-mocha font-medium">
@@ -613,56 +645,45 @@ export function AllDressesPage() {
             )}
           </div>
 
-          <button
-            type="button"
-            onClick={() => setIsMobileFiltersOpen(true)}
-            className="bg-espresso text-cream rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] font-medium flex items-center gap-2 shadow-xs cursor-pointer hover:bg-ink transition-colors"
-          >
-            <svg className="w-3.5 h-3.5 stroke-current fill-none" strokeWidth="1.8" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-            </svg>
-            <span>{isArabic ? 'تصفية وترتيب' : 'Filter & Sort'}</span>
-          </button>
+          <div className="flex items-center gap-4">
+            {activeFilterCount > 0 && (
+              <button
+                type="button"
+                onClick={clearAllFilters}
+                className="hidden sm:block text-xs text-taupe hover:text-espresso underline underline-offset-4 font-medium transition-colors cursor-pointer"
+              >
+                {isArabic ? 'مسح الفلاتر' : 'Clear Filters'}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setIsMobileFiltersOpen(true)}
+              className="bg-espresso text-cream rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.16em] font-medium flex items-center gap-2 shadow-xs cursor-pointer hover:bg-ink transition-colors"
+            >
+              <svg className="w-4 h-4 stroke-current fill-none" strokeWidth="1.8" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+              </svg>
+              <span>{isArabic ? 'تصفية وترتيب' : 'Filter & Sort'}</span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-start gap-8 xl:gap-12">
-          {/* Desktop Persistent Left Sidebar (with Sort By right at top!) */}
-          <aside aria-label="Filters" className="hidden lg:block w-[260px] xl:w-[280px] shrink-0 border-e border-border2/80 pe-6 xl:pe-8 sticky top-[100px] h-[calc(100vh-120px)]">
-            <div className="h-full w-full overflow-y-auto custom-scrollbar pb-32 pe-4">
-              {renderSidebarContent()}
-            </div>
-          </aside>
-
-          {/* Product Grid Area */}
-          <div className="flex-1 min-w-0">
-            {/* Active filters summary bar on desktop if filtered */}
-            {activeFilterCount > 0 && (
-              <div className="hidden lg:flex items-center justify-between pb-6 mb-6 border-b border-border2/60 text-xs text-mocha">
-                <span>
-                  {isArabic ? `عرض ${filteredProducts.length} من 245 قطعة` : `Showing ${filteredProducts.length} of 245 Pieces`}
-                </span>
-                <button
-                  type="button"
-                  onClick={clearAllFilters}
-                  className="text-taupe hover:text-espresso underline underline-offset-4 font-medium transition-colors cursor-pointer"
-                >
-                  {isArabic ? 'مسح كافة الفلاتر' : 'Clear All Filters'}
-                </button>
-              </div>
-            )}
+        <div className="flex items-start gap-12 xl:gap-20">
+          {/* Product Grid Area (Full Width) */}
+          <div className="flex-1 min-w-0 w-full">
 
             {filteredProducts.length === 0 ? (
               /* Editorial Empty State */
-              <div className="max-w-xl mx-auto text-center py-16 sm:py-24 animate-fade-up bg-cream/70 rounded-3xl border border-border2 p-6 sm:p-12">
-                <div className="w-16 sm:w-20 h-16 sm:h-20 mx-auto mb-6 rounded-full bg-sand border border-border2 flex items-center justify-center text-taupe">
-                  <svg className="w-8 sm:w-10 h-8 sm:h-10 stroke-current fill-none" strokeWidth="1.2" viewBox="0 0 24 24">
+              <div className="max-w-xl mx-auto text-center py-20 sm:py-32 animate-fade-up bg-cream/50 rounded-[2rem] border border-border2/50 p-8 sm:p-16 mt-8">
+                <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-sand border border-border2 flex items-center justify-center text-taupe">
+                  <svg className="w-10 h-10 stroke-current fill-none" strokeWidth="1" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                   </svg>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl text-espresso tracking-tight font-normal mb-3">
+                <h2 className="font-serif text-2xl sm:text-4xl text-espresso tracking-tight font-normal mb-4">
                   {isArabic ? 'لم يتم العثور على فساتين' : 'No Dresses Found'}
                 </h2>
-                <p className="font-sans text-sm sm:text-base text-mocha leading-relaxed max-w-md mx-auto mb-8">
+                <p className="font-sans text-sm sm:text-base text-mocha leading-relaxed max-w-md mx-auto mb-10">
                   {isArabic
                     ? 'جربي تعديل خيارات التصفية أو استكشفي مجموعتنا الملكية الكاملة بدون قيود.'
                     : 'Try adjusting your filters or explore our complete collection.'}
@@ -671,13 +692,13 @@ export function AllDressesPage() {
                   <button
                     type="button"
                     onClick={clearAllFilters}
-                    className="btn-primary px-8 py-3.5 w-full sm:w-auto"
+                    className="btn-primary px-10 py-4 w-full sm:w-auto"
                   >
                     {isArabic ? 'مسح كافة الفلاتر' : 'Clear Filters'}
                   </button>
                   <Link
                     to="/"
-                    className="btn-secondary py-3.5 px-6 w-full sm:w-auto text-center"
+                    className="btn-secondary py-4 px-10 w-full sm:w-auto text-center"
                   >
                     {isArabic ? 'تصفح المجموعة' : 'Browse Collection'}
                   </Link>
@@ -685,23 +706,23 @@ export function AllDressesPage() {
               </div>
             ) : (
               <>
-                {/* Responsive Grid: Desktop 4 columns, Tablet 3 columns, Mobile 2 columns with refined gap & padding */}
+                {/* Responsive Grid: Desktop 3 columns, Tablet 2 columns, Mobile 1 or 2 columns with refined gap & padding */}
                 <motion.div 
-                  className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+                  className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-y-16 sm:gap-y-24 gap-x-6 sm:gap-x-10 xl:gap-x-14"
                   initial="hidden"
                   animate="show"
                   variants={{
                     hidden: { opacity: 0 },
                     show: {
                       opacity: 1,
-                      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+                      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
                     }
                   }}
                 >
                   {displayedProducts.map((item) => (
                     <motion.div key={item.id} variants={{
-                      hidden: { opacity: 0, y: 40 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                      hidden: { opacity: 0, y: 30 },
+                      show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
                     }}>
                       <LuxuryProductCard
                         item={item}
@@ -756,37 +777,6 @@ export function AllDressesPage() {
         </section>
       )}
 
-      {/* Small Elegant Newsletter Section before Footer */}
-      <section className="py-12 sm:py-16 bg-cream border-t border-border2/80 text-center px-4 sm:px-6">
-        <div className="max-w-xl mx-auto">
-          <span className="text-eyebrow text-walnut block mb-2">
-            {isArabic ? 'انضمي لدائرة كبار العميلات' : 'VIP ATELIER CIRCLE'}
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-espresso tracking-tight font-normal mb-2.5">
-            {isArabic ? 'ابقِ على تواصل واستلهام' : 'Stay Inspired'}
-          </h2>
-          <p className="font-sans text-xs sm:text-sm text-mocha leading-relaxed mb-8">
-            {isArabic
-              ? 'احصلي على وصول حصري ومبكر للمجموعات الملكية الجديدة والإصدارات الخالدة قبل الجميع.'
-              : 'Receive exclusive access to new collections and timeless releases.'}
-          </p>
-
-          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              required
-              placeholder={isArabic ? 'أدخلي بريدكِ الإلكتروني الملكي...' : 'Enter your email address...'}
-              className="input-underline text-center sm:text-start w-full sm:flex-1 py-2 text-sm"
-            />
-            <button
-              type="submit"
-              className="btn-primary py-3 px-8 w-full sm:w-auto flex-shrink-0 text-xs tracking-[0.2em]"
-            >
-              {isArabic ? 'انضمام' : 'Join'}
-            </button>
-          </form>
-        </div>
-      </section>
 
       {/* Reusing Existing Alora Footer without modification */}
       <Footer />
@@ -799,53 +789,73 @@ export function AllDressesPage() {
         />
       )}
 
-      {/* Mobile Full-Height Bottom Sheet Filters & Sort */}
-      {isMobileFiltersOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 flex flex-col bg-sand animate-fade-up overflow-hidden">
-          {/* Bottom Sheet Header */}
-          <div className="flex items-center justify-between px-6 py-5 border-b border-border2 bg-sand/98 backdrop-blur-md shrink-0">
-            <span className="font-serif text-xl text-espresso">
-              {isArabic ? 'تصفية وترتيب الفساتين' : 'Filter & Sort'}
-            </span>
-            <button
-              type="button"
+      {/* Universal Slide-out Filter Drawer */}
+      <AnimatePresence>
+        {isMobileFiltersOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" 
               onClick={() => setIsMobileFiltersOpen(false)}
-              className="text-espresso p-2 hover:text-walnut cursor-pointer"
-              aria-label="Close filters"
+            />
+            {/* Drawer Panel */}
+            <motion.div 
+              initial={{ x: isArabic ? '-100%' : '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: isArabic ? '-100%' : '100%' }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] flex flex-col bg-cream shadow-2xl overflow-hidden"
             >
-              <svg className="w-6 h-6 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between px-6 py-6 border-b border-border2/60 bg-cream/98 backdrop-blur-md shrink-0">
+                <span className="font-serif text-2xl text-espresso tracking-tight">
+                  {isArabic ? 'تصفية وترتيب' : 'Filter & Sort'}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileFiltersOpen(false)}
+                  className="text-espresso p-2 -mr-2 hover:text-walnut cursor-pointer transition-colors"
+                  aria-label="Close filters"
+                >
+                  <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
 
-          {/* Bottom Sheet Content (Scrollable with Sort By right at top!) */}
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            {renderSidebarContent()}
-          </div>
+              {/* Drawer Content */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar px-6 py-4">
+                {renderSidebarContent()}
+              </div>
 
-          {/* Bottom Sheet Footer Actions */}
-          <div className="p-6 border-t border-border2 bg-cream/90 backdrop-blur-md shrink-0 flex items-center gap-4">
-            <button
-              type="button"
-              onClick={() => {
-                clearAllFilters()
-                setIsMobileFiltersOpen(false)
-              }}
-              className="btn-secondary py-3.5 px-6 flex-1 text-center text-xs tracking-wider"
-            >
-              {isArabic ? 'مسح الفلاتر' : 'Clear Filters'}
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsMobileFiltersOpen(false)}
-              className="btn-primary py-3.5 px-8 flex-1 text-center text-xs tracking-wider"
-            >
-              {isArabic ? `عرض (${filteredProducts.length}) قطعة` : `Show (${filteredProducts.length}) Pieces`}
-            </button>
-          </div>
-        </div>
-      )}
+              {/* Drawer Footer Actions */}
+              <div className="p-6 border-t border-border2/60 bg-cream shrink-0 flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    clearAllFilters()
+                    setIsMobileFiltersOpen(false)
+                  }}
+                  className="w-1/3 py-4 text-center text-xs tracking-[0.2em] uppercase font-medium text-espresso border border-border2 hover:border-espresso transition-colors cursor-pointer"
+                >
+                  {isArabic ? 'مسح' : 'Clear'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileFiltersOpen(false)}
+                  className="w-2/3 py-4 text-center text-xs tracking-[0.2em] uppercase font-medium bg-espresso text-cream hover:bg-ink transition-colors cursor-pointer"
+                >
+                  {isArabic ? `عرض ${filteredProducts.length} قطعة` : `View ${filteredProducts.length} Items`}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

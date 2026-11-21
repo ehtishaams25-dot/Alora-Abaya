@@ -197,6 +197,11 @@ export const resources = {
               id: "wc-2",
               title: "Express Saudi & GCC Shipping",
               description: "Delivered via express courier within 24 hours across Saudi Arabia (Riyadh, Jeddah, Al Khobar) and 48 hours across UAE, Qatar, and Kuwait, with express worldwide VIP customs handling."
+            },
+            "2": {
+              id: "wc-3",
+              title: "Master Craftsmanship",
+              description: "Every piece is meticulously handcrafted in our private Riyadh atelier, ensuring perfection from the first sketch to the final French seam."
             }
           },
           features: {
@@ -584,6 +589,11 @@ export const resources = {
               id: "wc-2",
               title: "شحن سريع في السعودية والخليج",
               description: "توصيل فوري عبر البريد السريع خلال 24 ساعة في أنحاء المملكة العربية السعودية (الرياض، جدة، الخبر) و48 ساعة لبقية دول الخليج والعالم مع تخليص جمركي VIP."
+            },
+            "2": {
+              id: "wc-3",
+              title: "حرفية وإتقان لا يضاهى",
+              description: "كل قطعة تُصنع يدوياً بعناية فائقة في أتليه الرياض الخاص بنا، لضمان الكمال من الرسمة الأولى وحتى أصغر غرزة فرنسية."
             }
           },
           features: {

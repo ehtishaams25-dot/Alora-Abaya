@@ -13,11 +13,11 @@ export function NewArrivalsSection() {
   const isArabic = i18n.language.startsWith('ar')
 
   return (
-    <section id="new" className="section-padding bg-sand">
+    <section id="new" className="section-padding bg-sand min-h-[100svh] flex flex-col justify-center">
       <div className="container-alora">
-        {/* Minimalist Centered Section Header */}
+        {/* Section Header */}
         <motion.div 
-          className="text-center max-w-2xl mx-auto mb-10 sm:mb-16"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
@@ -26,25 +26,40 @@ export function NewArrivalsSection() {
             show: { opacity: 1, transition: { staggerChildren: 0.1 } }
           }}
         >
-          <motion.span variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-eyebrow text-walnut mb-3 tracking-[0.28em] block">
-            {t('home.newArrivals.eyebrow')}
-          </motion.span>
-          <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="text-h2 font-serif text-espresso font-normal tracking-tight">
+          <motion.h2 
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+            className="text-4xl sm:text-5xl lg:text-6xl font-serif text-espresso font-normal tracking-tight text-start"
+          >
             {t('home.newArrivals.title')}
           </motion.h2>
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} className="mt-8 flex justify-center">
+          
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+            className="flex md:justify-end"
+          >
             <Link
               to="/dresses"
-              className="border-b border-walnut/50 text-walnut pb-1 hover:text-espresso hover:border-espresso transition-colors text-xs uppercase tracking-[0.2em] font-medium"
+              className="group relative inline-flex items-center justify-center gap-4 px-8 py-4 border border-espresso/30 hover:border-espresso text-espresso overflow-hidden transition-all duration-500 ease-out"
             >
-              {t('common.viewAll')}
+              <div className="absolute inset-0 bg-espresso translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 text-xs tracking-[0.2em] uppercase font-medium group-hover:text-cream transition-colors duration-500">
+                {t('common.viewAll')}
+              </span>
+              <svg 
+                className={`w-4 h-4 relative z-10 transform transition-all duration-500 group-hover:text-cream ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`}
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </motion.div>
         </motion.div>
 
         {/* Spacious Editorial Grid */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 lg:gap-10"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { DRESSES, type ProductDress } from '../../../data/dressesData'
 import { useShop } from '../../../providers/ShopProvider'
+import { useLenis } from 'lenis/react'
 
 const RECENT_SEARCHES_KEY = 'alora_recent_searches'
 
@@ -11,6 +12,7 @@ export function SearchOverlayModal() {
   const { isSearchOpen, closeSearch } = useShop()
   const navigate = useNavigate()
   const isArabic = i18n.language.startsWith('ar')
+  const lenis = useLenis()
 
   const [query, setQuery] = useState('')
   const [recentSearches, setRecentSearches] = useState<string[]>([])
@@ -33,8 +35,10 @@ export function SearchOverlayModal() {
         inputRef.current?.focus()
       }, 50)
       document.body.style.overflow = 'hidden'
+      lenis?.stop()
     } else {
       document.body.style.overflow = ''
+      lenis?.start()
       setQuery('')
       setActiveCategory(null)
     }

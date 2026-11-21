@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { type ProductDress } from '../../../data/dressesData'
 import { cn } from '../../../utils/cn'
+import { useLenis } from 'lenis/react'
 
 interface ProductSizeGuideModalProps {
   product: ProductDress | null
@@ -23,22 +24,25 @@ export function ProductSizeGuideModal({ product, onClose }: ProductSizeGuideModa
   // Interactive Fit Advisor State
   const [advisorHeight, setAdvisorHeight] = useState<HeightRange>('160to168')
   const [advisorDrape, setAdvisorDrape] = useState<DrapePref>('floor')
+  const lenis = useLenis()
 
   const isArabic = i18n.language.startsWith('ar')
 
   useEffect(() => {
     if (product) {
       document.body.style.overflow = 'hidden'
+      lenis?.stop()
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose()
       }
       window.addEventListener('keydown', handleKeyDown)
       return () => {
         document.body.style.overflow = ''
+        lenis?.start()
         window.removeEventListener('keydown', handleKeyDown)
       }
     }
-  }, [product, onClose])
+  }, [product, onClose, lenis])
 
   if (!product) return null
 

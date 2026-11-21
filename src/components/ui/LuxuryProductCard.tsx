@@ -64,12 +64,12 @@ export function LuxuryProductCard({
         longPressProps.onMouseLeave?.()
       }}
     >
-      <Link to={`/product/${item.id}`} className="relative block aspect-[3/4] overflow-hidden bg-sand/30 rounded-sm mb-5">
+      <Link to={`/product/${item.id}`} className="relative block aspect-[2/3] overflow-hidden bg-sand/30 mb-8 rounded-[2px] shadow-sm">
         {/* Primary Image */}
         <img
           src={item.image}
           alt={title}
-          className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 ease-out transform ${
+          className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-[1.5s] ease-[0.16,1,0.3,1] transform ${
             isHovered && item.secondImage ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
           }`}
           loading="lazy"
@@ -80,7 +80,7 @@ export function LuxuryProductCard({
           <img
             src={item.secondImage}
             alt={`${title} alternate angle`}
-            className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 ease-out transform ${
+            className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-[1.5s] ease-[0.16,1,0.3,1] transform ${
               isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
             loading="lazy"
@@ -88,11 +88,11 @@ export function LuxuryProductCard({
         )}
 
         {/* Subtle Dark Gradient at bottom for text readability if needed */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
         {/* Badge */}
         {badgeText && (
-          <div className="absolute top-3 right-3 rtl:right-auto rtl:left-3 bg-cream/90 backdrop-blur-sm px-3 py-1 text-[9px] sm:text-[10px] uppercase tracking-widest text-espresso font-medium shadow-sm">
+          <div className="absolute top-4 right-4 rtl:right-auto rtl:left-4 bg-cream/95 backdrop-blur-sm px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-widest text-espresso font-medium shadow-sm">
             {badgeText}
           </div>
         )}
@@ -100,7 +100,7 @@ export function LuxuryProductCard({
         {/* Wishlist Heart */}
         <button
           onClick={handleWishlistToggle}
-          className="absolute top-3 left-3 rtl:left-auto rtl:right-3 p-2 rounded-full bg-cream/0 hover:bg-cream/40 transition-colors duration-300 z-10 group/btn"
+          className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2.5 rounded-full bg-cream/0 hover:bg-cream/50 backdrop-blur-[2px] hover:backdrop-blur-md transition-all duration-500 z-10 group/btn"
           aria-label="Toggle Wishlist"
         >
           <svg 
@@ -114,29 +114,29 @@ export function LuxuryProductCard({
         </button>
 
         {/* Desktop Quick View Overlay Button */}
-        <div className="absolute bottom-4 inset-x-4 hidden lg:block opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out z-10">
+        <div className="absolute bottom-6 inset-x-6 hidden lg:block opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-[0.16,1,0.3,1] z-10">
           <button
             onClick={handleQuickAdd}
-            className="w-full bg-cream/95 backdrop-blur-sm text-espresso border border-border2/50 py-3.5 text-xs uppercase tracking-[0.2em] font-medium hover:bg-espresso hover:text-cream transition-colors duration-500 shadow-sm"
+            className="w-full bg-cream/95 backdrop-blur-md text-espresso border border-border2/30 py-4 text-[11px] uppercase tracking-[0.25em] font-medium hover:bg-espresso hover:text-cream transition-colors duration-500 shadow-lg shadow-black/5"
           >
             {t('product.quickView', 'QUICK VIEW')}
           </button>
         </div>
       </Link>
 
-      <Link to={`/product/${item.id}`} className="flex flex-col gap-1.5 px-1 group/text">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex flex-col">
-            <span className="text-[10px] text-mocha/70 uppercase tracking-[0.15em] font-sans mb-1.5">
-              {categoryText}
-            </span>
-            <h3 className="font-serif text-sm sm:text-base text-espresso font-normal tracking-tight group-hover/text:text-walnut transition-colors duration-300 line-clamp-1">
+      <Link to={`/product/${item.id}`} className="flex flex-col gap-2 px-1 group/text">
+        <div className="flex flex-col">
+          <span className="text-[9px] sm:text-[10px] text-taupe uppercase tracking-[0.2em] font-sans mb-1.5 sm:mb-2.5">
+            {categoryText}
+          </span>
+          <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-1 xl:gap-4">
+            <h3 className="font-serif text-[13px] sm:text-[15px] lg:text-lg text-espresso font-normal tracking-wide group-hover/text:text-walnut transition-colors duration-500 leading-tight">
               {title}
             </h3>
+            <span className="text-[11px] sm:text-sm lg:text-base font-sans text-mocha font-medium tracking-wider whitespace-nowrap xl:mt-0.5">
+              {item.price} SAR
+            </span>
           </div>
-          <span className="text-sm font-sans text-espresso font-medium whitespace-nowrap pt-5">
-            {item.price} SAR
-          </span>
         </div>
       </Link>
     </motion.div>

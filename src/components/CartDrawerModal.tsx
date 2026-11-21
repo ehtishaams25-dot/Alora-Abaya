@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useShop } from '../providers/ShopProvider'
 import { DRESSES_DATA } from '../data/dressesData'
 import { ProductTrustIndicators } from '../features/product'
+import { useLenis } from 'lenis/react'
 
 export function CartDrawerModal() {
   const { t, i18n } = useTranslation()
@@ -22,16 +23,19 @@ export function CartDrawerModal() {
   } = useShop()
 
   const isArabic = i18n.language.startsWith('ar')
+  const lenis = useLenis()
 
   useEffect(() => {
     if (isCartDrawerOpen) {
       const originalOverflow = document.body.style.overflow
       document.body.style.overflow = 'hidden'
+      lenis?.stop()
       return () => {
         document.body.style.overflow = originalOverflow
+        lenis?.start()
       }
     }
-  }, [isCartDrawerOpen])
+  }, [isCartDrawerOpen, lenis])
 
   if (!isCartDrawerOpen) return null
 

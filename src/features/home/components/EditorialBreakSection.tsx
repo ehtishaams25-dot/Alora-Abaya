@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -16,11 +16,11 @@ export function EditorialBreakSection() {
   const isArabic = i18n.language.startsWith('ar')
 
   return (
-    <section ref={ref} className="relative h-[80svh] w-full overflow-hidden flex items-center justify-center">
+    <section ref={ref} className="relative h-[65svh] lg:h-[100svh] w-full overflow-hidden flex items-center justify-center">
       {/* Parallax Background */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 h-[140%] -top-[20%]">
         <img
-          src="https://images.unsplash.com/photo-1760083545495-b297b1690672?auto=format&fit=crop&w=2000&q=90"
+          src="/images/testimonial and middle parallax img 1.png"
           alt="Alora Craftsmanship"
           className="w-full h-full object-cover object-center"
         />
@@ -40,12 +40,7 @@ export function EditorialBreakSection() {
             show: { opacity: 1, transition: { staggerChildren: 0.2 } }
           }}
         >
-          <motion.span 
-            variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
-            className="text-cream/80 text-[10px] sm:text-[11px] tracking-[0.4em] uppercase font-sans mb-6 block font-medium"
-          >
-            {isArabic ? 'الحرفية الاستثنائية' : 'EXCEPTIONAL CRAFTSMANSHIP'}
-          </motion.span>
+
 
           <motion.h2 
             variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
@@ -54,16 +49,7 @@ export function EditorialBreakSection() {
             {isArabic ? 'حيث يلتقي الفن مع الأناقة المحتشمة في كل غرزة.' : 'Where art meets modest elegance in every stitch.'}
           </motion.h2>
 
-          <motion.div 
-            variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } }}
-          >
-            <Link
-              to="/about"
-              className="text-cream text-xs uppercase tracking-[0.2em] font-medium border-b border-cream/50 pb-1 hover:border-cream transition-colors"
-            >
-              {isArabic ? 'اكتشف حكايتنا' : 'DISCOVER OUR STORY'}
-            </Link>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>

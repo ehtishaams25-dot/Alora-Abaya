@@ -8,12 +8,11 @@ export interface NavigationProps {
   hideAnnouncement?: boolean
 }
 
-export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
+export function Navigation(_props: NavigationProps = {}) {
   const { t, i18n } = useTranslation()
   const { isLoggedIn, toggleLogin, wishlistItems, cartItems, openCartDrawer, openSearch } = useShop()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [announcementDismissed, setAnnouncementDismissed] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +40,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
   return (
     <>
       {/* Luxury Announcement Top Bar with Dismiss Cross Button */}
-      {!hideAnnouncement && !announcementDismissed && (
+      {/* {!hideAnnouncement && !announcementDismissed && (
         <div className="bg-espresso text-cream py-2 px-4 text-center transition-all relative flex items-center justify-center min-h-[36px]">
           <p className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-sans font-medium flex items-center justify-center gap-2 pe-6 sm:pe-8">
             <span>{t('navigation.announcement', 'NEW ARRIVALS EVERY MONDAY — EXPLORE OUR SIGNATURE ATELIER EDITION')}</span>
@@ -61,7 +60,7 @@ export function Navigation({ hideAnnouncement = false }: NavigationProps = {}) {
             </svg>
           </button>
         </div>
-      )}
+      )} */}
 
       <header
         className={`sticky top-0 z-50 transition-all duration-500 ${isScrolled

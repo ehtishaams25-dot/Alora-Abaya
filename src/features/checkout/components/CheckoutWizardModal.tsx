@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useShop } from '../../../providers/ShopProvider'
+import { useLenis } from 'lenis/react'
 
 type WizardStep = 'auth' | 'shipping' | 'payment' | 'review' | 'confirmation'
 
@@ -21,6 +22,18 @@ export function CheckoutWizardModal() {
   } = useShop()
   const navigate = useNavigate()
   const isArabic = i18n.language.startsWith('ar')
+  const lenis = useLenis()
+
+  useEffect(() => {
+    if (isCheckoutModalOpen) {
+      document.body.style.overflow = 'hidden'
+      lenis?.stop()
+      return () => {
+        document.body.style.overflow = ''
+        lenis?.start()
+      }
+    }
+  }, [isCheckoutModalOpen, lenis])
 
   // Wizard state
   const [step, setStep] = useState<WizardStep>(() => (isLoggedIn ? 'shipping' : 'auth'))

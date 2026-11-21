@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { type ProductDress } from '../data/dressesData'
 import { useProductDetail, ProductGallery, ProductPurchasePanel } from '../features/product'
+import { useLenis } from 'lenis/react'
 
 interface QuickViewModalProps {
   product: ProductDress | null
@@ -14,17 +15,24 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const [state, actions] = useProductDetail(product || ({} as ProductDress))
+  const lenis = useLenis()
 
   useEffect(() => {
     if (product) {
       // Lock background scrolling when Quick View is active
       const originalOverflow = document.body.style.overflow
+      const originalHtmlOverflow = document.documentElement.style.overflow
       document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+      lenis?.stop()
+      
       return () => {
         document.body.style.overflow = originalOverflow
+        document.documentElement.style.overflow = originalHtmlOverflow
+        lenis?.start()
       }
     }
-  }, [product])
+  }, [product, lenis])
 
   if (!product) return null
 
@@ -42,21 +50,21 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* DESKTOP VIEW: Zero-Scroll One-Pager Modal Dialog */}
-      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream rounded-3xl border border-border2 shadow-2xl overflow-hidden z-10 flex-row h-[85svh] max-h-[900px] animate-fade-up">
+      <div className="relative hidden lg:flex w-full max-w-6xl bg-cream border border-border2 shadow-2xl overflow-hidden rounded-2xl z-10 flex-row h-[85svh] max-h-[900px] animate-fade-up">
         {/* Close Button Top Right */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 end-4 z-30 bg-sand/90 hover:bg-espresso hover:text-cream text-espresso p-2.5 rounded-full transition-all duration-300 shadow-sm cursor-pointer"
+          className="absolute top-6 end-6 z-30 bg-cream border border-border2 hover:border-espresso hover:text-espresso text-mocha p-2 transition-all duration-300 shadow-sm cursor-pointer"
           aria-label="Close modal"
         >
-          <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
         {/* Left Side: Photography Gallery */}
-        <div className="w-7/12 bg-sand relative p-5 h-full min-h-0 shrink-0 border-e border-border2/60 overflow-hidden">
+        <div className="w-7/12 bg-sand relative p-0 h-full min-h-0 shrink-0 border-e border-border2/60 overflow-hidden">
           <ProductGallery
             product={product}
             galleryViews={state.galleryViews}
@@ -67,7 +75,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
         </div>
 
         {/* Right Side: Editorial Product Details & Quick Actions */}
-        <div className="w-5/12 p-7 h-full min-h-0 overflow-hidden flex flex-col justify-between">
+        <div className="w-5/12 p-8 lg:p-12 h-full min-h-0 overflow-y-auto flex flex-col justify-center">
           <ProductPurchasePanel
             product={product}
             state={state}
@@ -80,7 +88,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
       </div>
 
       {/* MOBILE VIEW: Ultra-Compact Zero-Scroll Quick Card (Only Name, Colors, & Wishlist Icon) */}
-      <div className="relative flex lg:hidden flex-col w-full max-w-[350px] sm:max-w-[396px] bg-cream rounded-2xl border border-border2 shadow-2xl overflow-hidden z-10 animate-fade-up">
+      <div className="relative flex lg:hidden flex-col w-full max-w-[350px] sm:max-w-[396px] bg-cream border border-border2 shadow-2xl overflow-hidden rounded-2xl z-10 animate-fade-up">
         {/* Close Button */}
         <button
           type="button"
@@ -88,7 +96,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
             e.stopPropagation()
             onClose()
           }}
-          className="absolute top-3 end-3 z-30 bg-cream/90 backdrop-blur-md hover:bg-espresso hover:text-cream text-espresso p-2 rounded-full transition-all duration-300 shadow-sm cursor-pointer"
+          className="absolute top-3 end-3 z-30 bg-cream/90 backdrop-blur-md hover:bg-espresso hover:text-cream text-espresso p-2 transition-all duration-300 shadow-sm cursor-pointer"
           aria-label="Close modal"
         >
           <svg className="w-4 h-4 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -124,7 +132,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
             <button
               type="button"
               onClick={actions.handleWishlistToggle}
-              className={`p-2 rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer shrink-0 ${
+              className={`p-2 border transition-all duration-300 flex items-center justify-center cursor-pointer shrink-0 ${
                 state.inWishlist
                   ? 'bg-sand border-walnut text-walnut shadow-sm'
                   : 'border-border2 bg-transparent text-espresso hover:border-walnut hover:text-walnut'
@@ -160,26 +168,18 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
                       key={idx}
                       type="button"
                       onClick={() => actions.setSelectedColorIdx(idx)}
-                      className="group relative w-7 h-7 rounded-full p-0 flex-shrink-0 cursor-pointer focus:outline-none"
+                      className="group relative w-7 h-7 flex-shrink-0 cursor-pointer focus:outline-none"
                       title={isArabic ? product.colorNamesAr?.[idx] : product.colorNames?.[idx]}
                     >
-                      <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                      <span className={`absolute inset-0 rounded-sm transition-all duration-300 ${
                         isSelected
-                          ? 'border-2 border-espresso shadow-xs'
+                          ? 'border-[1.5px] border-espresso'
                           : 'border border-transparent group-hover:border-border2'
                       }`} />
                       <span
-                        className="absolute inset-1 rounded-full border border-black/10 shadow-inner flex items-center justify-center transition-transform duration-300"
+                        className="absolute inset-[3px] rounded-sm border border-black/10 shadow-sm flex items-center justify-center transition-transform duration-300"
                         style={{ backgroundColor: hex }}
-                      >
-                        {isSelected && (
-                          <span className={`w-1 h-1 rounded-full ${
-                            hex.toLowerCase() === '#ffffff' || hex.toLowerCase() === '#faf9f6'
-                              ? 'bg-espresso'
-                              : 'bg-cream'
-                          }`} />
-                        )}
-                      </span>
+                      />
                     </button>
                   )
                 })}

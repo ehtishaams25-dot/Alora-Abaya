@@ -93,7 +93,7 @@ export function CategoriesSection() {
             <motion.div key={cat.id} variants={{ hidden: { opacity: 0, scale: 0.95, y: 30 }, show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
               <Link
                 to={`/dresses?category=${encodeURIComponent(cat.filterCategory)}`}
-                className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl"
+                className="group relative aspect-[3/4] sm:aspect-[4/5] rounded-sm overflow-hidden block bg-espresso shadow-lg sm:hover:shadow-2xl"
               >
                 <img
                   src={cat.image}

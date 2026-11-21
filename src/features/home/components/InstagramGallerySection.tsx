@@ -236,7 +236,7 @@ export function InstagramGallerySection() {
   }
 
   return (
-    <section id="instagram" className="section-padding bg-cream border-t border-border2 overflow-hidden relative">
+    <section id="instagram" className="section-padding bg-cream overflow-hidden relative min-h-[100svh] flex flex-col justify-center">
       <div className="container-alora">
         {/* Section Header (Centered, focused typography) */}
         <motion.div 
@@ -307,7 +307,7 @@ export function InstagramGallerySection() {
               >
                 {/* Card Media Box (Mono -> Color Hover Effect hardcoded) */}
                 <div
-                  className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-sand shadow-sm hover:shadow-2xl transition-all duration-700 grayscale-[96%] contrast-[1.05] group-hover:grayscale-0 group-hover:contrast-100 opacity-92 group-hover:opacity-100 ${dims.imageClass}`}
+                  className={`relative w-full rounded-sm overflow-hidden bg-sand shadow-sm hover:shadow-2xl transition-all duration-700 grayscale-[96%] contrast-[1.05] group-hover:grayscale-0 group-hover:contrast-100 opacity-92 group-hover:opacity-100 ${dims.imageClass}`}
                 >
                   <img
                     src={item.image}

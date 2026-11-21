@@ -1,12 +1,12 @@
 import {
   HeroSection,
   NewArrivalsSection,
-  CategoriesSection,
   EditorialBreakSection,
   BestSellersSection,
-  AtelierSection,
+  WhyChooseUsSection,
   CustomerReviewsSection,
-  InstagramGallerySection
+  InstagramGallerySection,
+  MarqueeSection
 } from '../features/home'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { AppLayout } from '../layouts/AppLayout'
@@ -17,13 +17,13 @@ export function HomePage() {
   return (
     <AppLayout>
       <HeroSection />
+      <WhyChooseUsSection />
       <NewArrivalsSection />
-      <CategoriesSection />
       <EditorialBreakSection />
-      <AtelierSection />
       <BestSellersSection />
-      <CustomerReviewsSection />
       <InstagramGallerySection />
+      <CustomerReviewsSection />
+      <MarqueeSection />
     </AppLayout>
   )
 }

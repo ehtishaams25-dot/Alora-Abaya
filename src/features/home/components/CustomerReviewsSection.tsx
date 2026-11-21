@@ -1,10 +1,10 @@
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { type ReviewItem } from '../types'
 
 export function CustomerReviewsSection() {
-  const { t, i18n } = useTranslation()
-  const isArabic = i18n.language.startsWith('ar')
+  const { t } = useTranslation()
 
   const reviews: ReviewItem[] = [
     {
@@ -30,99 +30,128 @@ export function CustomerReviewsSection() {
     }
   ]
 
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Auto-rotate reviews
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % reviews.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [reviews.length])
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length)
+  }
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % reviews.length)
+  }
+
   return (
-    <section className="py-24 lg:py-32 bg-ink text-cream relative overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-espresso/20 blur-3xl opacity-50 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-full bg-walnut/10 blur-3xl opacity-50 pointer-events-none" />
+    <section className="relative w-full h-[100svh] overflow-hidden flex items-center justify-center bg-ink">
+      
+      {/* Full Bleed Background Cinematic Image */}
+      <motion.div 
+        className="absolute inset-0 w-full h-full"
+        initial={{ scale: 1.05 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2, ease: "easeOut" }}
+      >
+        <img
+          src="/images/testimonial and middle parallax img 2.png"
+          alt="Alora Editorial Lifestyle"
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Darker, softer overlay for elegant contrast */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
+      </motion.div>
 
-      <div className="container-alora relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
-          
-          {/* Section Header (Sticky on Desktop) */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 lg:pb-16">
-            <motion.div 
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={{
-                hidden: { opacity: 0 },
-                show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-              }}
+      {/* Featured Review Slider */}
+      <div className="container-alora relative z-10 flex flex-col items-center justify-center h-full px-6">
+        
+
+        <div className="relative w-full max-w-3xl h-[35svh] flex flex-col items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, filter: "blur(4px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(4px)" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="absolute inset-0 flex flex-col items-center justify-center text-center"
             >
-              <motion.span 
-                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
-                className="text-cream/70 text-[10px] sm:text-[11px] tracking-[0.3em] block uppercase mb-6"
-              >
-                {t('home.reviews.eyebrow')}
-              </motion.span>
-              <motion.h2 
-                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
-                className="font-serif text-4xl sm:text-5xl lg:text-6xl text-cream font-normal tracking-tight leading-[1.1] mb-6"
-              >
-                {isArabic ? 'بأصواتهم' : 'In Their Words'}
-              </motion.h2>
-              <motion.p 
-                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
-                className="text-cream/80 text-sm sm:text-base leading-relaxed font-sans max-w-sm"
-              >
-                {isArabic 
-                  ? 'اكتشف كيف تنسق عميلاتنا المميزات تصاميم ألورا، ليعبرن عن الأناقة الخالدة بأسلوبهن الخاص.' 
-                  : 'Discover how our distinguished clientele style their Alora pieces, embodying timeless elegance in every setting.'}
-              </motion.p>
+              {/* Refined Star Rating */}
+              <div className="flex text-cream/70 mb-8 gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 4v16M6 8l12 8M18 8L6 16" />
+                  </svg>
+                ))}
+              </div>
+              
+              <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cream leading-[1.4] font-light mb-12">
+                "{reviews[currentIndex].quote}"
+              </blockquote>
+              
+              <div className="flex flex-col items-center">
+                <h4 className="font-sans text-xs font-semibold tracking-widest text-cream uppercase mb-1.5">
+                  {reviews[currentIndex].author}
+                </h4>
+                <p className="text-[9px] font-sans text-cream/60 uppercase tracking-[0.2em]">
+                  {reviews[currentIndex].location}
+                </p>
+              </div>
             </motion.div>
-          </div>
-
-          {/* Reviews List */}
-          <div className="lg:col-span-7 lg:col-start-6">
-            <motion.div 
-              className="flex flex-col gap-12 sm:gap-16"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={{
-                hidden: { opacity: 0 },
-                show: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.2 } }
-              }}
-            >
-              {reviews.map((item) => (
-                <motion.div
-                  key={item.id}
-                  variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
-                  className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-start group"
-                >
-                  {/* Avatar / Monogram */}
-                  <div className="w-16 sm:w-20 h-16 sm:h-20 shrink-0 rounded-full border border-cream/20 flex items-center justify-center bg-espresso/30 text-cream font-serif text-xl sm:text-2xl transition-colors duration-500 group-hover:bg-cream group-hover:text-ink">
-                    {item.author.charAt(0)}
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="flex-1 pb-10 sm:pb-12 border-b border-cream/10">
-                    <div className="flex text-cream/90 text-sm mb-6 gap-1">
-                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    
-                    <blockquote className="font-serif text-xl sm:text-2xl text-cream leading-relaxed font-light italic mb-8 relative">
-                      <span className="absolute -start-4 -top-3 text-4xl text-cream/20 font-sans">"</span>
-                      {item.quote}
-                    </blockquote>
-                    
-                    <div>
-                      <h4 className="font-sans text-sm sm:text-base font-semibold tracking-wide text-cream uppercase mb-1">
-                        {item.author}
-                      </h4>
-                      <p className="text-xs font-sans text-cream/60 uppercase tracking-[0.15em]">
-                        {item.location}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
+          </AnimatePresence>
         </div>
+
+        {/* Minimal Navigation Indicators & Arrows */}
+        <div className="flex items-center gap-6 mt-16">
+          <button 
+            onClick={handlePrev} 
+            className="text-cream/40 hover:text-cream transition-colors duration-500 p-2 focus:outline-none"
+            aria-label="Previous review"
+          >
+            <svg className="rtl:rotate-180" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <div className="flex items-center gap-4">
+            {reviews.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className="group py-4 px-1 focus:outline-none"
+                aria-label={`Go to review ${idx + 1}`}
+              >
+                <div 
+                  className={`h-[1px] transition-all duration-700 ease-out ${
+                    idx === currentIndex 
+                      ? 'w-10 bg-cream' 
+                      : 'w-6 bg-cream/30 group-hover:bg-cream/70'
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
+          <button 
+            onClick={handleNext} 
+            className="text-cream/40 hover:text-cream transition-colors duration-500 p-2 focus:outline-none"
+            aria-label="Next review"
+          >
+            <svg className="rtl:rotate-180" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
       </div>
+
     </section>
   )
 }
