@@ -20,7 +20,7 @@ export function EditorialBreakSection() {
       {/* Parallax Background */}
       <motion.div style={{ y }} className="absolute inset-0 z-0 h-[140%] -top-[20%]">
         <img
-          src="/images/testimonial and middle parallax img 1.png"
+          src={`${import.meta.env.BASE_URL}images/testimonial%20and%20middle%20parallax%20img%201.png`}
           alt="Alora Craftsmanship"
           className="w-full h-full object-cover object-center"
         />

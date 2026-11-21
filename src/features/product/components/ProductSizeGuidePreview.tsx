@@ -151,7 +151,7 @@ export function ProductSizeGuidePreview({ isArabic }: ProductSizeGuidePreviewPro
           <div className="lg:col-span-4 flex flex-col items-center justify-center relative py-2 h-full min-h-[400px]">
             <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
               <img
-                src="/images/new png.png"
+                src={`${import.meta.env.BASE_URL}images/new%20png.png`}
                 alt={isArabic ? 'صورة دليل المقاسات' : 'Size and Fit Guide Illustration'}
                 className="w-full h-full max-h-[75svh] object-contain mix-blend-multiply drop-shadow-sm"
               />

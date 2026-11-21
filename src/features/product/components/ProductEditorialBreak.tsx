@@ -35,7 +35,7 @@ export function ProductEditorialBreak({ isArabic }: ProductEditorialBreakProps) 
   }, [])
 
   // The requested new image. 
-  const bannerImg = "/images/photo-1767469697194-ac997d70b1ee.avif"
+  const bannerImg = `${import.meta.env.BASE_URL}images/photo-1767469697194-ac997d70b1ee.avif`
 
   return (
     <section ref={sectionRef} className="hidden md:flex relative w-full min-h-[50svh] lg:min-h-[65svh] items-center justify-center overflow-hidden bg-espresso">

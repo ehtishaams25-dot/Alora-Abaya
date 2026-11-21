@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 export function WhyChooseUsSection() {
   const { i18n } = useTranslation()
   const isArabic = i18n.language.startsWith('ar')
+  const base = import.meta.env.BASE_URL
 
   return (
     <section className="w-full bg-sand py-20 lg:py-48 min-h-[100svh] flex flex-col justify-center">
@@ -55,7 +56,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
             <img 
-              src="/images/homepage img 1.png" 
+              src={`${base}images/homepage%20img%201.png`} 
               alt="Alora Design 1" 
               className="w-full h-full object-cover absolute inset-0"
             />
@@ -70,7 +71,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <img 
-              src="/images/homepage img 5.png" 
+              src={`${base}images/homepage%20img%205.png`} 
               alt="Alora Design Details" 
               className="w-full h-full object-cover absolute inset-0 object-top"
             />
@@ -85,7 +86,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >
             <img 
-              src="/images/homepage img 3.png" 
+              src={`${base}images/homepage%20img%203.png`} 
               alt="Alora Craftsmanship" 
               className="w-full h-full object-cover absolute inset-0"
             />
@@ -100,7 +101,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           >
             <img 
-              src="/images/homepage img 2.png" 
+              src={`${base}images/homepage%20img%202.png`} 
               alt="Alora Fabric" 
               className="w-full h-full object-cover absolute inset-0"
             />
@@ -115,7 +116,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
           >
             <img 
-              src="/images/homepage img 7.png" 
+              src={`${base}images/homepage%20img%207.png`} 
               alt="Alora Collection" 
               className="w-full h-full object-cover absolute inset-0"
             />
@@ -130,7 +131,7 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
             <img 
-              src="/images/homepage img 6.png" 
+              src={`${base}images/homepage%20img%206.png`} 
               alt="Alora Finishes" 
               className="w-full h-full object-cover absolute inset-0"
             />

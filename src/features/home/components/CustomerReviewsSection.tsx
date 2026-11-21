@@ -60,7 +60,7 @@ export function CustomerReviewsSection() {
         transition={{ duration: 2, ease: "easeOut" }}
       >
         <img
-          src="/images/testimonial and middle parallax img 2.png"
+          src={`${import.meta.env.BASE_URL}images/testimonial%20and%20middle%20parallax%20img%202.png`}
           alt="Alora Editorial Lifestyle"
           className="w-full h-full object-cover object-center"
         />
